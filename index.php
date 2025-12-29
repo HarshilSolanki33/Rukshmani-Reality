@@ -239,20 +239,7 @@
 <?php include 'Footer.php'; ?>
 
 
-<script>
-  const frames = document.querySelectorAll('.photo-frame');
 
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('inview');
-        io.unobserve(e.target);
-      }
-    });
-  },{threshold:0.3});
-
-  frames.forEach(f=>io.observe(f));
-</script>
 
 <script src="Assets/Ongoing.js"></script>
 <script src="Assets/Hameburger.js"></script>
