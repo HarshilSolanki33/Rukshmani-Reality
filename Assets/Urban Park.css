@@ -1,0 +1,247 @@
+/* Urban Park PAGE CSS  */
+
+    /* ===== HERO SECTION ===== */
+.hero{
+  min-height: calc(100vh - 90px); /* 🔥 navbar height minus */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px 20px;
+  margin-top: -50px;
+  background:#fff;
+}
+
+.hero-inner{
+  max-width:800px;
+  text-align:center;
+}
+
+/* Main heading */
+.hero h1{
+  font-size:64px;
+  line-height:1.05;
+  margin:0 0 22px;
+  font-weight:400;
+  letter-spacing:-0.8px;
+  color:#111;
+  font-family: "Georgia", "Playfair Display", serif;
+}
+
+/* Subtitle */
+.hero .lead{
+  font-size:14px;
+  color:#666;
+  margin-bottom:36px;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  line-height:1.6;
+}
+.rukshmani{
+  color: rgb(185, 135, 75);
+}
+
+/* Button */
+.cta{
+  display:inline-block;
+  padding:14px 46px;
+  background:#111;
+  color:#fff;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:500;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  transition:all .3s ease;
+}
+
+.cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 40px rgba(0,0,0,.18);
+}
+
+/* Responsive  */
+@media (max-width:768px){
+  .hero h1{
+    font-size:42px;
+  }
+}
+
+@media (max-width:480px){
+  .hero h1{
+    font-size:34px;
+  }
+
+  .hero .lead{
+    font-size:12px;
+  }
+}
+/* Hero section over  */
+
+
+/* Perspective section starts  */
+/* Section */
+.perspectives {
+  padding: clamp(40px, 6vw, 90px) clamp(20px, 5vw, 70px);
+  background: #fff;
+  margin-top: -180px;
+}
+
+/* Heading */
+.section-header h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.section-header h2 span {
+  font-size: 14px;
+  color: #777;
+  vertical-align: super;
+}
+
+/* Grid */
+.perspectives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(16px, 3vw, 30px);
+}
+
+/* Card */
+.perspective-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  aspect-ratio: 3 / 4;   /* 🔥 important for same height */
+  background: #000;
+  cursor: pointer;
+}
+
+/* Image */
+.perspective-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+
+/* Label */
+.perspective-card .label {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  .perspective-card {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* Ultra-wide screens (2K / 4K) */
+@media (min-width: 1600px) {
+  .perspectives-grid {
+    max-width: 1500px;
+    margin: auto;
+  }
+}
+/* Perspective section over  */
+
+/* product topology section starts */
+.product-typology {
+  padding: 50px 50px;
+  background: #fff;
+  margin-top: -50px;
+}
+
+.product-typology h2 {
+  font-size: 42px;
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+
+.product-typology h2 span {
+  font-size: 14px;
+  vertical-align: super;
+  color: #777;
+}
+
+/* Grid */
+.typology-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 60px;
+  text-align: center;
+}
+
+/* ITEM */
+.typology-item {
+  cursor: pointer;
+}
+
+/* ICON WRAP (NEW) */
+.icon-wrap {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  transition: all 0.4s ease;
+}
+
+/* Icon Image */
+.icon-wrap img {
+  width: 46px;
+  transition: all 0.4s ease;
+}
+
+/* HOVER EFFECT (MAIN PART) */
+.typology-item:hover .icon-wrap {
+  background: #5b5b5b;   /* dark grey circle */
+}
+
+.typology-item:hover .icon-wrap img {
+  filter: invert(1);
+  transform: scale(1.1);
+}
+
+/* Text */
+.typology-item h4 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.typology-item p {
+  font-size: 13px;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-typology {
+    padding: 60px 20px;
+  }
+
+  .product-typology h2 {
+    font-size: 32px;
+    margin-bottom: 50px;
+  }
+
+  .icon-wrap {
+    width: 100px;
+    height: 100px;
+  }
+}
+
