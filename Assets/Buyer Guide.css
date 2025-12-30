@@ -1,0 +1,170 @@
+/* BUYER GUIDE CSS  */
+
+    /* ===== HERO SECTION ===== */
+.hero{
+  min-height: calc(100vh - 90px); /* 🔥 navbar height minus */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px 20px;
+  margin-top: -50px;
+  background:#fff;
+}
+
+.hero-inner{
+  max-width:800px;
+  text-align:center;
+}
+
+/* Main heading */
+.hero h1{
+  font-size:64px;
+  line-height:1.05;
+  margin:0 0 22px;
+  font-weight:400;
+  letter-spacing:-0.8px;
+  color:#111;
+  font-family: "Georgia", "Playfair Display", serif;
+}
+
+/* Subtitle */
+.hero .lead{
+  font-size:14px;
+  color:#666;
+  margin-bottom:36px;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  line-height:1.6;
+}
+.rukshmani{
+  color: rgb(185, 135, 75);
+}
+
+/* Button */
+.cta{
+  display:inline-block;
+  padding:14px 46px;
+  background:#111;
+  color:#fff;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:500;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  transition:all .3s ease;
+}
+
+.cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 40px rgba(0,0,0,.18);
+}
+
+/* Responsive  */
+@media (max-width:768px){
+  .hero h1{
+    font-size:42px;
+  }
+}
+
+@media (max-width:480px){
+  .hero h1{
+    font-size:34px;
+  }
+
+  .hero .lead{
+    font-size:12px;
+  }
+}
+/* Hero section over  */
+
+
+/* Emi calculator section starts  */
+.emi-section {
+  padding: 80px 20px;
+  background: #ffffff;
+  font-family: "Georgia", serif;
+}
+
+.emi-wrapper {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.emi-header h2 {
+  font-size: 38px;
+  margin-bottom: 8px;
+}
+
+.emi-header p {
+  color: #555;
+  margin-bottom: 50px;
+}
+
+/* Input rows */
+.emi-row {
+  display: grid;
+  grid-template-columns: 220px 180px 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.emi-row label {
+  font-size: 15px;
+}
+
+.emi-row input[type="number"] {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.emi-row input[type="range"] {
+  width: 100%;
+  accent-color: #555;
+}
+
+/* Result */
+.emi-result {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.emi-values p {
+  font-size: 16px;
+  padding: 15px 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+.emi-values strong {
+  display: block;
+  font-size: 22px;
+  margin-top: 6px;
+}
+
+.emi-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#emiChart {
+  max-width: 280px;
+}
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .emi-row {
+    grid-template-columns: 1fr;
+  }
+
+  .emi-result {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+/* Emi calculator section ends  */

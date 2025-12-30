@@ -38,6 +38,7 @@
     <li><a href="../Guest Side/About Us.php">About Us</a></li>
     <li><a href="../Guest Side/Our Values.php">Our Values</a></li>
     <li><a href="../Guest Side/Our Projects.php">Our Projects</a></li>
+    <li><a href="../Guest Side/Buyers Guid.php">Buyers Guide</a></li>
   </ul>
 
   <div class="menu-footer">

@@ -495,6 +495,84 @@ Hover
 }
 
 
+.whyus-section {
+  background: #2c2c2c;
+  color: #fff;
+  padding: 90px 6%;
+  font-family: "Playfair Display", serif;
+}
+
+.whyus-tag {
+  text-align: center;
+  letter-spacing: 3px;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.whyus-heading {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 60px;
+  min-height: 50px;
+  opacity: 1;
+}
+
+.whyus-features {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.whyus-feature span {
+  font-size: 12px;
+  opacity: .6;
+}
+
+.whyus-feature h4 {
+  margin: 10px 0;
+  min-height: 24px;
+}
+
+.whyus-feature p {
+  font-size: 14px;
+  opacity: .7;
+}
+
+/* IMAGE SECTION */
+.whyus-images {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 30px;
+}
+
+.whyus-img {
+  opacity: 0;
+  transform: translateX(-120px);
+  transition: transform 10s cubic-bezier(.19,1,.22,1), opacity 1.5s ease;
+}
+
+.whyus-img.show {
+    opacity: 1;
+  transform: translateX(0);
+}
+
+.whyus-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .whyus-features {
+    grid-template-columns: 1fr 1fr;
+  }
+  .whyus-images {
+    grid-template-columns: 1fr;
+  }
+}
 
 
 

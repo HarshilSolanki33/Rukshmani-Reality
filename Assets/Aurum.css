@@ -376,6 +376,7 @@
 .price{
   color:#caa256;
   font-size:22px;
+  font-family: "Georgia", "Playfair Display", serif;
   font-weight:600;
   margin-bottom:15px;
 }
@@ -387,6 +388,7 @@
 
 .features li{
   font-size:14px;
+  font-family: "Georgia", "Playfair Display", serif;
   opacity:.85;
   margin:6px 0;
 }
@@ -414,6 +416,7 @@
   background:linear-gradient(135deg,#caa256,#f6e27a);
   color:#000;
   font-weight:600;
+  font-family: "Georgia", "Playfair Display", serif;
   cursor:pointer;
 }
 
@@ -531,6 +534,7 @@
 .highlight-card p{
   font-size:14px;
   color:#555;
+  font-family: "Georgia", "Playfair Display", serif;
   line-height:1.6;
 }
 
@@ -669,11 +673,13 @@
 /* Text */
 .amenity-card h4{
   color:#caa256;
+  font-family: "Georgia", "Playfair Display", serif;
   margin-bottom:6px;
 }
 
 .amenity-card p{
   color:#524848;
+  font-family: "Georgia", "Playfair Display", serif;
   font-size:14px;
   line-height:1.6;
 }
@@ -749,6 +755,7 @@
 
 .be-left p{
   color:#706868;
+  font-family: "Georgia", "Playfair Display", serif;
   line-height:1.7;
   margin-bottom:14px;
 }
@@ -820,6 +827,7 @@
   display:block;
   margin-top:6px;
   color:#918484;
+  font-family: "Georgia", "Playfair Display", serif;
 }
 
 /* Responsive */
@@ -943,14 +951,14 @@
 
 
 /* Map section starts   */
-.contact-location {
+/* Base (Desktop) */
+.contact-location{
   padding:20px 20px;
-  background: #fff;
-
-  border: 2px solid #c9a24d;   /* golden border */
-  border-radius: 16px;         /* soft premium corners */
-  margin: 60px auto;           /* spacing around frame */
-  max-width: 1350px;           /* frame full-width na jaay */
+  background:#fff;
+  border:2px solid #c9a24d;
+  border-radius:16px;
+  margin:60px auto;
+  max-width:1350px;
 }
 .contact-info {
   background: #fafafa;
@@ -978,6 +986,11 @@
   display:flex;
   flex-direction:column;
   gap:30px;
+  padding:40px 45px;
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.04);
+  gap:34px;
+  background-color: #ebebeb;
 }
 
 .info-block{
@@ -1044,7 +1057,15 @@
 }
 
 /* RESPONSIVE */
+/* Tablet */
 @media(max-width:900px){
+  .contact-location{
+    border-width:1.5px;     /* thinner border */
+    border-radius:14px;     /* slightly smaller corners */
+    margin:40px 15px;       /* less side space */
+  }
+
+
   .contact-wrapper{
     grid-template-columns:1fr;
   }
@@ -1055,6 +1076,17 @@
 
   .map-box iframe{
     height:280px;
+  }
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+  .contact-location{
+    border-width:1px;       /* thinnest border */
+    border-radius:10px;
+    margin:25px 10px;
+    padding:12px;           /* compact padding */
   }
 }
 

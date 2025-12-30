@@ -220,6 +220,47 @@
   </div>
 </div>
 
+<section class="whyus-section">
+  <p class="whyus-tag">WHY US</p>
+
+ <h2 class="whyus-heading" data-text="Built On Trust. Designed With Purpose.">
+  Built On Trust. Designed With Purpose.
+</h2>
+
+
+  <div class="whyus-features">
+    <div class="whyus-feature" data-text="PRIME LOCATIONS">
+      <span>01</span>
+      <h4></h4>
+      <p>We handpick vibrant, well-connected neighborhoods that provide convenience and quality of life.</p>
+    </div>
+
+    <div class="whyus-feature" data-text="SIGNATURE ARCHITECTURE">
+      <span>02</span>
+      <h4></h4>
+      <p>Each building showcases careful planning and timeless design with green open spaces.</p>
+    </div>
+
+    <div class="whyus-feature" data-text="TIMELY DELIVERY">
+      <span>03</span>
+      <h4></h4>
+      <p>We respect deadlines and ensure projects are delivered on time with top-notch quality.</p>
+    </div>
+
+    <div class="whyus-feature" data-text="ELEVATED LIVING">
+      <span>04</span>
+      <h4></h4>
+      <p>Crafting lifestyles that embrace luxury, peace, and community living.</p>
+    </div>
+  </div>
+
+  <div class="whyus-images">
+  <div class="whyus-img"><img src="gallery/Aurum-1.jpg"></div>
+  <div class="whyus-img"><img src="gallery/Aurum-2.jpg"></div>
+  <div class="whyus-img"><img src="gallery/Aurum-3.jpg"></div>
+</div>
+
+</section>
 
 
 
@@ -238,8 +279,52 @@
 <!-- Pro Broker Section ends  -->
 <?php include 'Footer.php'; ?>
 
+<script>
+/* TYPE EFFECT */
+function typeWords(el, text, delay = 120) {
+  el.innerHTML = "";
+  const words = text.split(" ");
+  let i = 0;
 
+  const interval = setInterval(() => {
+    el.innerHTML += words[i] + " ";
+    i++;
+    if (i === words.length) clearInterval(interval);
+  }, delay);
+}
 
+/* OBSERVER */
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      /* Heading typing */
+      if (entry.target.classList.contains("whyus-heading")) {
+        typeWords(entry.target, entry.target.dataset.text, 140);
+      }
+
+      /* Images slide */
+      if (entry.target.classList.contains("whyus-img")) {
+        entry.target.classList.add("show");
+      }
+
+      observer.unobserve(entry.target);
+    });
+  },
+  { threshold: 0.3 }
+);
+
+/* Observe heading */
+const heading = document.querySelector(".whyus-heading");
+if (heading) observer.observe(heading);
+
+/* Observe images */
+document.querySelectorAll(".whyus-img").forEach(img => {
+  observer.observe(img);
+});
+
+</script>
 
 <script src="Assets/Ongoing.js"></script>
 <script src="Assets/Hameburger.js"></script>
