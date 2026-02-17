@@ -14,6 +14,10 @@
     <?php include 'Navbar.php'; ?>
     <!-- Navbar ends  -->
 
+<!-- Back button starts  -->
+<?php include 'Back Button.php'; ?>
+<!-- Back button ends  -->
+
     <!-- Hero Section Starts-->
     <section class="hero" role="region" aria-label="Intro">
   <div class="hero-wrapper">
@@ -34,7 +38,7 @@
 <!-- Perspective section starts  -->
  <section class="perspectives">
   <div class="section-header">
-    <h2 class="u-underline">Perspectives <span>(04)</span></h2>
+    <h2 class="u-underline" id="title">Perspectives <span>(04)</span></h2>
 
   </div>
 
@@ -66,7 +70,7 @@
 
    <!-- product topology section starts -->
 <section class="product-typology">
-  <h2>Product Typology <span>(04)</span></h2>
+  <h2 class="u-underline">Product Typology <span>(04)</span></h2>
 
   <div class="typology-grid">
 
@@ -108,7 +112,7 @@
 
 <!-- Signature Residences section starts   -->
    <section class="unit-cards">
-  <h2 class="section-title">Signature Residences</h2>
+  <h2 class="section-title u-underline">Signature Residences</h2>
 
   <div class="unit-grid">
 
@@ -185,7 +189,7 @@
 <section class="project-highlights">
   <div class="container">
     
-    <h2 class="section-title">
+    <h2 class="section-title2 u-underline">
       Project Highlights 
     </h2>
 
@@ -231,7 +235,7 @@
 <section class="amenities">
   <div class="container">
 
-    <h2 class="section-title">
+    <h2 class="section-title3 u-underline">
       Amenities 
     </h2>
 
@@ -320,7 +324,7 @@
 
       <!-- Left content -->
       <div class="be-left">
-        <h2>Download Project Brochure</h2>
+        <h2 class="u-underline">Download Project Brochure</h2>
         <p>
           Get detailed information about <span>Aurum Heights</span> including
           floor plans, amenities, elevations and specifications in one
@@ -359,7 +363,7 @@
 <!-- Map section starts  -->
 <section class="contact-location">
   <div class="container">
-<h2 class="section-title">
+<h2 class="section-title4 u-underline">
       Location
     </h2>
 
@@ -430,9 +434,10 @@
 
 
 
-
+<?php include 'Scroll.php'; ?>
 <?php include 'Footer.php'; ?>
 <script src="Assets/Hameburger.js"></script>
 <script src="Assets/Smother.js"></script> 
+<script src="Assets/Projects page.js"></script>
 </body>
 </html>

@@ -46,4 +46,30 @@ yearButtons.forEach(btn => {
 
 document.querySelector(".yrproj-year-btn.active").click();
 
+// Extra js 
+// Golden underline animation for headings
+const titles = document.querySelectorAll('.yrproj-title');
 
+titles.forEach(title => {
+  // animate on load (staggered)
+  setTimeout(() => {
+    title.style.setProperty('--active', '1');
+    title.classList.add('active');
+  }, Math.random() * 600);
+
+  // animate on hover
+  title.closest('.yrproj-item').addEventListener('mouseenter', () => {
+    title.classList.add('active');
+  });
+
+  title.closest('.yrproj-item').addEventListener('mouseleave', () => {
+    title.classList.remove('active');
+  });
+});
+
+
+
+// POP UP Close karva mate js
+  document.querySelector('.rr-close-btn').addEventListener('click', function () {
+    document.querySelector('.rr-overlay').style.display = 'none';
+  });

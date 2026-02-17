@@ -1,0 +1,589 @@
+/* Rent Properties PAGE CSS  */
+
+    /* ===== HERO SECTION ===== */
+.hero{
+  min-height: calc(90vh - 90px); /* 🔥 navbar height minus */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px 20px;
+  margin-top: -50px;
+  background:#fff;
+}
+
+.hero-inner{
+  max-width:800px;
+  height: 
+  100px;
+  text-align:center;
+}
+
+/* Main heading */
+.hero h1{
+  font-size:64px;
+  line-height:1.05;
+  margin:0 0 22px;
+  font-weight:400;
+  letter-spacing:-0.8px;
+  color:#111;
+  font-family: "Georgia", "Playfair Display", serif;
+}
+
+/* Subtitle */
+.hero .lead{
+  font-size:14px;
+  color:#666;
+  margin-bottom:36px;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  line-height:1.6;
+}
+.rukshmani{
+  color: rgb(185, 135, 75);
+}
+
+/* Button */
+.cta{
+  display:inline-block;
+  padding:14px 46px;
+  background:#111;
+  color:#fff;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:500;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  transition:all .3s ease;
+}
+
+.cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 40px rgba(0,0,0,.18);
+}
+
+/* Responsive  */
+@media (max-width:768px){
+  .hero h1{
+    font-size:42px;
+  }
+}
+
+@media (max-width:480px){
+  .hero h1{
+    font-size:34px;
+  }
+
+  .hero .lead{
+    font-size:12px;
+  }
+}
+.hero-title{
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+}
+
+/* animated gold line */
+.hero-title::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:0;
+  width:0;
+  height:2px;
+  background: linear-gradient(90deg, #caa256, #f1c27d);
+  transform:translateX(-50%);
+  transition: width 1s ease-in-out;
+  border-radius:2px;
+}
+
+/* responsive final width */
+.hero-title.line-animate::after{
+  width: clamp(120px, 45vw, 520px);
+}
+.hero-title.line-animate::after{
+  width: 550px;
+}
+
+/* tablet */
+@media (max-width: 992px){
+  .hero-title.line-animate::after{
+    width: 340px;
+  }
+}
+
+/* mobile */
+@media (max-width: 600px){
+  .hero-title.line-animate::after{
+    width: 280px;
+  }
+}
+
+/* small mobile */
+@media (max-width: 380px){
+  .hero-title.line-animate::after{
+    width: 210px;
+  }
+}
+
+
+
+/* Hero section over  */
+
+/* Card section starts   */
+/* Wrapper */
+.estate-zone{
+  max-width:1200px;
+  margin:40px auto;
+  display:flex;
+  flex-wrap:wrap;
+  gap:25px;
+  justify-content:center;
+}
+
+/* Single Card */
+.estate-box{
+  background:white;
+  border-radius:20px;
+  display:flex;
+  gap:18px;
+  padding:18px;
+  min-height:230px;
+  width:1240px;
+  box-shadow:0 25px 60px rgba(0,0,0,0.08);
+  transition:0.3s;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* Hover */
+.estate-box:hover{
+  transform:translateY(-6px);
+  box-shadow:0 35px 80px rgba(0,0,0,.12);
+}
+
+/* Image */
+.estate-media img{
+  width:240px;
+  height:180px;
+  object-fit:cover;
+  border-radius:16px;
+}
+
+/* Content */
+.estate-details h2{
+  margin:0 0 6px 0;
+  font-size:20px;
+  font-family:"Playfair Display",serif;
+}
+
+.estate-desc{
+  color:#555;
+  font-family:"Playfair Display",serif;
+  margin:4px 0 6px;
+}
+
+.estate-info{
+  font-weight:600;
+  font-family:"Playfair Display",serif;
+  color:#333;
+}
+
+.estate-price{
+  font-family:"Playfair Display",serif;
+  font-size:18px;
+  margin-top:4px;
+  font-weight:700;
+}
+
+/* Buttons */
+.estate-actions{
+  margin-top:8px;
+  display:flex;
+  gap:10px;
+}
+
+.estate-actions button{
+  padding:8px 18px;
+  border-radius:999px;
+  border:none;
+  font-family:"Playfair Display",serif;
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* Tags */
+.tag-sold{
+  background:#2c2c2c;
+  color:white;
+}
+
+.tag-book{
+  background:#c7a14b;
+  color:white;
+}
+
+.btn-view{
+  background:#eeeeee;
+}
+
+/* Scroll Animation */
+.estate-box{
+  opacity:0;
+  transform:translateY(60px);
+  transition:all .8s cubic-bezier(.19,1,.22,1);
+}
+
+.estate-box.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Smooth hover shadow */
+.estate-box:hover{
+  box-shadow:0 25px 60px rgba(0,0,0,.18);
+}
+
+
+/* ---------- 1600px+ Big Screen ---------- */
+@media (max-width:1600px){
+  .estate-zone{
+    max-width:1300px;
+  }
+}
+
+/* ---------- 1400px Desktop ---------- */
+@media (max-width:1400px){
+  .estate-box{
+    width:1150px;
+  }
+}
+
+/* ---------- 1200px Laptop ---------- */
+@media (max-width:1200px){
+  .estate-box{
+    width:1000px;
+  }
+
+  .estate-media img{
+    width:220px;
+    height:170px;
+  }
+}
+
+/* ---------- 1024px Small Laptop / Tablet Landscape ---------- */
+@media (max-width:1024px){
+  .estate-box{
+    width:95%;
+  }
+
+  .estate-media img{
+    width:200px;
+    height:160px;
+  }
+}
+
+/* ---------- 900px Tablet ---------- */
+@media (max-width:900px){
+  .estate-box{
+    width:100%;
+    gap:14px;
+  }
+
+  .estate-details h2{
+    font-size:18px;
+  }
+
+  .estate-desc{
+    font-size:14px;
+  }
+}
+
+/* ---------- 768px Tablet Portrait ---------- */
+@media (max-width:768px){
+  .estate-box{
+    flex-direction:column;
+    text-align:center;
+    width:100%;
+  }
+
+  .estate-media img{
+    width:100%;
+    height:230px;
+  }
+
+  .estate-actions{
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+}
+
+/* ---------- 540px Mobile ---------- */
+@media (max-width:540px){
+  .estate-box{
+    padding:14px;
+  }
+
+  .estate-media img{
+    height:210px;
+  }
+
+  .estate-actions button{
+    width:100%;
+  }
+}
+
+/* ---------- 400px Small Mobile ---------- */
+@media (max-width:400px){
+  .estate-box{
+    padding:10px;
+  }
+
+  .estate-media img{
+    height:190px;
+  }
+
+  .estate-details h2{
+    font-size:16px;
+  }
+
+  .estate-desc{
+    font-size:13px;
+  }
+}
+
+/* Card section ends  */
+
+
+
+/* View Details POP UP Starts */
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+.modal-box{
+  width:90%;
+  max-width:550px;
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+  transform:scale(.7);
+  opacity:0;
+  transition:.4s ease;
+  font-family:"Playfair Display", serif;
+}
+
+.modal-overlay.show .modal-box{
+  transform:scale(1);
+  opacity:1;
+}
+
+.close-btn{
+  font-size:28px;
+  float:right;
+  cursor:pointer;
+}
+
+.modal-img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  border-radius:16px;
+  margin-bottom:10px;
+}
+
+.modal-meta{
+  font-weight:600;
+}
+
+.modal-rent{
+  font-size:20px;
+  font-weight:700;
+  margin-top:6px;
+}
+
+.modal-contact{
+  width:100%;
+  border:none;
+  padding:10px;
+  border-radius:50px;
+  font-weight:700;
+  background:#c7a14b;
+  color:white;
+  cursor:pointer;
+}
+/* responsive  */
+/* ---------- Modal Overlay & Box ---------- */
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+  padding:10px; /* Small screen padding */
+}
+
+.modal-box{
+  width:90%;
+  max-width:550px;
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+  transform:scale(.7);
+  opacity:0;
+  transition:.4s ease;
+  font-family:"Playfair Display", serif;
+  overflow:hidden;
+  max-height:90vh; /* Prevent modal from going off screen */
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.modal-overlay.show .modal-box{
+  transform:scale(1);
+  opacity:1;
+}
+
+.close-btn{
+  font-size:28px;
+  align-self:flex-end;
+  cursor:pointer;
+}
+
+.modal-img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  border-radius:16px;
+  margin-bottom:10px;
+}
+
+.modal-meta{
+  font-weight:600;
+}
+
+.modal-rent{
+  font-size:20px;
+  font-weight:700;
+  margin-top:6px;
+}
+
+.modal-contact{
+  width:100%;
+  border:none;
+  padding:10px;
+  border-radius:50px;
+  font-weight:700;
+  background:#c7a14b;
+  color:white;
+  cursor:pointer;
+}
+
+/* ---------- Responsive adjustments ---------- */
+
+/* Tablet Landscape / 1024px */
+@media(max-width:1024px){
+  .modal-box{
+    max-width:480px;
+    padding:18px;
+  }
+
+  .modal-img{
+    height:200px;
+  }
+
+  .modal-rent{
+    font-size:18px;
+  }
+
+  .modal-contact{
+    padding:9px;
+  }
+}
+
+/* Tablet Portrait / 768px */
+@media(max-width:768px){
+  .modal-box{
+    max-width:400px;
+    padding:16px;
+  }
+
+  .modal-img{
+    height:180px;
+  }
+
+  .modal-rent{
+    font-size:17px;
+  }
+
+  .modal-contact{
+    padding:8px;
+  }
+
+  .close-btn{
+    font-size:26px;
+  }
+}
+
+/* Mobile / 540px */
+@media(max-width:540px){
+  .modal-box{
+    width:90%;
+    max-width:none;
+    padding:14px;
+  }
+
+  .modal-img{
+    height:160px;
+  }
+
+  .modal-rent{
+    font-size:16px;
+  }
+
+  .modal-contact{
+    padding:7px;
+  }
+
+  .close-btn{
+    font-size:24px;
+  }
+}
+
+/* Small Mobile / 400px */
+@media(max-width:400px){
+  .modal-box{
+    width:100%;
+    padding:12px;
+    border-radius:16px;
+  }
+
+  .modal-img{
+    height:140px;
+  }
+
+  .modal-rent{
+    font-size:15px;
+  }
+
+  .modal-contact{
+    padding:6px;
+    font-size:14px;
+  }
+
+  .close-btn{
+    font-size:22px;
+  }
+}
+/* View Detial POP UP Ends  */

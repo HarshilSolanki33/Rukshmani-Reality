@@ -14,7 +14,7 @@
         </button>
 
   <div class="connect-menu">
-    <a href="#">Book Inquiry</a>
+    <a href="./Book Inquiry.php">Book Inquiry</a>
     <a href="#">Mail Us</a>
   </div>
 </div>
@@ -35,11 +35,19 @@
 
 
   <ul class="menu-links">
+    <li><a href="../Guest Side/index.php">Home</a></li>
     <li><a href="../Guest Side/About Us.php">About Us</a></li>
     <li><a href="../Guest Side/Our Values.php">Our Values</a></li>
     <li><a href="../Guest Side/Our Projects.php">Our Projects</a></li>
     <li><a href="../Guest Side/Buyers Guid.php">Buyers Guide</a></li>
-  </ul>
+    <li><a href="../Guest Side/Rent Properties.php">Rent Properties</a></li>
+
+    <!-- FIXED LINKS -->
+    <li><a href="../Guest Side/profile.php">Profile</a></li>
+    <li><button class="popup-trigger menu-popup-btn">Inquiry Now</button></li>
+    <li><a href="../Guest Side/logout.php">LOGOUT</a></li>
+</ul>
+
 
   <div class="menu-footer">
     <a href="#">FACEBOOK</a>
@@ -237,6 +245,7 @@ html, body{
   right:25px;
   width:42px;
   height:42px;
+  color: #000;
   border-radius:50%;
   border:none;
   font-size:20px;
@@ -256,7 +265,7 @@ html, body{
 
 .menu-links a{
   text-decoration:none;
-  font-size:34px;
+  font-size:28px;
   color:#fff;
   transition:.3s;
 }
@@ -340,6 +349,8 @@ html, body{
   .circle-btn{
     width:45px;
     height:45px;
+    font-size:18px;
+    color: #000;
   }
 
   .side-menu{
@@ -397,6 +408,154 @@ document.getElementById('hamburger').addEventListener('click', function(){
   const expanded = this.getAttribute('aria-expanded') === 'true';
   this.setAttribute('aria-expanded', !expanded);
   this.classList.toggle('open');
+});
+</script>
+
+<!-- Popup Form Overlay -->
+<div id="inquiryOverlay" class="overlay">
+    <div class="popup">
+        <h2>Property Inquiry</h2>
+        <form id="inquiryForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <input type="text" id="message" name="message" placeholder="Preferred project?">
+            </div>
+            <button type="submit" class="btn btn-submit">Send Inquiry</button>
+            <button type="button" class="btn btn-close">Close</button>
+        </form>
+    </div>
+</div>
+
+<style>
+:root {
+    --bg-soft: #ffffff;
+    --gold: rgb(185,135,75);
+    --gold-light: rgba(185,135,75,0.2);
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    justify-content: center;
+    align-items: center;
+}
+.overlay.show {
+    display: flex;
+    opacity: 1;
+}
+.popup {
+    background: var(--bg-soft);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.5);
+    backdrop-filter: blur(10px);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.7) translateY(20px);
+    animation: fadeInUp 0.4s ease-out forwards;
+}
+@keyframes fadeInUp {
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.popup h2 { color: var(--gold); margin-bottom: 1rem; }
+.form-group { margin-bottom: 1rem; text-align: left; }
+label { display: block; color: #666; margin-bottom: 0.5rem; font-weight: 500; }
+input {
+    width: 100%; padding: 12px; border: 1px solid var(--gold-light);
+    border-radius: 10px; font-size: 16px; box-sizing: border-box;
+    transition: border 0.3s ease;
+}
+input:focus {
+    outline: none; border-color: var(--gold); box-shadow: 0 0 10px var(--gold-light);
+}
+.btn {
+    width: 100%; padding: 12px; border: none; border-radius: 10px;
+    cursor: pointer; font-size: 16px; margin-top: 0.5rem;
+    transition: all 0.3s ease;
+}
+.btn-submit { background: var(--gold); color: white; }
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 5px 15px var(--gold-light); }
+.btn-close { background: transparent; color: #999; border: 1px solid #eee; }
+.btn-close:hover { background: #f0f0f0; }
+body.modal-open { overflow: hidden; }
+@media (max-width: 768px) { .popup { margin: 1rem; padding: 1.5rem; } }
+.menu-popup-btn { 
+    background: none; 
+    border: none; 
+    color: #fff; 
+    font-size: 28px; 
+    cursor: pointer; 
+    padding: 0;
+}
+.menu-popup-btn:hover { opacity: 0.6; }
+</style>
+
+<script>
+function openPopup() {
+    document.getElementById('inquiryOverlay').classList.add('show');
+    document.body.classList.add('modal-open');
+}
+function closePopup() {
+    document.getElementById('inquiryOverlay').classList.remove('show');
+    document.body.classList.remove('modal-open');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.popup-trigger').forEach(trigger => {
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            openPopup();
+        });
+    });
+    
+    const overlay = document.getElementById('inquiryOverlay');
+    if (overlay) {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === this) closePopup();
+        });
+    }
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closePopup();
+    });
+    
+    const closeBtn = document.querySelector('.btn-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closePopup);
+    }
+    
+    const form = document.getElementById('inquiryForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Inquiry sent to Rukmani Realty!');
+            this.reset();
+            closePopup();
+        });
+    }
 });
 </script>
 <?php

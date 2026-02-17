@@ -1,0 +1,867 @@
+/* Rent Properties PAGE CSS  */
+
+    /* ===== HERO SECTION ===== */
+.hero{
+  min-height: calc(90vh - 90px); /* 🔥 navbar height minus */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px 20px;
+  margin-top: -50px;
+  background:#fff;
+}
+
+.hero-inner{
+  max-width:800px;
+  height: 
+  100px;
+  text-align:center;
+}
+
+/* Main heading */
+.hero h1{
+  font-size:64px;
+  line-height:1.05;
+  margin:0 0 22px;
+  font-weight:400;
+  letter-spacing:-0.8px;
+  color:#111;
+  font-family: "Georgia", "Playfair Display", serif;
+}
+
+/* Subtitle */
+.hero .lead{
+  font-size:14px;
+  color:#666;
+  margin-bottom:36px;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  line-height:1.6;
+}
+.rukshmani{
+  color: rgb(185, 135, 75);
+}
+
+/* Button */
+.cta{
+  display:inline-block;
+  padding:14px 46px;
+  background:#111;
+  color:#fff;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:500;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  transition:all .3s ease;
+}
+
+.cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 40px rgba(0,0,0,.18);
+}
+
+/* Responsive  */
+@media (max-width:768px){
+  .hero h1{
+    font-size:42px;
+  }
+}
+
+@media (max-width:480px){
+  .hero h1{
+    font-size:34px;
+  }
+
+  .hero .lead{
+    font-size:12px;
+  }
+}
+.hero-title{
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+}
+
+/* animated gold line */
+.hero-title::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:0;
+  width:0;
+  height:2px;
+  background: linear-gradient(90deg, #caa256, #f1c27d);
+  transform:translateX(-50%);
+  transition: width 1s ease-in-out;
+  border-radius:2px;
+}
+
+/* responsive final width */
+.hero-title.line-animate::after{
+  width: clamp(120px, 45vw, 520px);
+}
+.hero-title.line-animate::after{
+  width: 550px;
+}
+
+/* tablet */
+@media (max-width: 992px){
+  .hero-title.line-animate::after{
+    width: 340px;
+  }
+}
+
+/* mobile */
+@media (max-width: 600px){
+  .hero-title.line-animate::after{
+    width: 280px;
+  }
+}
+
+/* small mobile */
+@media (max-width: 380px){
+  .hero-title.line-animate::after{
+    width: 210px;
+  }
+}
+/* Hero section over  */
+
+/* Heading  Golden Underlines*/
+.u-underline{
+  position:relative;
+  display:inline-block;
+  padding-bottom:12px;
+}
+
+.u-underline::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:10px;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg,#caa256,#f1c27d,#caa256);
+  transform:translateX(-50%);
+  transition:width 1s ease-in-out;
+  border-radius:2px;
+}
+
+/* animation class */
+.u-underline.animate::after{
+  width:100%;
+}
+
+/* Heading Golden Underlines over */
+
+/* Booking Popup section starts  */
+/* Popup Functions */
+/* ------------------------- */
+/*   GLOBAL RESPONSIVE POPUP */
+/* ------------------------- */
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  padding: 20px;
+}
+
+/* Popup Box */
+.popup {
+  width: 100%;
+  max-width: 500px;
+  background: linear-gradient(145deg, #ffffff, #f8f3e6);
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+  border: 1px solid rgba(199,161,75,0.35);
+  overflow: hidden;
+  position: relative;
+  animation: popIn 0.35s ease-in-out;
+}
+
+/* Animation */
+@keyframes popIn {
+  from { transform: translateY(30px) scale(0.85); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Header */
+.popup-header {
+  background: linear-gradient(90deg, #c7a14b, #e7cf97);
+  padding: 28px;
+  text-align: center;
+  font-family: "Georgia", "Playfair Display", serif;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 20px;
+}
+
+/* Body */
+.popup-body {
+  padding: 28px;
+  background: #fffcf5;
+  font-family: "Georgia", "Playfair Display", serif;
+}
+
+.popup-body label {
+  font-weight: 600;
+  color: #6e5833;
+  font-size: 14px;
+}
+
+/* Inputs */
+.popup-body input,
+.popup-body select {
+  width: 100%;
+  padding: 14px;
+  margin-top: 6px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  border: 1px solid #c1b08a;
+  background: #fffdf7;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.popup-body input:focus,
+.popup-body select:focus {
+  border-color: #c7a14b;
+  box-shadow: 0 0 10px rgba(199,161,75,0.35);
+  outline: none;
+}
+
+/* Footer */
+.popup-footer {
+  background: linear-gradient(180deg, #f7f5ed, #f0ecdf);
+  padding: 18px;
+  text-align: center;
+  border-top: 1px solid rgba(199,161,75,0.3);
+}
+
+/* Confirm Button */
+.btn-confirm {
+  background: linear-gradient(90deg, #c7a14b, #e4cb92);
+  padding: 14px 30px;
+  border: none;
+  border-radius: 16px;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(199,161,75,0.4);
+  transition: 0.3s ease;
+}
+
+.btn-confirm:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(199,161,75,0.55);
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  border: 1px solid rgba(199,161,75,0.45);
+  font-size: 22px;
+  color: #c7a14b;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  background: #fff4d7;
+  transform: scale(1.15);
+}
+
+/* -------------------------------- */
+/*       RESPONSIVE FOR MOBILE      */
+/* -------------------------------- */
+
+@media (max-width: 480px) {
+  .popup {
+    max-width: 95%;
+    border-radius: 20px;
+  }
+
+  .popup-header {
+    padding: 20px;
+    font-size: 18px;
+  }
+
+  .popup-body {
+    padding: 20px;
+  }
+
+  .popup-body input,
+  .popup-body select {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .btn-confirm {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+
+  .close-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 20px;
+  }
+}
+
+/* -------------------------------- */
+/*       TABLET RESPONSIVE          */
+/* -------------------------------- */
+
+@media (max-width: 768px) {
+  .popup {
+    max-width: 85%;
+  }
+
+  .popup-header {
+    font-size: 19px;
+  }
+}
+
+/* -------------------------------- */
+/*   LARGE SCREEN OPTIMIZATION      */
+/* -------------------------------- */
+
+@media (min-width: 1200px) {
+  .popup {
+    max-width: 520px;
+  }
+}
+/* Booking Popup section ends   */
+
+
+/* Card section starts   */
+/* Wrapper – FLEX LAYOUT */
+.property-wrapper{
+  max-width:1200px;
+  margin:40px auto;
+  display:flex;
+  flex-wrap:wrap;
+  font-family: "Georgia", "Playfair Display", serif;
+  gap:25px;
+  justify-content:center;
+}
+
+/* Single Card */
+.property-card{
+  background:white;
+  border-radius:20px;
+  display:flex;
+  gap:18px;
+  padding:18px;
+  min-height:230px;
+  width:1240px;            /* 2 cards per row on large screen */
+  box-shadow:0 25px 60px rgba(0,0,0,0.08);
+  transition:0.3s;
+  align-items:center;
+  overflow:hidden;
+}
+
+/* Hover */
+.property-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 35px 80px rgba(0,0,0,.12);
+}
+
+/* Image uniform */
+.property-image img{
+  width:240px;
+  height:180px;
+  object-fit:cover;
+  border-radius:16px;
+}
+
+/* text area */
+.property-content h2{
+  margin:0 0 6px 0;
+  font-size:20px;
+  font-family:"Playfair Display",serif;
+}
+
+.property-desc{
+  color:#555;
+  font-family:"Playfair Display",serif;
+  margin:4px 0 6px;
+}
+
+.property-meta{
+  font-weight:600;
+  font-family:"Playfair Display",serif;
+  color:#333;
+}
+
+.property-rent{
+  font-family:"Playfair Display",serif;
+  font-size:18px;
+  margin-top:4px;
+  font-weight:700;
+}
+
+.action-buttons{
+  margin-top:8px;
+  display:flex;
+  gap:10px;
+}
+
+button{
+  padding:8px 18px;
+  border-radius:999px;
+  border:none;
+  font-family:"Playfair Display",serif;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.status-sold{
+  background:#2c2c2c;
+  color:white;
+}
+
+/* SEJ LUXURY GOLDEN BUTTON */
+.action-book {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  color: #1f2937;
+
+  /* SAME SIZE AS OLD BUTTON */
+  padding: 5px 15px;
+  font-size: 14px;
+  border-radius: 50px;
+
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  border: 2px solid rgba(212,175,55,0.15);
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.12),
+    0 4px 12px rgba(212,175,55,0.15),
+    inset 0 1px 0 rgba(255,255,255,1);
+
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Shine Effect */
+.action-book::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.25), transparent);
+  transition: left 0.7s ease;
+}
+
+.action-book:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 15px 30px rgba(0,0,0,0.15),
+    0 10px 25px rgba(212,175,55,0.25),
+    inset 0 1px 0 rgba(255,255,255,1);
+  border-color: rgba(212,175,55,0.4);
+}
+
+.action-book:hover::before {
+  left: 100%;
+}
+
+
+
+.action-view{
+  background:#eeeeee;
+}
+
+/* reveal animation */
+.property-card{
+  opacity:0;
+  transform:translateY(60px);
+  transition:all .8s cubic-bezier(.19,1,.22,1);
+}
+
+.property-card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* smooth hover shadow */
+.property-card:hover{
+  box-shadow:0 25px 60px rgba(0,0,0,.18);
+}
+
+
+
+/* ---------- 1600px+ Big Screen ---------- */
+@media (max-width:1600px){
+  .property-wrapper{
+    max-width:1300px;
+  }
+}
+
+/* ---------- 1400px Desktop ---------- */
+@media (max-width:1400px){
+  .property-card{
+    width:1150px;
+  }
+}
+
+/* ---------- 1200px Laptop ---------- */
+@media (max-width:1200px){
+  .property-card{
+    width:1000px;
+  }
+
+  .property-image img{
+    width:220px;
+    height:170px;
+  }
+}
+
+/* ---------- 1024px Small laptop / Tablet Landscape ---------- */
+@media (max-width:1024px){
+
+  .property-card{
+    width:95%;
+  }
+
+  .property-image img{
+    width:200px;
+    height:160px;
+  }
+}
+
+/* ---------- 900px Tablet ---------- */
+@media (max-width:900px){
+
+  .property-card{
+    width:100%;
+    gap:14px;
+  }
+
+  .property-content h2{
+    font-size:18px;
+  }
+
+  .property-desc{
+    font-size:14px;
+  }
+}
+
+/* ---------- 768px Tablet Portrait ---------- */
+@media (max-width:768px){
+
+  .property-card{
+    flex-direction:column;
+    text-align:center;
+    width:100%;
+  }
+
+  .property-image img{
+    width:100%;
+    height:230px;
+  }
+
+  .action-buttons{
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+}
+
+/* ---------- 540px Mobile ---------- */
+@media (max-width:540px){
+
+  .property-card{
+    padding:14px;
+  }
+
+  .property-image img{
+    height:210px;
+  }
+
+  button{
+    width:100%;
+  }
+}
+
+/* ---------- 400px Small Mobile ---------- */
+@media (max-width:400px){
+
+  .property-card{
+    padding:10px;
+  }
+
+  .property-image img{
+    height:190px;
+  }
+
+  .property-content h2{
+    font-size:16px;
+  }
+
+  .property-desc{
+    font-size:13px;
+  }
+}
+
+/* Card section ends  */
+
+
+/* View Details POP UP Starts */
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+.modal-box{
+  width:90%;
+  max-width:550px;
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+  transform:scale(.7);
+  opacity:0;
+  transition:.4s ease;
+  font-family:"Playfair Display", serif;
+}
+
+.modal-overlay.show .modal-box{
+  transform:scale(1);
+  opacity:1;
+}
+
+.close-btn{
+  font-size:28px;
+  float:right;
+  cursor:pointer;
+}
+
+.modal-img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  border-radius:16px;
+  margin-bottom:10px;
+}
+
+.modal-meta{
+  font-weight:600;
+}
+
+.modal-rent{
+  font-size:20px;
+  font-weight:700;
+  margin-top:6px;
+}
+
+.modal-contact{
+  width:100%;
+  border:none;
+  padding:10px;
+  border-radius:50px;
+  font-weight:700;
+  background:#c7a14b;
+  color:white;
+  cursor:pointer;
+}
+/* responsive  */
+/* ---------- Modal Overlay & Box ---------- */
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+  padding:10px; /* Small screen padding */
+}
+
+.modal-box{
+  width:90%;
+  max-width:550px;
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
+  transform:scale(.7);
+  opacity:0;
+  transition:.4s ease;
+  font-family:"Playfair Display", serif;
+  overflow:hidden;
+  max-height:90vh; /* Prevent modal from going off screen */
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.modal-overlay.show .modal-box{
+  transform:scale(1);
+  opacity:1;
+}
+
+.close-btn{
+  font-size:28px;
+  align-self:flex-end;
+  cursor:pointer;
+}
+
+.modal-img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+  border-radius:16px;
+  margin-bottom:10px;
+}
+
+.modal-meta{
+  font-weight:600;
+}
+
+.modal-rent{
+  font-size:20px;
+  font-weight:700;
+  margin-top:6px;
+}
+
+.modal-contact{
+  width:100%;
+  border:none;
+  padding:10px;
+  border-radius:50px;
+  font-weight:700;
+  background:#c7a14b;
+  color:white;
+  cursor:pointer;
+}
+
+/* ---------- Responsive adjustments ---------- */
+
+/* Tablet Landscape / 1024px */
+@media(max-width:1024px){
+  .modal-box{
+    max-width:480px;
+    padding:18px;
+  }
+
+  .modal-img{
+    height:200px;
+  }
+
+  .modal-rent{
+    font-size:18px;
+  }
+
+  .modal-contact{
+    padding:9px;
+  }
+}
+
+/* Tablet Portrait / 768px */
+@media(max-width:768px){
+  .modal-box{
+    max-width:400px;
+    padding:16px;
+  }
+
+  .modal-img{
+    height:180px;
+  }
+
+  .modal-rent{
+    font-size:17px;
+  }
+
+  .modal-contact{
+    padding:8px;
+  }
+
+  .close-btn{
+    font-size:26px;
+  }
+}
+
+/* Mobile / 540px */
+@media(max-width:540px){
+  .modal-box{
+    width:90%;
+    max-width:none;
+    padding:14px;
+  }
+
+  .modal-img{
+    height:160px;
+  }
+
+  .modal-rent{
+    font-size:16px;
+  }
+
+  .modal-contact{
+    padding:7px;
+  }
+
+  .close-btn{
+    font-size:24px;
+  }
+}
+
+/* Small Mobile / 400px */
+@media(max-width:400px){
+  .modal-box{
+    width:100%;
+    padding:12px;
+    border-radius:16px;
+  }
+
+  .modal-img{
+    height:140px;
+  }
+
+  .modal-rent{
+    font-size:15px;
+  }
+
+  .modal-contact{
+    padding:6px;
+    font-size:14px;
+  }
+
+  .close-btn{
+    font-size:22px;
+  }
+}
+/* View Detial POP UP Ends  */

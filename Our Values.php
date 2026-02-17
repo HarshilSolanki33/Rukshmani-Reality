@@ -13,15 +13,19 @@
     <?php include 'Navbar.php'; ?>
     <!-- Navbar ends  -->
 
+    <!-- Back button starts  -->
+<?php include 'Back Button.php'; ?>
+<!-- Back button ends  -->
+ 
     <!-- Hero Section Starts-->
     <section class="hero" role="region" aria-label="Intro">
   <div class="hero-wrapper">
     <div class="hero-left">
       <div class="hero-inner">
-        <h1>OUR VALUES</h1>
+        <h1 class="u-underline">OUR VALUES</h1>
         <p class="lead">
           AT 
-          <span class="rukshmani">RUKSHMANI GROUP</span> we specialize in delivering premium real estate developments that blend quality construction, thoughtful design, and lasting value. Built on trust and commitment, we create spaces that redefine modern living.
+          <span class="rukshmani">RUKMANI GROUP</span> our foundation lies in quality, honesty, and purposeful design. Each development is thoughtfully crafted to deliver elegance, comfort, and enduring value — because we believe a home should be a legacy, not just a space.
         </p>
         <a class="cta" href="#">Explore Projects</a>
       </div>
@@ -129,7 +133,7 @@
     <!-- core section starts  -->
      <section class="values-intro">
   <p>
-    At Rukshmani Realty, our core values guide everything we do — from
+    At Rukmani Realty, our core values guide everything we do — from
     designing exquisite living spaces to fostering trust with our clients.
     They define our commitment to excellence, care, and innovation, shaping
     a sustainable future where every home we create reflects quality,
@@ -154,6 +158,7 @@
 <?php include 'Footer.php'; ?>
 
 <script src="Assets/Hameburger.js"></script>
+<script src="Assets/Underline.js"></script>
 <script src="Assets/Smother.js"></script> 
 </body>
 </html>

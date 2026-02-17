@@ -15,16 +15,20 @@
    <!-- Navbar -->
     <?php include 'Navbar.php'; ?>
     <!-- Navbar ends  -->
+     
+     <!-- Back button starts  -->
+<?php include 'Back Button.php'; ?>
+<!-- Back button ends  -->
 
     <!-- Hero Section Starts-->
     <section class="hero" role="region" aria-label="Intro">
   <div class="hero-wrapper">
     <div class="hero-left">
       <div class="hero-inner">
-        <h1>ABOUT US</h1>
+        <h1 class="u-underline">ABOUT US</h1>
         <p class="lead">
           AT 
-          <span class="rukshmani">RUKSHMANI GROUP</span> we specialize in delivering premium real estate developments that blend quality construction, thoughtful design, and lasting value. Built on trust and commitment, we create spaces that redefine modern living.
+          <span class="rukshmani">RUKMANI GROUP</span> we specialize in delivering premium real estate developments that blend quality construction, thoughtful design, and lasting value. Built on trust and commitment, we create spaces that redefine modern living.
         </p>
         <a class="cta" href="#">Explore Projects</a>
       </div>
@@ -46,7 +50,7 @@
     <!-- Right Content -->
     <div class="about-right">
       <p>
-Welcome to Rukshmani Group, where we are driven by a vision to build
+Welcome to Rukmani Group, where we are driven by a vision to build
 spaces that stand the test of time. Rooted in trust, quality, and commitment,
 our journey is shaped by a passion for thoughtful design and reliable
 construction.
@@ -60,7 +64,7 @@ customer satisfaction.
 </p>
 
 <p>
-Today, Rukshmani Group continues to grow as a trusted name in real
+Today, Rukmani Group continues to grow as a trusted name in real
 estate, building not just properties, but enduring relationships and
 landmarks for the future.
 </p>
@@ -108,7 +112,7 @@ landmarks for the future.
     </div>
     <div class="right">
       <p>
-        At Rukshmani Realty, our purpose is to guide people towards the right property choices with transparency, integrity, and care. We aim to make the journey of buying, selling, or investing in real estate seamless, secure, and rewarding.
+        At Rukmani Realty, our purpose is to guide people towards the right property choices with transparency, integrity, and care. We aim to make the journey of buying, selling, or investing in real estate seamless, secure, and rewarding.
       </p>
     </div>
   </div>
@@ -195,7 +199,7 @@ landmarks for the future.
 
   <p class="belief-text">
     “May my work be for the welfare of all.” This thought forms the foundation
-    of our belief system at Rukshmani Realty. We approach every endeavor with
+    of our belief system at Rukmani Realty. We approach every endeavor with
     integrity, responsibility, and a commitment to creating value beyond
     transactions. We believe that true success in real estate lies in building
     trust, nurturing communities, and contributing positively to society.
@@ -221,6 +225,7 @@ landmarks for the future.
 <?php include 'Footer.php'; ?>
 
 <script src="Assets/quote.js"></script>
+<script src="Assets/Underline.js"></script>
 <script src="Assets/ourpurpose.js"></script>
 <script src="Assets/Numbers.js"></script>
 <script src="Assets/Hameburger.js"></script>

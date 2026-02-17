@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Real Estate Section</title>
+
+<!-- Google serif font similar to Playfair Display -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:#FBF7F2; /* off-white / light beige */
+  font-family: "Playfair Display", serif;
+}
+
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:70px 20px 120px;
+  text-align:center;
+}
+
+h1{
+  font-size:52px;
+  margin:20px 0 40px;
+  font-weight:600;
+}
+
+h2{
+  font-size:44px;
+  margin:60px 0 40px;
+}
+
+h3{
+  font-size:40px;
+  margin:80px 0 20px;
+}
+
+.grid{
+  position:relative;
+  margin-top:20px;
+}
+
+/* shared image styles */
+.grid img{
+  width:260px;
+  height:200px;
+  object-fit:cover;
+  border-radius:14px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+/* hover zoom */
+.grid img:hover{
+  transform:scale(1.05);
+  box-shadow:0 30px 60px rgba(0,0,0,.18);
+}
+
+/* positioning images aesthetically like your layout */
+.img-top{
+  margin-top:10px;
+}
+
+.img-middle-left{
+  position:absolute;
+  left:10%;
+  top:150px;
+}
+
+.img-middle-right{
+  position:absolute;
+  right:10%;
+  top:130px;
+}
+
+.img-bottom{
+  margin-top:220px;
+}
+
+/* fade-in animation */
+.fade{
+  opacity:0;
+  transform:translateY(20px);
+  transition:all .6s ease-out;
+}
+.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* responsive */
+@media(max-width:900px){
+  .img-middle-left,
+  .img-middle-right{
+    position:static;
+    display:block;
+    margin:35px auto;
+  }
+
+  .img-bottom{
+    margin-top:40px;
+  }
+
+  h1,h2,h3{
+    font-size:30px;
+  }
+
+  .grid img{
+    width:85%;
+    height:220px;
+  }
+}
+</style>
+</head>
+
+<body>
+<section class="section">
+
+  <h1>Homes</h1>
+
+  <div class="grid">
+
+    <!-- 1 under Homes -->
+    <img class="img-top fade" src="gallery/Aurum-1.jpg" alt="home image">
+
+    <h2>Delivered as Promised</h2>
+
+    <!-- 2 between Delivered and as Promised -->
+    <img class="img-middle-left fade" src="gallery/Aurum-2.jpg" alt="garden">
+
+    <!-- 3 right near as Promised -->
+    <img class="img-middle-right fade" src="gallery/Aurum-3.jpg" alt="clubhouse">
+
+    <h3>No Delays &nbsp;&nbsp;&nbsp; No Compromises</h3>
+
+    <!-- 4 bottom image near No Delays / No Compromises -->
+    <img class="img-bottom fade" src="gallery/Aurum-4.jpg" alt="park">
+
+  </div>
+
+</section>
+
+<script>
+// simple fade-in on scroll
+const items = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+    }
+  });
+});
+
+items.forEach(item=>observer.observe(item));
+</script>
+
+</body>
+</html>

@@ -77,6 +77,32 @@
 }
 /* Hero section over  */
 
+/* Heading  Golden Underlines*/
+.u-underline{
+  position:relative;
+  display:inline-block;
+  padding-bottom:12px;
+}
+
+.u-underline::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:10px;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg,#caa256,#f1c27d,#caa256);
+  transform:translateX(-50%);
+  transition:width 1s ease-in-out;
+  border-radius:2px;
+}
+
+/* animation class */
+.u-underline.animate::after{
+  width:100%;
+}
+
+/* Heading Golden Underlines over */
 
 /* our story starts  */
 .about-section {

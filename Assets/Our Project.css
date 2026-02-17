@@ -1,4 +1,158 @@
+/* POP UP Section starts  */
+/* ===== SECTION WRAPPER ===== */
+.rr-project-login { }
 
+.rr-brand {
+display: flex;
+align-items: center;
+gap: 14px;
+margin-bottom: 25px;
+}
+
+
+.rr-logo {
+width: 52px;
+height: auto;
+}
+/* ===== OVERLAY ===== */
+.rr-overlay {
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.65);
+backdrop-filter: blur(6px);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 9999;
+}
+
+/* ===== MODAL ===== */
+.rr-modal {
+width: 900px;
+max-width: 95%;
+background: #fff;
+display: grid;
+grid-template-columns: 1fr 1fr;
+border-radius: 16px;
+overflow: hidden;
+box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+animation: rrFadeUp 0.6s ease;
+}
+
+
+@keyframes rrFadeUp {
+from { opacity: 0; transform: translateY(40px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ===== LEFT PANEL ===== */
+.rr-modal-left {
+background: radial-gradient(circle at top, #1a1a1a, #000);
+color: #d6b77a;
+padding: 50px 40px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+
+.rr-modal-left h1 {
+font-family: 'Playfair Display', serif;
+font-size: 36px;
+margin-bottom: 10px;
+color: #e5c78b;
+}
+
+
+.rr-modal-left p {
+font-size: 14px;
+line-height: 1.8;
+color: #f1e6c8;
+margin-bottom: 16px;
+}
+
+
+.rr-modal-left ul { padding-left: 18px; }
+
+.rr-modal-left li {
+margin-bottom: 14px;
+font-size: 14px;
+color: #e8d9b0;
+}
+
+
+/* ===== RIGHT PANEL ===== */
+.rr-modal-right {
+padding: 60px 50px;
+position: relative;
+}
+
+.rr-close-btn {
+position: absolute;
+top: 20px;
+right: 25px;
+font-size: 22px;
+cursor: pointer;
+color: #999;
+}
+
+
+.rr-modal-right h2 {
+font-family: 'Playfair Display', serif;
+font-size: 28px;
+margin-bottom: 30px;
+color: #111;
+}
+
+.rr-form-group { margin-bottom: 20px; }
+
+
+.rr-form-group input {
+width: 100%;
+padding: 14px 16px;
+border-radius: 10px;
+border: 1px solid #ccc;
+font-size: 14px;
+}
+
+.rr-login-btn {
+width: 100%;
+padding: 14px;
+border: none;
+border-radius: 10px;
+background: linear-gradient(135deg, #000, #333);
+color: #e5c78b;
+font-size: 15px;
+cursor: pointer;
+margin-top: 10px;
+}
+
+
+.rr-login-btn:hover {
+background: linear-gradient(135deg, #111, #000);
+}
+
+
+.rr-signup {
+text-align: center;
+margin-top: 25px;
+font-size: 14px;
+}
+
+
+.rr-signup a {
+color: #b08d57;
+text-decoration: none;
+font-weight: 500;
+}
+
+
+@media(max-width: 768px) {
+.rr-modal { grid-template-columns: 1fr; }
+.rr-modal-left { display: none; }
+}
+/* POP UP Section ends  */
 /* Main Image section starts  */
 /* Sticky section */
 .sticky-hero{
@@ -251,6 +405,33 @@
 }
 /* Vision meets structure section ends  */
 
+/* Heading  Golden Underlines*/
+.u-underline{
+  position:relative;
+  display:inline-block;
+  padding-bottom:12px;
+}
+
+.u-underline::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:10px;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg,#caa256,#f1c27d,#caa256);
+  transform:translateX(-50%);
+  transition:width 1s ease-in-out;
+  border-radius:2px;
+}
+
+/* animation class */
+.u-underline.animate::after{
+  width:100%;
+}
+
+/* Heading Golden Underlines over */
+
 /* Our projects section starts  */
 .yrproj-container{
   padding:70px 8%;
@@ -260,8 +441,10 @@
 }
 
 .yrproj-heading{
+  font-family:"Playfair Display", serif;
+  letter-spacing: 1px;
   font-size:42px;
-  margin-bottom:20px;
+  margin-bottom:10px;
 }
 
 .yrproj-years{
@@ -277,6 +460,7 @@
   background:none;
   border:none;
   font-size:16px;
+  color: #000;
   cursor:pointer;
   padding:8px 14px;
   transition:.3s;
@@ -318,29 +502,148 @@
 }
 
 .yrproj-content h3{
-  font-size:20px;
-  margin-bottom:10px;
+  font-family:"Playfair Display", serif;
+  font-size:22px;
+  letter-spacing:0.6px;
 }
 
 .yrproj-content p{
-  font-size:14px;
-  color:#555;
-  margin-bottom:12px;
+  font-family:"Playfair Display", serif;
+  font-size:14.5px;
+  line-height:1.7;
 }
 
 .yrproj-btn{
-  padding:7px 16px;
-  border:1px solid #000;
-  background:none;
-  cursor:pointer;
-  transition:.3s;
-  color: black;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  margin-top: 15px;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  color: #000000;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-family: "Playfair Display", serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-decoration: none;
+
+  text-transform: uppercase;
+  border: 2px solid rgba(212,175,55,0.15);
+  box-shadow: 
+    0 12px 30px rgba(0,0,0,0.12),
+    0 6px 18px rgba(212,175,55,0.15),
+    inset 0 1px 0 rgba(255,255,255,1);
+  transition: 
+    transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94),
+    box-shadow 0.45s ease,
+    border-color 0.45s ease,
+    color 0.45s ease;
 }
 
-.yrproj-btn:hover{
-  background:black;
-  color:white;
+/* GOLD SHIMMER */
+.yrproj-btn::before{
+  content:'';
+  color: #000;
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:120%;
+  height:100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212,175,55,0.25),
+    transparent
+  );
+  transition: left 0.7s ease;
 }
+
+/* HOVER EFFECT */
+.yrproj-btn:hover{
+  transform: translateY(-6px) scale(1.05);
+  color:#000;
+
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.18),
+    0 15px 40px rgba(212,175,55,0.28),
+    inset 0 1px 0 rgba(255,255,255,1);
+
+  border-color: rgba(212,175,55,0.45);
+}
+
+.yrproj-btn:hover::before{
+  left:120%;
+}
+
+.yrproj-title{
+  position: relative;
+  display: inline-block;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 0.6px;
+  padding-bottom: 10px;
+}
+
+/* underline */
+.yrproj-title::after{
+  content:'';
+  position:absolute;
+  left:50%;
+  bottom:0;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width:80%;
+  height:2px;
+  margin-bottom: 10px;
+  background: linear-gradient(
+    to right,
+    #caa75a,
+    #f3e6b2,
+    #caa75a
+  );
+transition: transform 0.6s ease;
+}
+.yrproj-item:hover .yrproj-title::after{
+  transform: translateX(-50%) scaleX(1);
+}
+.yrproj-title.show::after{
+  transform: translateX(-50%) scaleX(1);
+}
+
+
+/* ===== CARD ENHANCEMENTS ===== */
+.yrproj-item{
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform .45s ease, box-shadow .45s ease;
+}
+
+.yrproj-item::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    rgba(0,0,0,0.03),
+    rgba(0,0,0,0)
+  );
+  pointer-events:none;
+}
+
+.yrproj-item:hover{
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+}
+
+/* IMAGE DRAMA */
+.yrproj-item img{
+  transition: transform .7s ease;
+}
+
+.yrproj-item:hover img{
+  transform: scale(1.08);
+}
+
 
 /* ===== Tablets (1024px & below) ===== */
 @media (max-width: 1024px) {

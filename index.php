@@ -17,54 +17,57 @@
   <div class="hero-wrapper">
     <div class="hero-left">
       <div class="hero-inner">
-        <h1>The destination<br/>for your next property</h1>
+       <h1>
+  <span class="u-underline">The destination</span><br>
+  <span class="u-underline">for your next property</span>
+</h1>
+
         <p class="lead">
           AT 
-          <span class="rukshmani">RUKSHMANI</span> BUILDERS GROUP, WE STRONGLY BELIEVE IN
-          QUALITY, TRUST &amp; COMMITMENT.
+          <span class="rukshmani">RUKMANI</span> BUILDERS GROUP, WE TURN YOUR DREAM ADDRESS INTO A LIFETIME ASSET..
         </p>
-        <a class="cta" href="#">Explore Projects</a>
+        <a class="cta" href="../Guest Side/t1.php">Explore Projects</a>
       </div>
     </div>
   </div>
 </section>
     <!-- Hero Section Ends -->
 
-    <!-- Hero Slider Starts  -->
-      <div class="hero-right" aria-hidden="false">
-          <div class="slider" aria-label="Project images slider">
-            <div class="slider-track">
-              <div class="slide"><img src="Gallery/Indexslider-1.jpg" alt=""></div>
-              <div class="slide"><img src="Gallery/Indexslider-2.jpg" alt=""></div>
-              <div class="slide"><img src="Gallery/Indexslider-3.jpg" alt=""></div>
-              <div class="slide"><img src="Gallery/Indexslider-4.jpg" alt=""></div>
-              <div class="slide"><img src="Gallery/Indexslider-5.jpg" alt=""></div>
-              <div class="slide"><img src="Gallery/Indexslider-6.jpg" alt=""></div>
-                <div class="slide"><img src="Gallery/Indexslider-7.jpg" alt=""></div>
-                <div class="slide"><img src="Gallery/Indexslider-8.jpg" alt=""></div>
-                <div class="slide"><img src="Gallery/Indexslider-9.jpg" alt=""></div>
-                <div class="slide"><img src="Gallery/Indexslider-10.jpg" alt=""></div>
+    <!-- Hero section slider starts  -->
+    <!-- Hero section slider starts  -->
+   <div class="hero-right">
+  <div class="slider">
+    <div class="slider-track" id="track">
+      <!-- slider images -->
+      <div class="slide"><img src="Gallery/Indexslider-1.jpg"></div>
+      <div class="slide"><img src="Gallery/Indexslider-2.jpg"></div>
+      <div class="slide"><img src="Gallery/Indexslider-3.jpg"></div>
+      <div class="slide"><img src="Gallery/Indexslider-4.jpg"></div>
+      <div class="slide"><img src="Gallery/Indexslider-5.jpg"></div>
+      <div class="slide"><img src="Gallery/Indexslider-6.jpg"></div>
+      <div class="slide"><img src="Gallery/Indexslider-7.jpg"></div>
 
-                <!-- duplicated set for seamless loop (mark aria-hidden) -->
-                <div class="slide" aria-hidden="true"><img src="Gallery/Indexslider-1.jpg" alt=""></div>
-                <div class="slide" aria-hidden="true"><img src="Gallery/Indexslider-2.jpg" alt=""></div>
-                <div class="slide" aria-hidden="true"><img src="Gallery/Indexslider-3.jpg" alt=""></div>
-                <div class="slide" aria-hidden="true"><img src="Gallery/Indexslider-4.jpg" alt=""></div>
-                <div class="slide" aria-hidden="true"><img src="Gallery/Indexslider-5.jpg" alt=""></div>
-                <div class="slide" aria-hidden="true"><img src="Gallery/Indexslider-6.jpg" alt=""></div>
-                <div class="slide" aria-hidden="true"><img src="Gallery/Indexslider-7.jpg" alt=""></div>
-                <div class="slide" aria-hidden="true"><img src="Gallery/Indexslider-8.jpg" alt=""></div>
-                <div class="slide" aria-hidden="true"><img src="Gallery/Indexslider-9.jpg" alt=""></div>
-                <div class="slide" aria-hidden="true"><img src="Gallery/Indexslider-10.jpg" alt=""></div>
-            </div>
-          </div>
-        </div>
+      <!-- duplicate for loop -->
+      <div class="slide"><img src="Gallery/Indexslider-1.jpg"></div>
+      <div class="slide"><img src="Gallery/Indexslider-2.jpg"></div>
+      <div class="slide"><img src="Gallery/Indexslider-3.jpg"></div>
+      <div class="slide"><img src="Gallery/Indexslider-4.jpg"></div>
+      <div class="slide"><img src="Gallery/Indexslider-5.jpg"></div>
+      <div class="slide"><img src="Gallery/Indexslider-6.jpg"></div>
+      <div class="slide"><img src="Gallery/Indexslider-7.jpg"></div>
       
-    <!-- Hero slider ends  -->
+    </div>
+  </div>
+</div>
+<!-- Hero section slider ends  -->
+
+
 
     <!-- Ongoing Project section Starts -->
      <section class="projects">
-    <h1 class="title">Ongoing Projects <span>(10)</span></h1>
+   <h1 class="title u-underline animate">
+  Ongoing Projects <span>(10)</span>
+</h1>
 
     <div class="slider">
         <div class="project-grid" id="sliderTrack">
@@ -164,172 +167,244 @@
 </section>
 <!-- Ongoing projects section ends  -->
 
-
-<h1 class="title">Get Brochure <span>(17)</span></h1>
-
-<div class="header">
-  <div>NAME</div>
-  <div>PROJECT TYPE</div>
-  <div>LOCATION</div>
-</div>
-
-<div class="row" style="--img:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994')">
-  <div class="name">CITYPARK</div>
-  <div><span class="type">3 BHK HOMES & RETAIL</span></div>
-  <div class="location">SATTADHAR</div>
-</div>
-
-<div class="row" style="--img:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be')">
-  <div class="name">URBAN PARK</div>
-  <div><span class="type">3 BHK HOMES & RETAIL</span></div>
-  <div class="location">AMBLI - S.P RING ROAD</div>
-</div>
-
-<div class="row" style="--img:url('https://images.unsplash.com/photo-1502673530728-f79b4cab31b1')">
-  <div class="name">SILVER SPRINGS</div>
-  <div><span class="type">PLOTTED COMMUNITY</span></div>
-  <div class="location">LEKHAMBA - SANAND</div>
-</div>
-
-
-<div class="section-wrapper">
-  <div class="about-layout">
-
-    <div class="about-text">
-      <div class="section-label">ABOUT US</div>
-      <h1 class="about-title">Shaping Skylines Across<br>Saurashtra</h1>
-
-      <p>
-        For more than 30 years, Dilip Ladani Associates has been shaping spaces
-        by designing, structuring and developing iconic landmarks.
-      </p>
-
-      <a class="primary-cta" href="#">Explore</a>
-    </div>
-
-    <div class="photo-stack">
-      <div class="photo-frame photo-vertical">
-        <img src="gallery/Aurum-1.jpg">
+<!-- Get Brochure Section starts  -->
+<!-- Get Brochure Section -->
+  <section class="section brochure-section">
+    <div class="container">
+      <div class="brochure-header reveal">
+        <h2 class="u-underline">Get Brochure<sup>(17)</sup></h2>
       </div>
 
-      <div class="photo-frame photo-horizontal">
-        <img src="gallery/Aurum-2.jpg">
+      <div class="brochure-table">
+        <div class="brochure-table-head reveal">
+          <span>NAME</span>
+          <span>PROJECT TYPE</span>
+          <span>LOCATION</span>
+          
+        </div>
+
+        <div class="brochure-row reveal" onclick="openPopup('RUKSHMANI HEIGHTS')">
+          <span class="project-name">RUKSHMANI HEIGHTS</span>
+          <span class="project-type">3 BHK HOMES & RETAIL</span>
+          <span class="project-location">KALAVAD - ROAD</span>
+          
+        </div>
+
+        <div class="brochure-row reveal" onclick="openPopup('RUKSHMANI RESIDENCY')">
+          <span class="project-name">RUKSHMANI RESIDENCY</span>
+          <span class="project-type">4 BHK HOMES</span>
+          <span class="project-location">150 FT RING - ROAD</span>
+          
+        </div>
+
+        <div class="brochure-row reveal" onclick="openPopup('RUKSHMANI BUSINESS HUB')">
+          <span class="project-name">RUKSHMANI BUSINESS HUB</span>
+          <span class="project-type">RETAIL & OFFICE SEGMENTS</span>
+          <span class="project-location">GONDAL - ROAD</span>
+          
+        </div>
+
+        <div class="brochure-row reveal" onclick="openPopup('RUKSHMANI GREEN VALLEY')">
+          <span class="project-name">RUKSHMANI GREEN VALLEY</span>
+          <span class="project-type">PLOTTED COMMUNITY</span>
+          <span class="project-location">AIRPORT - ROAD</span>
+         
+        </div>
+
+        <div class="brochure-row reveal" onclick="openPopup('RUKSHMANI CITY PARK')">
+          <span class="project-name">RUKSHMANI CITY PARK</span>
+          <span class="project-type">3 BHK HOMES</span>
+          <span class="project-location">KALAVAD - ROAD</span>
+          
+        </div>
+
+        <div class="brochure-row reveal" onclick="openPopup('RUKSHMANI SILVER SPRINGS')">
+          <span class="project-name">RUKSHMANI SILVER SPRINGS</span>
+          <span class="project-type">PLOTTED COMMUNITY</span>
+          <span class="project-location">LEKHAMBA - SANAND</span>
+          
+        </div>
+
+        <div class="brochure-row reveal" onclick="openPopup('RUKSHMANI URBAN PARK')">
+          <span class="project-name">RUKSHMANI URBAN PARK</span>
+          <span class="project-type">3 BHK HOMES & RETAIL</span>
+          <span class="project-location">AMBLI - S.P RING ROAD</span>
+          
+        </div>
+
+        <div class="brochure-row reveal" onclick="openPopup('RUKSHMANI RESIDENCY')">
+          <span class="project-name">RUKSHMANI RESIDENCY</span>
+          <span class="project-type">4 BHK HOMES</span>
+          <span class="project-location">150 FT RING - ROAD</span>
+         
+        </div>
+
+        <div class="brochure-row reveal" onclick="openPopup('RUKSHMANI RESIDENCY')">
+          <span class="project-name">RUKSHMANI RESIDENCY</span>
+          <span class="project-type">4 BHK HOMES</span>
+          <span class="project-location">150 FT RING - ROAD</span>
+         
+        </div>
+        <div class="show-more-wrapper">
+  <button id="showMoreBtn">Show More</button>
+</div>
+
       </div>
     </div>
+  </section>
 
-  </div>
-</div>
-
-<section class="whyus-section">
-  <p class="whyus-tag">WHY US</p>
-
- <h2 class="whyus-heading" data-text="Built On Trust. Designed With Purpose.">
-  Built On Trust. Designed With Purpose.
-</h2>
+<!-- Get Brochure Section ends  -->
 
 
-  <div class="whyus-features">
-    <div class="whyus-feature" data-text="PRIME LOCATIONS">
-      <span>01</span>
-      <h4></h4>
-      <p>We handpick vibrant, well-connected neighborhoods that provide convenience and quality of life.</p>
-    </div>
-
-    <div class="whyus-feature" data-text="SIGNATURE ARCHITECTURE">
-      <span>02</span>
-      <h4></h4>
-      <p>Each building showcases careful planning and timeless design with green open spaces.</p>
-    </div>
-
-    <div class="whyus-feature" data-text="TIMELY DELIVERY">
-      <span>03</span>
-      <h4></h4>
-      <p>We respect deadlines and ensure projects are delivered on time with top-notch quality.</p>
-    </div>
-
-    <div class="whyus-feature" data-text="ELEVATED LIVING">
-      <span>04</span>
-      <h4></h4>
-      <p>Crafting lifestyles that embrace luxury, peace, and community living.</p>
-    </div>
-  </div>
-
-  <div class="whyus-images">
-  <div class="whyus-img"><img src="gallery/Aurum-1.jpg"></div>
-  <div class="whyus-img"><img src="gallery/Aurum-2.jpg"></div>
-  <div class="whyus-img"><img src="gallery/Aurum-3.jpg"></div>
-</div>
-
-</section>
-
-
-
-<!-- Pro Broker Section -->
-<section class="pro-broker">
-    <div class="pro-content">
-        <h2>Be a Pro Broker</h2>
+<!-- Showcase section starts  -->
+<section class="showcase-wrap">
+    <div class="showcase-grid">
+      <!-- LEFT TEXT -->
+      <div class="showcase-content">
+        <div class="showcase-label">Crafted Excellence</div>
+        <h1 class="showcase-heading ">
+           Timeless Design. <br> Eternal Value.
+        </h1>
         <p>
-            Your One-Stop Destination At Sun, offering access to up-to-date<br>
-            information on Designs, Factsheets, Brochures, Unit Availability,
-            Videos, and Site Progress.
+           At <span class="rukshmani">Rukshmani Realty</span>, we create architectural masterpieces that 
+           blend modern elegance with timeless quality, designed for generations.
         </p>
-        <a href="#" class="pro-btn">Sign Up</a>
+        <a href="#" class="showcase-button">View Projects</a>
+      </div>
+
+      <!-- RIGHT IMAGES -->
+      <div class="showcase-photos">
+        <div class="showcase-card card-portrait">
+          <img src="gallery/Lakeview enclave-2.jpg" alt="Luxury Residence">
+        </div>
+        <div class="showcase-card card-landscape">
+          <img src="gallery/Lakeview enclave-1.jpg" alt="Modern Interior">
+        </div>
+      </div>
     </div>
+  </section>
+<!-- Showcase section ends  -->
+
+<!-- Project timeline section starts  -->
+ <section class="process-white-gold">
+    <div class="container">
+      <h2 class="section-title reveal">Our Signature Process</h2>
+      <p class="section-subtitle reveal">Excellence from first consultation to final possession</p>
+      
+      <div class="process-timeline-gold">
+        <div class="process-card-gold reveal slide-left">
+          <span class="step-circle">01</span>
+          <h3>VIP Site Immersion</h3>
+          <p>Exclusive guided tour of our premium sample residences with personalized lifestyle consultation and premium amenities showcase.</p>
+        </div>
+        
+        <div class="process-card-gold reveal slide-right">
+          <span class="step-circle">02</span>
+          <h3>Signature Plan Selection</h3>
+          <p>Curated selection of exclusive unit types, prime penthouse floors, and breathtaking skyline views tailored to your sophisticated lifestyle.</p>
+        </div>
+        
+        <div class="process-card-gold reveal slide-left">
+          <span class="step-circle">03</span>
+          <h3>White-Glove Booking</h3>
+          <p>Seamless priority booking with dedicated concierge service, premium financing solutions, and VIP home loan assistance.</p>
+        </div>
+        
+        <div class="process-card-gold reveal slide-right">
+          <span class="step-circle">04</span>
+          <h3>Prestige Possession</h3>
+          <p>Timely handover of your architectural masterpiece with comprehensive documentation, luxury home staging, and celebratory handover ceremony.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Project timeline section ends   -->
+
+<!-- Residence topology starts  -->
+<section class="section unit-plans" aria-label="Unit plans">
+  <div class="container">
+    <h2 class="section-title reveal">Residence typologies</h2>
+    <p class="section-subtitle reveal">Select from spacious 3 &amp; 4 BHK residences.</p>
+
+    <div class="unit-grid">
+      <article class="unit-card reveal">
+        <div class="unit-img">
+          <img src="Gallery/Ashwairyam-1.avif" alt="3 BHK floor plan">
+          <div class="unit-overlay">
+            <span>3 BHK Signature</span>
+            <p>Approx. 1850 sq.ft | East facing | Corner unit</p>
+          </div>
+        </div>
+        <div class="unit-meta">
+          <h3>Type A • 3 BHK</h3>
+          <p>Large balcony | Separate utility | 2 covered parking</p>
+        </div>
+      </article>
+
+      <article class="unit-card reveal">
+        <div class="unit-img">
+          <img src="Gallery/Lakeview enclave-1.jpg" alt="4 BHK floor plan">
+          <div class="unit-overlay">
+            <span>4 BHK Sky</span>
+            <p>Approx. 2400 sq.ft | Dual aspect | Private deck</p>
+          </div>
+        </div>
+        <div class="unit-meta">
+          <h3>Type B • 4 BHK</h3>
+          <p>Corner residence | Exclusive lift lobby | 3 parking</p>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
-<!-- Pro Broker Section ends  -->
-<?php include 'Footer.php'; ?>
+<!-- Residence topology ends  -->
 
-<script>
-/* TYPE EFFECT */
-function typeWords(el, text, delay = 120) {
-  el.innerHTML = "";
-  const words = text.split(" ");
-  let i = 0;
 
-  const interval = setInterval(() => {
-    el.innerHTML += words[i] + " ";
-    i++;
-    if (i === words.length) clearInterval(interval);
-  }, delay);
-}
 
-/* OBSERVER */
-const observer = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
+ 
+<!-- indies page numbers starts  -->
+ <section class="lux-stats">
+  <div class="lux-stats-inner">
 
-      /* Heading typing */
-      if (entry.target.classList.contains("whyus-heading")) {
-        typeWords(entry.target, entry.target.dataset.text, 140);
-      }
+    <div class="lux-stat">
+      <h2 data-count="25">0</h2>
+      <p>Years of Excellence</p>
+    </div>
 
-      /* Images slide */
-      if (entry.target.classList.contains("whyus-img")) {
-        entry.target.classList.add("show");
-      }
+    <div class="lux-stat">
+      <h2 data-count="40">0</h2>
+      <p>Projects Delivered</p>
+    </div>
 
-      observer.unobserve(entry.target);
-    });
-  },
-  { threshold: 0.3 }
-);
+    <div class="lux-stat">
+      <h2 data-count="1200">0</h2>
+      <p>Happy Families</p>
+    </div>
 
-/* Observe heading */
-const heading = document.querySelector(".whyus-heading");
-if (heading) observer.observe(heading);
+    <div class="lux-stat">
+      <h2 data-count="15">0</h2>
+      <p>Ongoing Developments</p>
+    </div>
 
-/* Observe images */
-document.querySelectorAll(".whyus-img").forEach(img => {
-  observer.observe(img);
-});
+  </div>
+</section>
+<!-- indies page numbers ends  -->
 
-</script>
 
+
+
+
+<?php include 'Scroll.php'; ?>
+<?php include 'footer.php'; ?>
+<script src="Assets/Underline.js"></script>
 <script src="Assets/Ongoing.js"></script>
 <script src="Assets/Hameburger.js"></script>
-<script src="Assets/Collage.js"></script>
+<script src="Assets/Brochure.js"></script>
 <script src="Assets/Smother.js"></script>    
 <script src="Assets/slider.js"></script>
+<script src="Assets/Showcase.js"></script>
+<script src="Assets/Promise.js"></script>
+<script src="Assets/timeline.js"></script>
 </body>
 </html>
