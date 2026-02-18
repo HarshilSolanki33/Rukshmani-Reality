@@ -1,3 +1,8 @@
+<?php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,140 +36,107 @@
     </div>
   </div>
 </section>
-    <!-- Hero Section Ends -->
+<!-- Hero Section Ends -->
 
-    <!-- Hero section slider starts  -->
-    <!-- Hero section slider starts  -->
-   <div class="hero-right">
+<!-- Hero section slider starts  -->
+<div class="hero-right">
   <div class="slider">
     <div class="slider-track" id="track">
-      <!-- slider images -->
-      <div class="slide"><img src="Gallery/Indexslider-1.jpg"></div>
-      <div class="slide"><img src="Gallery/Indexslider-2.jpg"></div>
-      <div class="slide"><img src="Gallery/Indexslider-3.jpg"></div>
-      <div class="slide"><img src="Gallery/Indexslider-4.jpg"></div>
-      <div class="slide"><img src="Gallery/Indexslider-5.jpg"></div>
-      <div class="slide"><img src="Gallery/Indexslider-6.jpg"></div>
-      <div class="slide"><img src="Gallery/Indexslider-7.jpg"></div>
-
-      <!-- duplicate for loop -->
-      <div class="slide"><img src="Gallery/Indexslider-1.jpg"></div>
-      <div class="slide"><img src="Gallery/Indexslider-2.jpg"></div>
-      <div class="slide"><img src="Gallery/Indexslider-3.jpg"></div>
-      <div class="slide"><img src="Gallery/Indexslider-4.jpg"></div>
-      <div class="slide"><img src="Gallery/Indexslider-5.jpg"></div>
-      <div class="slide"><img src="Gallery/Indexslider-6.jpg"></div>
-      <div class="slide"><img src="Gallery/Indexslider-7.jpg"></div>
-      
+      <?php
+        $slides = array();
+        $error = null;
+        
+        try {
+          // Database connection
+          $pdo = new PDO("pgsql:host=localhost;dbname=Guest_User_DB", "postgres", "postgres");
+          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          
+          // Query without cache
+          $result = $pdo->query("SELECT image_path FROM indexpage_slider ORDER BY position ASC");
+          $slides = $result->fetchAll(PDO::FETCH_COLUMN);
+          
+          // Debug: Check if slides are empty
+          if (empty($slides)) {
+            $error = "No images found in database";
+          }
+        } catch (PDOException $e) {
+          $error = "Database Error: " . $e->getMessage();
+          // Fallback images
+          $slides = array(
+            "Gallery/Indexslider-1.jpg",
+            "Gallery/Indexslider-2.jpg",
+            "Gallery/Indexslider-3.jpg",
+            "Gallery/Indexslider-4.jpg",
+            "Gallery/Indexslider-5.jpg",
+            "Gallery/Indexslider-6.jpg",
+            "Gallery/Indexslider-7.jpg"
+          );
+        }
+        
+        // Generate slides from database
+        foreach ($slides as $img) {
+          echo '<div class="slide"><img src="' . htmlspecialchars($img) . '" loading="lazy" alt="Slider Image"></div>';
+        }
+        
+        // Duplicate for seamless scrolling
+        foreach ($slides as $img) {
+          echo '<div class="slide"><img src="' . htmlspecialchars($img) . '" loading="lazy" alt="Slider Image"></div>';
+        }
+        
+        // 🔍 Debug info (remove this line in production)
+        if ($error) echo "<!-- $error -->";
+      ?>
     </div>
   </div>
 </div>
 <!-- Hero section slider ends  -->
 
+<!-- Ongoing Project section Starts -->
+<?php
+include "db.php";
 
+$query = "SELECT * FROM indexpage_projects ORDER BY id ASC";
+$result = pg_query($conn, $query);
 
-    <!-- Ongoing Project section Starts -->
-     <section class="projects">
-   <h1 class="title u-underline animate">
-  Ongoing Projects <span>(10)</span>
-</h1>
+if (!$result) {
+    die("Query failed: " . pg_last_error($conn));
+}
+
+$count = pg_num_rows($result);
+?>
+
+<section class="projects">
+    <h1 class="title u-underline animate">
+        Ongoing Projects <span>(<?php echo $count; ?>)</span>
+    </h1>
 
     <div class="slider">
         <div class="project-grid" id="sliderTrack">
 
-            <!-- Card -->
-            <div class="project-card">
-              <img src="Gallery/Homepage project-1.jpg">
-              <div class="project-info">
-              <h3>AURUM HEIGHTS</h3>
-              <p>2/3 BHK Homes<br>Shela</p>
-              <div class="arrow">→</div>
-              </div>
-            </div>
-            <div class="project-card">
-              <img src="Gallery/Homepage project-2.jpg">
-              <div class="badge">✔</div>
-              <div class="project-info">
-              <h3>PLAZA</h3>
-              <p>Retail & Offices<br>SG Highway</p>
-              <div class="arrow">→</div>
-              </div>
-            </div>
-            <div class="project-card">
-              <img src="Gallery/Homepage project-3.jpg">
-              <div class="project-info">
-              <h3>GRAND CITY</h3>
-              <p>2/3 BHK Homes<br>Shela</p>
-              <div class="arrow">→</div>
-              </div>
-            </div>
-            <div class="project-card">
-              <img src="Gallery/Homepage project-4.jpg">
-              <div class="badge">✔</div>
-              <div class="project-info">
-              <h3>VALLEY</h3>
-              <p>2/3 BHK Homes<br>Shela</p>
-              <div class="arrow">→</div>
-              </div>
-            </div>
-            <div class="project-card">
-              <img src="Gallery/Homepage project-5.jpg">
-              <div class="project-info">
-              <h3>LAKEVIEW ENCLAVE</h3>
-              <p>Retail & Offices<br>SG Highway</p>
-              <div class="arrow">→</div>
-              </div>
-            </div>
-            <div class="project-card">
-              <img src="Gallery/Homepage project-6.jpg">
-              <div class="badge">✔</div>
-              <div class="project-info">
-              <h3>RISE</h3>
-              <p>2/3 BHK Homes<br>Shela</p>
-              <div class="arrow">→</div>
-              </div>
-            </div>
-            <div class="project-card">
-              <img src="Gallery/Homepage project-7.jpg">
-              <div class="project-info">
-              <h3>SKYVIEW</h3>
-              <p>3 BHK Homes & Retail<br>Shela</p>
-              <div class="arrow">→</div>
-              </div>
-            </div>
-            
-            <div class="project-card">
-            <img src="Gallery/Collage-5.jpg">
-            <div class="badge">✔</div>
-            <div class="project-info">
-              <h3>PARKWEST</h3>
-              <p>2/3 BHK Homes<br>Shela</p>
-              <div class="arrow">→</div>
-            </div>
-          </div>
-          
-          <div class="project-card">
-            <img src="Gallery/Collage-6.jpg">
-            <div class="project-info">
-              <h3>THE TAJ HEIGHTS</h3>
-              <p>4 & 5 BHK Homes<br>Ambli</p>
-              <div class="arrow">→</div>
-            </div>
-          </div>
-          
-          <div class="project-card">
-            <img src="Gallery/Collage-1.jpg">
-            <div class="badge">✔</div>
-            <div class="project-info">
-              <h3>ORBIT</h3>
-              <p>Retail & Offices<br>SG Highway</p>
-              <div class="arrow">→</div>
-            </div>
-          </div>
-          
+            <?php while ($p = pg_fetch_assoc($result)) { ?>
+                <div class="project-card">
+                    
+                    <img src="<?php echo $p['image_path']; ?>">
+
+                    <?php if ($p['is_completed'] === 't') { ?>
+                        <div class="badge">✔</div>
+                    <?php } ?>
+
+                    <div class="project-info">
+                        <h3><?php echo $p['project_name']; ?></h3>
+                        <p><?php echo $p['project_type']; ?><br><?php echo $p['location']; ?></p>
+                        <div class="arrow">→</div>
+                    </div>
+
+                </div>
+            <?php } ?>
+
         </div>
-      </div>
+    </div>
 </section>
+
+
+
 <!-- Ongoing projects section ends  -->
 
 <!-- Get Brochure Section starts  -->

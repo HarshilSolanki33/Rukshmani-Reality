@@ -19,6 +19,11 @@
   </div>
 </div>
 
+<!-- Profile Button Starts  -->
+<a href="../Guest Side/SignUp.php" class="profile-btn">
+    <img src="Gallery/user.png" alt="Profile">
+</a>
+<!-- Profile Button Ends  -->
 
       <button id="hamburger" class="circle-btn">☰</button>
 
@@ -33,20 +38,26 @@
   </div>
 </div>
 
+<!-- Hameburger starts  -->
+ <?php include "db.php"; ?>
 
-  <ul class="menu-links">
-    <li><a href="../Guest Side/index.php">Home</a></li>
-    <li><a href="../Guest Side/About Us.php">About Us</a></li>
-    <li><a href="../Guest Side/Our Values.php">Our Values</a></li>
-    <li><a href="../Guest Side/Our Projects.php">Our Projects</a></li>
-    <li><a href="../Guest Side/Buyers Guid.php">Buyers Guide</a></li>
-    <li><a href="../Guest Side/Rent Properties.php">Rent Properties</a></li>
+<?php
+$query = "SELECT * FROM hameburger ORDER BY id ASC";
+$result = pg_query($conn, $query);
+?>
 
-    <!-- FIXED LINKS -->
-    <li><a href="../Guest Side/profile.php">Profile</a></li>
-    <li><button class="popup-trigger menu-popup-btn">Inquiry Now</button></li>
-    <li><a href="../Guest Side/logout.php">LOGOUT</a></li>
+<ul class="menu-links">
+    <?php while($row = pg_fetch_assoc($result)): ?>
+
+        <?php if ($row['is_button'] == 't'): ?>
+            <li><button class="popup-trigger menu-popup-btn"><?= $row['label'] ?></button></li>
+        <?php else: ?>
+            <li><a href="<?= $row['link'] ?>"><?= $row['label'] ?></a></li>
+        <?php endif; ?>
+
+    <?php endwhile; ?>
 </ul>
+
 
 
   <div class="menu-footer">
@@ -56,12 +67,50 @@
     <a href="#">YOUTUBE</a>
   </div>
 </aside>
+<!-- Hamburger Ends  -->
 
     </div>
   </div>
 </nav>
 
 <style>
+  /* Profile Button */
+.profile-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0,0,0,0.35);
+    background: #fff;
+    cursor: pointer;
+    transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease;
+}
+
+.profile-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Hover Effect */
+.profile-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border-color: #000;
+}
+
+/* Mobile Size Better */
+@media (max-width: 768px){
+    .profile-btn {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+
   *{
   margin:0;
   padding:0;
