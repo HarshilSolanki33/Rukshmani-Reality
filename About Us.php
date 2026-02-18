@@ -76,63 +76,55 @@ landmarks for the future.
     <!-- Our Story ends  -->
 
     <!-- Numbers section starts  -->
-     <section class="stats-section">
+    <?php
+include "db.php";
+
+$query = 'SELECT * FROM "Guest_User_DB".aboutus_counter ORDER BY sequence ASC';
+$result = pg_query($conn, $query);
+?>
+<section class="stats-section">
   <div class="stats-container">
 
-    <div class="stat-box">
-      <h2 class="counter" data-target="35">0</h2>
-      <p>YEARS OF<br>EXPERIENCE</p>
-      <span class="line"></span>
-    </div>
-
-    <div class="stat-box">
-      <h2 class="counter" data-target="30">0</h2>
-      <p>COMPLETED<br>PROJECTS</p>
-      <span class="line"></span>
-    </div>
-
-    <div class="stat-box">
-      <h2 class="counter" data-target="1000">0</h2>
-      <p>FAMILIES<br>MADE HAPPY</p>
-      <span class="line"></span>
-    </div>
+    <?php while ($row = pg_fetch_assoc($result)) { ?>
+      <div class="stat-box">
+        <h2 class="counter" data-target="<?php echo $row['value']; ?>">0</h2>
+        <p><?php echo $row['title']; ?></p>
+        <span class="line"></span>
+      </div>
+    <?php } ?>
 
   </div>
 </section>
+
     <!-- Numbers section ends  -->
 
     <!-- our purpose section starts  -->
      <section class="purpose-section">
 
   <!-- PURPOSE -->
+ <?php
+include "db.php";
+
+$query = 'SELECT * FROM "Guest_User_DB".aboutus_ourpurpose ORDER BY sequence ASC';
+$result = pg_query($conn, $query);
+?>
+<?php while ($row = pg_fetch_assoc($result)) { ?>
+
   <div class="row">
     <div class="left">
-      <span class="label">OUR PURPOSE</span>
-      <h3>To simplify real estate decisions and build lasting trust.</h3>
+      <span class="label"><?php echo $row['label']; ?></span>
+      <h3><?php echo $row['heading']; ?></h3>
     </div>
+
     <div class="right">
-      <p>
-        At Rukmani Realty, our purpose is to guide people towards the right property choices with transparency, integrity, and care. We aim to make the journey of buying, selling, or investing in real estate seamless, secure, and rewarding.
-      </p>
+      <p><?php echo $row['description']; ?></p>
     </div>
   </div>
 
   <hr>
 
-  <!-- VISION -->
-  <div class="row">
-    <div class="left">
-      <span class="label">OUR VISION</span>
-      <h3>To become a trusted name in real estate advisory and solutions.</h3>
-    </div>
-    <div class="right">
-      <p>
-        Our vision is to redefine the real estate experience by combining market expertise, customer-centric approach, and ethical practices—helping individuals and families find properties that truly match their aspirations and lifestyle.
-      </p>
-    </div>
-  </div>
+<?php } ?>
 
-  <hr>
 
   <!-- MISSION -->
   <!-- Font Awesome (HEAD ma add karo) -->
