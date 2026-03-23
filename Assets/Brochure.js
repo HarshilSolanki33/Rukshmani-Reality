@@ -1,85 +1,75 @@
-// ===== BROCHURE POPUP =====
-function openPopup(projectName) {
-  const popup = document.getElementById('brochurePopup');
-  if (popup) {
-    popup.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    console.log('Opening brochure for:', projectName);
-  }
-}
+const loanAmount = document.getElementById("loanAmount");
+const loanRange = document.getElementById("loanRange");
 
-function closePopup() {
-  const popup = document.getElementById('brochurePopup');
-  if (popup) {
-    popup.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-}
+const interestRate = document.getElementById("interestRate");
+const interestRange = document.getElementById("interestRange");
 
-// Close popup on Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closePopup();
-  }
-});
+const loanTenure = document.getElementById("loanTenure");
+const tenureRange = document.getElementById("tenureRange");
 
-// ===== FORM SUBMIT HANDLER =====
-function handleSubmit(event) {
-  event.preventDefault();
+const emiAmount = document.getElementById("emiAmount");
+const totalInterest = document.getElementById("totalInterest");
+const totalPayment = document.getElementById("totalPayment");
 
-  const name = document.getElementById('userName').value;
-  const mobile = document.getElementById('userMobile').value;
-  const email = document.getElementById('userEmail').value;
+// Default values
+loanAmount.value = loanRange.value = 5000000;
+interestRate.value = interestRange.value = 10.5;
+loanTenure.value = tenureRange.value = 20;
 
-  if (!name || !mobile || !email) {
-    alert('Please fill all required fields');
-    return;
-  }
-
-  if (!/^[0-9]{10}$/.test(mobile)) {
-    alert('Please enter a valid 10-digit mobile number');
-    return;
-  }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    alert('Please enter a valid email address');
-    return;
-  }
-
-  alert('Thank you! We will send the brochure to your WhatsApp shortly.');
-
-  document.getElementById('brochureForm').reset();
-  closePopup();
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const rows = document.querySelectorAll(".brochure-row");
-  const btn = document.getElementById("showMoreBtn");
-  const visibleCount = 5;
-  let expanded = false;
-
-  function updateView() {
-    rows.forEach((row, index) => {
-      if (!expanded && index >= visibleCount) {
-        row.classList.add("hidden");
-      } else {
-        row.classList.remove("hidden");
-        row.classList.add("show");
-      }
-    });
-
-    btn.textContent = expanded ? "Show Less" : "Show More";
-  }
-
-  updateView();
-
-  btn.addEventListener("click", () => {
-    expanded = !expanded;
-    updateView();
-
-    if (!expanded) {
-      document.querySelector(".brochure-section")
-        .scrollIntoView({ behavior: "smooth" });
-    }
+// Sync
+function sync(input, range) {
+  input.addEventListener("input", () => {
+    range.value = input.value;
+    calculateEMI();
   });
+
+  range.addEventListener("input", () => {
+    input.value = range.value;
+    calculateEMI();
+  });
+}
+
+sync(loanAmount, loanRange);
+sync(interestRate, interestRange);
+sync(loanTenure, tenureRange);
+
+// Chart
+let chart = new Chart(document.getElementById("emiChart"), {
+  type: "doughnut",
+  data: {
+    labels: ["Principal", "Interest"],
+    datasets: [{
+      data: [0, 0],
+      backgroundColor: ["#4CAF50", "#FF5733"]
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {
+        labels: { color: "#fff" }
+      }
+    }
+  }
 });
+
+// EMI Calculation
+function calculateEMI() {
+  let P = parseFloat(loanAmount.value);
+  let r = parseFloat(interestRate.value) / 12 / 100;
+  let n = parseFloat(loanTenure.value) * 12;
+
+  let emi = (P * r * Math.pow(1 + r, n)) /
+            (Math.pow(1 + r, n) - 1);
+
+  let total = emi * n;
+  let interest = total - P;
+
+  emiAmount.innerText = "₹ " + Math.round(emi);
+  totalInterest.innerText = "₹ " + Math.round(interest);
+  totalPayment.innerText = "₹ " + Math.round(total);
+
+  chart.data.datasets[0].data = [P, interest];
+  chart.update();
+}
+
+calculateEMI();

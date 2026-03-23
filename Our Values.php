@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Values</title>
+    <title>Rukmani Realty-Our Values</title>
+   <link rel="icon" type="image/png" sizes="48x48" href="./Gallery/Title-img.png">
     <link rel="stylesheet" href="Assets/Our Values.css">
     
 </head>

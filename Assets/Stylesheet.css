@@ -620,13 +620,15 @@
 
 .brochure-row {
   display: grid;
-  grid-template-columns: 2fr 2fr 2.5fr 0.8fr;
+  grid-template-columns: 2fr 2fr 2fr;
   align-items: center;
   padding: 24px 0;
   border-bottom: 1px solid #e0e0e0;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+  opacity: 1;
+  transform: none;
 }
 
 .brochure-row::before {
@@ -969,7 +971,13 @@
 }
 
 .brochure-row.hidden {
-  display: none;
+  display: none !important;
+}
+
+/* Ensure JS-added 'show' class makes rows visible */
+.brochure-row.show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 /* Brochure section ends   */

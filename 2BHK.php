@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2 BHK Properties</title> 
+    <title>Rukmani Realty-2 BHK Properties</title>
+   <link rel="icon" type="image/png" sizes="48x48" href="./Gallery/Title-img.png">
     <link rel="stylesheet" href="Assets/2 BHK.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -23,7 +24,7 @@
   <div class="hero-wrapper">
     <div class="hero-left">
       <div class="hero-inner">
-        <h1 class="hero-title">2 BHK PROPERTIES</h1>
+        <h1 class="hero-title u-underline">2 BHK PROPERTIES</h1>
 
         <p class="lead">
           AT 
@@ -59,160 +60,59 @@ it’s about living the lifestyle you deserve.
 <!-- View Detail POP UP Ends  -->
 
 <!-- Card Section Starts  -->
- <section class="listing-area">
+<?php
+include "db.php";
 
-  <!-- CARD 1 -->
-  <div class="listing-item fade-trigger">
-    <div class="listing-thumb">
-      <img src="gallery/2BHK-1.webp">
-    </div>
-    <div class="listing-body">
-      <h2>2BHK – Royal Orchid Residency</h2>
-      <p class="listing-text">
-        Spacious 2BHK apartment with balcony, modular kitchen and covered parking. Ideal for family living.
-      </p>
-      <p class="listing-specs">950 sq.ft | Semi–Furnished | 8th Floor</p>
-      <p class="listing-rate">₹ 18,500 / month</p>
-      <div class="listing-cta">
-        <button class="badge-closed">RENTED</button>
-        <button class="btn-outline">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
+$query = 'SELECT * FROM double_properties ORDER BY id ASC';
+$result = pg_query($conn, $query);
 
-  <!-- CARD 2 -->
-  <div class="listing-item fade-trigger">
-    <div class="listing-thumb">
-      <img src="gallery/2BHK-2.webp">
-    </div>
-    <div class="listing-body">
-      <h2>2BHK – Skyview Heights</h2>
-      <p class="listing-text">
-        Road facing 2BHK flat, school and market at walking distance. With lift and CCTV security.
-      </p>
-      <p class="listing-specs">920 sq.ft | Fully–Furnished | 5th Floor</p>
-      <p class="listing-rate">₹ 17,000 / month</p>
-      <div class="listing-cta">
-        <button class="badge-open">BOOK NOW</button>
-        <button class="btn-outline">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
+if (!$result) {
+    die("Query failed: " . pg_last_error($conn));
+}
+?>
 
-  <!-- CARD 3 -->
-  <div class="listing-item fade-trigger">
-    <div class="listing-thumb">
-      <img src="gallery/2BHK-3.webp">
-    </div>
-    <div class="listing-body">
-      <h2>2BHK – Palm Crest Heights</h2>
-      <p class="listing-text">
-        Modern 2BHK with excellent ventilation, elegant interiors and 24×7 water supply.
-      </p>
-      <p class="listing-specs">980 sq.ft | Semi–Furnished | Corner Flat</p>
-      <p class="listing-rate">₹ 19,200 / month</p>
-      <div class="listing-cta">
-        <button class="badge-open">BOOK NOW</button>
-        <button class="btn-outline">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
+<section class="listing-area">
+    <?php 
+    if (pg_num_rows($result) > 0): 
+        while ($row = pg_fetch_assoc($result)): 
+    ?>
+        <div class="listing-item fade-trigger">
+            <div class="listing-thumb">
+                <img src="<?php echo htmlspecialchars($row['image']); ?>">
+            </div>
 
-  <!-- CARD 4 -->
-  <div class="listing-item fade-trigger">
-    <div class="listing-thumb">
-      <img src="gallery/2BHK-4.webp">
-    </div>
-    <div class="listing-body">
-      <h2>2BHK – Tranquil Green Apartments</h2>
-      <p class="listing-text">
-        Peaceful environment with landscaped garden, kids play area and secure gated entry.
-      </p>
-      <p class="listing-specs">900 sq.ft | Unfurnished | 2nd Floor</p>
-      <p class="listing-rate">₹ 15,800 / month</p>
-      <div class="listing-cta">
-        <button class="badge-closed">RENTED</button>
-        <button class="btn-outline">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
+            <div class="listing-body">
+                <h2><?php echo htmlspecialchars($row['title']); ?></h2>
 
-  <!-- CARD 5 -->
-  <div class="listing-item fade-trigger">
-    <div class="listing-thumb">
-      <img src="gallery/2BHK-5.webp">
-    </div>
-    <div class="listing-body">
-      <h2>2BHK – Ocean Pearl Homes</h2>
-      <p class="listing-text">
-        Luxury seaside apartment with wide balcony offering beautiful ocean views.
-      </p>
-      <p class="listing-specs">1050 sq.ft | Fully–Furnished | Sea Facing</p>
-      <p class="listing-rate">₹ 24,000 / month</p>
-      <div class="listing-cta">
-        <button class="badge-open">BOOK NOW</button>
-        <button class="btn-outline">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
+                <p class="listing-text">
+                    <?php echo htmlspecialchars($row['description']); ?>
+                </p>
 
-  <!-- CARD 6 -->
-  <div class="listing-item fade-trigger">
-    <div class="listing-thumb">
-      <img src="gallery/2BHK-6.webp">
-    </div>
-    <div class="listing-body">
-      <h2>2BHK – Bamboo Grand Residency</h2>
-      <p class="listing-text">
-        Eco-friendly project with jogging track, gym, clubhouse and landscaped greenery.
-      </p>
-      <p class="listing-specs">960 sq.ft | Semi–Furnished | West Facing</p>
-      <p class="listing-rate">₹ 16,300 / month</p>
-      <div class="listing-cta">
-        <button class="badge-open">BOOK NOW</button>
-        <button class="btn-outline">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
+                <p class="listing-specs">
+                    <?php echo htmlspecialchars($row['meta']); ?>
+                </p>
 
-  <!-- CARD 7 -->
-  <div class="listing-item fade-trigger">
-    <div class="listing-thumb">
-      <img src="gallery/2BHK-7.webp">
-    </div>
-    <div class="listing-body">
-      <h2>2BHK – Sunset Crown Enclave</h2>
-      <p class="listing-text">
-        Panoramic terrace view apartment with covered parking and fast lift facility.
-      </p>
-      <p class="listing-specs">940 sq.ft | Furnished | Terrace Access</p>
-      <p class="listing-rate">₹ 18,900 / month</p>
-      <div class="listing-cta">
-        <button class="badge-open">BOOK NOW</button>
-        <button class="btn-outline">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
+                <p class="listing-rate">
+                    <?php echo htmlspecialchars($row['rent']); ?>
+                </p>
 
-  <!-- CARD 8 -->
-  <div class="listing-item fade-trigger">
-    <div class="listing-thumb">
-      <img src="gallery/2BHK-8.webp">
-    </div>
-    <div class="listing-body">
-      <h2>2BHK – Serenity Prime Heights</h2>
-      <p class="listing-text">
-        Calm residential area, near hospital and mall; perfect for working families.
-      </p>
-      <p class="listing-specs">910 sq.ft | Semi–Furnished | Lift & Security</p>
-      <p class="listing-rate">₹ 17,500 / month</p>
-      <div class="listing-cta">
-        <button class="badge-open">BOOK NOW</button>
-        <button class="btn-outline">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
+                <div class="listing-cta">
+                    <?php if (strtoupper($row['status']) == 'RENTED'): ?>
+                        <button class="badge-closed">RENTED</button>
+                    <?php else: ?>
+                        <button class="badge-open">BOOK NOW</button>
+                    <?php endif; ?>
 
+                    <button class="btn-outline">VIEW DETAILS</button>
+                </div>
+            </div>
+        </div>
+    <?php 
+        endwhile; 
+    else:
+        echo "<p>No properties found.</p>";
+    endif; 
+    ?>
 </section>
 
 <!-- Card Section Ends  -->

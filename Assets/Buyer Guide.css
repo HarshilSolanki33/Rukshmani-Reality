@@ -79,92 +79,178 @@
 
 
 /* Emi calculator section starts  */
+/* ===== EMI SECTION (FINAL LUXURY RESPONSIVE) ===== */
+
 .emi-section {
   padding: 80px 20px;
-  background: #ffffff;
+  background: #f8f5f0;
   font-family: "Georgia", serif;
 }
 
 .emi-wrapper {
   max-width: 1200px;
   margin: auto;
+  background: #fff;
+  border-radius: 20px;
+  padding: 50px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
 }
 
-.emi-header h2 {
-  font-size: 38px;
-  margin-bottom: 8px;
+.emi-wrapper:hover {
+  transform: translateY(-6px);
 }
 
-.emi-header p {
-  color: #555;
+/* HEADER */
+.emi-header {
+  text-align: center;
   margin-bottom: 50px;
 }
 
-/* Input rows */
+.emi-header h2 {
+  font-size: 36px;
+  color: #b8962e;
+  margin-bottom: 10px;
+}
+
+.emi-header p {
+  color: #666;
+  font-size: 14px;
+}
+
+/* FLEX LAYOUT */
+.emi-flex {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+/* LEFT SIDE */
+.emi-left {
+  flex: 1;
+}
+
+/* INPUT ROW */
 .emi-row {
-  display: grid;
-  grid-template-columns: 220px 180px 1fr;
-  gap: 20px;
-  align-items: center;
   margin-bottom: 30px;
 }
 
 .emi-row label {
-  font-size: 15px;
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #333;
 }
 
 .emi-row input[type="number"] {
-  padding: 8px 10px;
-  border: 1px solid #ccc;
   width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
 }
 
 .emi-row input[type="range"] {
   width: 100%;
-  accent-color: #555;
+  margin-top: 10px;
+  accent-color: #c9a646;
+  cursor: pointer;
 }
 
-/* Result */
-.emi-result {
-  margin-top: 60px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
+/* RIGHT SIDE */
+.emi-right {
+  flex: 1;
+  text-align: center;
 }
 
-.emi-values p {
-  font-size: 16px;
-  padding: 15px 0;
-  border-bottom: 1px dashed #ccc;
-}
-
-.emi-values strong {
-  display: block;
-  font-size: 22px;
-  margin-top: 6px;
-}
-
-.emi-chart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.chart-box {
+  max-width: 260px;
+  margin: auto;
 }
 
 #emiChart {
-  max-width: 280px;
+  width: 100% !important;
 }
 
+/* VALUES */
+.emi-values {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 
-/* Responsive */
-@media (max-width: 900px) {
-  .emi-row {
-    grid-template-columns: 1fr;
+.value-card {
+  background: #faf7f2;
+  padding: 18px;
+  border-radius: 12px;
+  border-left: 4px solid #c9a646;
+  transition: 0.3s;
+}
+
+.value-card:hover {
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.value-card span {
+  font-size: 13px;
+  color: #777;
+}
+
+.value-card h3 {
+  color: #b8962e;
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .emi-flex {
+    flex-direction: column;
+    gap: 40px;
   }
 
-  .emi-result {
-    grid-template-columns: 1fr;
-    text-align: center;
+  .emi-wrapper {
+    padding: 35px;
+  }
+
+  .emi-header h2 {
+    font-size: 30px;
   }
 }
-/* Emi calculator section ends  */
+
+/* Mobile */
+@media (max-width: 600px) {
+  .emi-section {
+    padding: 50px 15px;
+  }
+
+  .emi-wrapper {
+    padding: 25px;
+    border-radius: 14px;
+  }
+
+  .emi-header h2 {
+    font-size: 24px;
+  }
+
+  .emi-header p {
+    font-size: 12px;
+  }
+
+  .emi-row input[type="number"] {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .value-card {
+    padding: 14px;
+  }
+
+  .value-card h3 {
+    font-size: 18px;
+  }
+}

@@ -1,9 +1,18 @@
+<!-- <php
+session_start();
+
+if (!isset($_SESSION['user_logged_in'])) {
+    header("Location: ../Guest Side/SignUp.php");
+    exit();
+}
+?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rent Properties</title>
+    <title>Rukmani Realty-Rent Properties</title>
+   <link rel="icon" type="image/png" sizes="48x48" href="./Gallery/Title-img.png">
     <link rel="stylesheet" href="Assets/Rent Properties.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -80,10 +89,9 @@ it’s about living the lifestyle you deserve.
   </div>
 
   <div id="com-sec" class="sub-box reveal-up">
-    <div class="sub-item"><a href="" class="link-a">Office Space</a></div>
-    <div class="sub-item"><a href="" class="link-a">Retail Shop</a></div>
-    <div class="sub-item"><a href="" class="link-a">Corporate Office</a></div>
-    <div class="sub-item"><a href="" class="link-a">Warehouse</a></div>
+    <div class="sub-item"><a href="./Showrooms.php" class="link-a">Showroom</a></div>
+    <div class="sub-item"><a href="./Office.php" class="link-a">Corporate Office</a></div>
+    <div class="sub-item"><a href="./Retail Shop.php" class="link-a">Retail Shop</a></div>
   </div>
 
 </section>
@@ -91,34 +99,30 @@ it’s about living the lifestyle you deserve.
 <!-- PROPERTY TYPE SECTION ENDS -->
 
 <!-- Featured Properties Section Starts -->
+<?php
+include "db.php";
+
+$query = "SELECT * FROM lux_premium_properties ORDER BY id ASC";
+$premium = pg_query($conn,$query);
+?>
 <section class="lux-premium-section">
   <h2 class="lux-title u-underline">Featured Premium Properties</h2>
 
   <div class="lux-grid">
 
-    <div class="lux-card lux-reveal">
-      <img class="lux-img" src="./gallery/Nexa Heights-1.avif" alt="">
-      <h3>3-4 BHK Luxury Apartment</h3>
-      <p class="lux-price">₹ 48,000 / Month</p>
-    </div>
+  <?php while($row = pg_fetch_assoc($premium)) { ?>
 
     <div class="lux-card lux-reveal">
-      <img class="lux-img" src="./gallery/Indexslider-6.jpg" alt="">
-      <h3>Corporate Office Space</h3>
-      <p class="lux-price">₹ 95,000 / Month</p>
+      <img class="lux-img" src="./gallery/<?= $row['image']; ?>" alt="">
+      <h3><?= $row['title']; ?></h3>
+      <p class="lux-price"><?= $row['price']; ?></p>
     </div>
 
-    <div class="lux-card lux-reveal">
-      <img class="lux-img" src="./gallery/Our Project-3.jpg" alt="">
-      <h3>Premium Villa</h3>
-      <p class="lux-price">₹ 1.6 Lac / Month</p>
-    </div>
+  <?php } ?>
 
   </div>
 </section>
-
 <!-- Featured Properties Section Ends -->
-
 
 
 <!-- PROPERTY FINDER WIZARD ENDS -->

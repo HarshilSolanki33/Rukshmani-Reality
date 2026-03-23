@@ -1,3 +1,4 @@
+* Brochure section starts  */
 .container {
   max-width: 1800px;
   margin: 0 auto;
@@ -22,7 +23,7 @@
   font-weight: 400;
   letter-spacing: -0.8px;
   color: #111;
-  font-family: Georgia, serif;
+  font-family: "Georgia", "Playfair Display", serif;
 }
 
 .brochure-header sup {
@@ -53,13 +54,15 @@
 
 .brochure-row {
   display: grid;
-  grid-template-columns: 2fr 2fr 2.5fr 0.8fr;
+  grid-template-columns: 2fr 2fr 2fr;
   align-items: center;
   padding: 24px 0;
   border-bottom: 1px solid #e0e0e0;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+  opacity: 1;
+  transform: none;
 }
 
 .brochure-row::before {
@@ -115,30 +118,10 @@
   letter-spacing: 0.1em;
   color: #666;
   text-transform: uppercase;
+  margin-left: 350px;
 }
 
-.download-btn {
-  margin-left: auto;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid #cbd5e1;
-  background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: #555;
-}
 
-.download-btn:hover {
-  background: rgb(185, 135, 75);
-  border-color: rgb(185, 135, 75);
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(185, 135, 75, 0.3);
-}
 
 .brochure-popup {
   position: fixed;
@@ -173,7 +156,7 @@
 .popup-content h3 {
   font-size: 28px;
   margin-bottom: 12px;
-  font-family: Georgia, serif;
+  font-family: "Georgia", "Playfair Display", serif;
 }
 
 .popup-content p {
@@ -194,18 +177,32 @@
   font-size: 14px;
   outline: none;
 }
-
-/* Tablet */
-@media (max-width: 1024px) {
-  .brochure-header h2 {
-    font-size: 40px;
+/* Tablet  */
+@media (max-width: 991px) {
+  .section {
+    padding: 6vh 4vw;
   }
 
-  .brochure-row,
-  .brochure-table-head {
-    grid-template-columns: 2fr 2fr 2fr 1fr;
+  .brochure-table-head,
+  .brochure-row {
+    grid-template-columns: 2fr 1.5fr 2fr 0.7fr;
+  }
+
+  .brochure-row {
+    padding: 18px 0;
+  }
+
+  .project-location {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .download-btn {
+    width: 36px;
+    height: 36px;
   }
 }
+
 
 /* Mobile */
 @media (max-width: 768px) {
@@ -230,7 +227,69 @@
   .brochure-row:nth-child(3) { animation-delay: 0.15s; }
   .brochure-row:nth-child(4) { animation-delay: 0.2s; }
 }
+/* ========================================
+   COMPLETE MOBILE BROCHURE ROW ANIMATION
+   Single code - Copy paste કરી નાખો
+======================================= */
+
+/* BASE STYLES - બધી સ્ક્રીન પર જરૂરી */
+.brochure-row {
+  position: relative;        /* ::after માટે જરૂરી */
+  overflow: visible;         /* કંટેન્ટ કપ ન થાય */
+  opacity: 0;                /* Initial hidden state */
+  transform: translateY(20px); /* Initial slide down */
+  transition: all 0.3s ease;
+  padding: 20px;             /* Content ને space */
+  background: white;         /* તારા theme પ્રમાણે change */
+  border-radius: 12px;
+  margin: 10px 0;
+}
+
+/* GOLD LINE - Initial hidden */
+.brochure-row::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgb(185, 135, 75), transparent);
+  box-shadow: 0 0 0 rgba(185, 135, 75, 0);
+  transition: all 0.5s ease;
+}
+
+/* ========================================
+   MOBILE ONLY - 768px નીચે
+======================================= */
+/* ========================================
+   MOBILE ONLY - 768px નીચે
+======================================= */
 @media (max-width: 768px) {
+  /* Table head hide */
+  .brochure-table-head {
+    display: none !important;
+  }
+
+  /* Row ne vertical card banaav */
+  .brochure-row {
+    display: block !important;
+    padding: 16px 20px;
+    margin: 0 0 8px 0;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    
+    /* SCROLL REVEAL ANIMATION */
+    animation-name: cardReveal, goldLineReveal;
+    animation-duration: 0.7s, 0.8s;
+    animation-delay: 0.1s, 0.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  /* Gold line bottom ma */
   .brochure-row::after {
     content: '';
     position: absolute;
@@ -239,38 +298,53 @@
     width: 0;
     height: 2px;
     transform: translateX(-50%);
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgb(185, 135, 75),
-      transparent
-    );
+    background: linear-gradient(90deg, transparent, rgb(185, 135, 75), transparent);
     box-shadow: 0 0 0 rgba(185, 135, 75, 0);
     transition: all 0.5s ease;
   }
 
-  /* 🔥 SCROLL REVEAL */
-  .brochure-row {
-    animation-name: cardReveal, goldLineReveal;
-    animation-duration: 0.7s, 0.8s;
-    animation-delay: 0.1s, 0.5s;
-    animation-fill-mode: forwards;
+  /* NAME */
+  .project-name {
+    font-size: 14px;
+    margin-bottom: 4px;
+    display: block;
   }
 
-  /* Hover / Tap */
+  /* TYPE */
+  .project-type {
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  /* LOCATION - CLEARLY VISIBLE */
+  .project-location {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: #666;
+    text-transform: uppercase;
+    margin-left: 0 !important;
+    display: block;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  /* HOVER/TAP EFFECT */
+  .brochure-row:hover,
+  .brochure-row:active {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+  }
+
   .brochure-row:hover::after,
   .brochure-row:active::after {
     width: 90%;
     box-shadow: 0 0 14px rgba(185, 135, 75, 0.6);
   }
 }
-@media (max-width: 768px) {
-  .brochure-row:hover,
-  .brochure-row:active {
-    transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
-  }
-}
+
+/* ========================================
+   MOBILE KEYFRAMES
+======================================= */
 @keyframes cardReveal {
   to {
     transform: translateY(0);
@@ -282,11 +356,6 @@
   to {
     width: 90%;
     box-shadow: 0 0 10px rgba(185, 135, 75, 0.4);
-  }
-}
-@media (max-width: 768px) {
-  .brochure-table-head {
-    display: none !important;
   }
 }
 
@@ -309,3 +378,40 @@
     font-size: 11px;
   }
 }
+.show-more-wrapper {
+  text-align: center;
+  margin-top: 40px;
+}
+
+#showMoreBtn {
+  padding: 14px 36px;
+  border-radius: 999px;
+  border: 1px solid rgb(185, 135, 75);
+  background: transparent;
+  color: rgb(185, 135, 75);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+#showMoreBtn:hover {
+  background: rgb(185, 135, 75);
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(185, 135, 75, 0.4);
+  transform: translateY(-2px);
+}
+
+.brochure-row.hidden {
+  display: none !important;
+}
+
+/* Ensure JS-added 'show' class makes rows visible */
+.brochure-row.show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Brochure section ends   */

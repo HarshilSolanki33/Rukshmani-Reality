@@ -1,40 +1,38 @@
 // Luxury Scroll Reveal Animation
-    function initLuxuryReveal() {
-      const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -100px 0px'
-      };
+function initLuxuryReveal() {
+  const observerOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -100px 0px'
+  };
 
-      const luxuryObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add('show');
-            }, index * 150); // Staggered animation
-          }
-        });
-      }, observerOptions);
-
-      // Observe all reveal elements
-      const reveals = document.querySelectorAll('.reveal');
-      reveals.forEach(reveal => luxuryObserver.observe(reveal));
-    }
-
-    // Initialize on DOM load
-    document.addEventListener('DOMContentLoaded', initLuxuryReveal);
-
-    // Smooth page load
-    window.addEventListener('load', () => {
-      document.body.style.opacity = '1';
+  const luxuryObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('show');
+        }, index * 150); // Staggered animation
+      }
     });
+  }, observerOptions);
+
+  // Observe all reveal elements
+  const reveals = document.querySelectorAll('.reveal');
+  reveals.forEach(reveal => luxuryObserver.observe(reveal));
+}
+
+// Initialize on DOM load
+document.addEventListener('DOMContentLoaded', initLuxuryReveal);
+
+// Smooth page load
+window.addEventListener('load', () => {
+  document.body.style.opacity = '1';
+});
 
 
 
 
-
-
-    // index page counter section starts 
-    // 🔥 LUX STATS COUNTER - SMOOTH ANIMATION
+// index page counter section starts 
+// 🔥 LUX STATS COUNTER - SMOOTH ANIMATION
 document.addEventListener('DOMContentLoaded', function() {
   
   // Counter Animation Function

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3 BHK Properties</title>
+    <title>Rukmani Realty-3 BHK Properties</title>
+   <link rel="icon" type="image/png" sizes="48x48" href="./Gallery/Title-img.png">
     <link rel="stylesheet" href="Assets/3 BHK.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -23,7 +24,7 @@
   <div class="hero-wrapper">
     <div class="hero-left">
       <div class="hero-inner">
-        <h1 class="hero-title">3 BHK PROPERTIES</h1>
+        <h1 class="hero-title u-underline">3 BHK PROPERTIES</h1>
 
         <p class="lead">
           AT 
@@ -59,159 +60,64 @@ it’s about living the lifestyle you deserve.
 <!-- View Detail POP UP Ends  -->
 
 <!-- Card Section Starts  -->
+<?php
+include "db.php";
+
+$query = 'SELECT * FROM triple_properties ORDER BY id ASC';
+$result = pg_query($conn, $query);
+
+if (!$result) {
+    die("Query failed: " . pg_last_error($conn));
+}
+?>
+
 <section class="estate-zone">
 
-  <!-- CARD 1 -->
+<?php 
+if (pg_num_rows($result) > 0): 
+    while ($row = pg_fetch_assoc($result)): 
+?>
+
   <div class="estate-box scroll-in">
+    
     <div class="estate-media">
-      <img src="gallery/3BHK-1.webp">
+      <img src="<?php echo htmlspecialchars($row['image']); ?>">
     </div>
+
     <div class="estate-details">
-      <h2>3BHK – Skyview Grande</h2>
+      <h2><?php echo htmlspecialchars($row['title']); ?></h2>
+
       <p class="estate-desc">
-        Premium 3BHK apartment with large balcony, modular kitchen and dedicated car parking.
+        <?php echo htmlspecialchars($row['description']); ?>
       </p>
-      <p class="estate-info">1450 sq.ft | Semi–Furnished | 8th Floor</p>
-      <p class="estate-price">₹ 28,500 / month</p>
+
+      <p class="estate-info">
+        <?php echo htmlspecialchars($row['meta']); ?>
+      </p>
+
+      <p class="estate-price">
+        <?php echo htmlspecialchars($row['rent']); ?>
+      </p>
+
       <div class="estate-actions">
-        <button class="tag-sold">RENTED</button>
+        <?php if (strtoupper($row['status']) == 'RENTED'): ?>
+            <button class="tag-sold">RENTED</button>
+        <?php else: ?>
+            <button class="tag-book">BOOK NOW</button>
+        <?php endif; ?>
+
         <button class="btn-view">VIEW DETAILS</button>
       </div>
     </div>
+
   </div>
 
-  <!-- CARD 2 -->
-  <div class="estate-box scroll-in">
-    <div class="estate-media">
-      <img src="gallery/3BHK-2.webp">
-    </div>
-    <div class="estate-details">
-      <h2>3BHK – Royal Orchid Elite</h2>
-      <p class="estate-desc">
-        Garden-facing spacious 3BHK with lift, CCTV surveillance and 24×7 security.
-      </p>
-      <p class="estate-info">1380 sq.ft | Fully–Furnished | 5th Floor</p>
-      <p class="estate-price">₹ 26,000 / month</p>
-      <div class="estate-actions">
-        <button class="tag-book">BOOK NOW</button>
-        <button class="btn-view">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- CARD 3 -->
-  <div class="estate-box scroll-in">
-    <div class="estate-media">
-      <img src="gallery/3BHK-3.webp">
-    </div>
-    <div class="estate-details">
-      <h2>3BHK – Palm Crest Residency</h2>
-      <p class="estate-desc">
-        Newly constructed 3BHK with premium interiors, cross ventilation and ample sunlight.
-      </p>
-      <p class="estate-info">1420 sq.ft | Semi–Furnished | Corner Unit</p>
-      <p class="estate-price">₹ 27,500 / month</p>
-      <div class="estate-actions">
-        <button class="tag-book">BOOK NOW</button>
-        <button class="btn-view">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- CARD 4 -->
-  <div class="estate-box scroll-in">
-    <div class="estate-media">
-      <img src="gallery/3BHK-4.webp">
-    </div>
-    <div class="estate-details">
-      <h2>3BHK – Tranquil Greens</h2>
-      <p class="estate-desc">
-        Peaceful community living with landscaped garden, children play zone and sitting area.
-      </p>
-      <p class="estate-info">1350 sq.ft | Unfurnished | 2nd Floor</p>
-      <p class="estate-price">₹ 22,900 / month</p>
-      <div class="estate-actions">
-        <button class="tag-sold">RENTED</button>
-        <button class="btn-view">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- CARD 5 -->
-  <div class="estate-box scroll-in">
-    <div class="estate-media">
-      <img src="gallery/3BHK-5.webp">
-    </div>
-    <div class="estate-details">
-      <h2>3BHK – Ocean Crown Homes</h2>
-      <p class="estate-desc">
-        Sea-view luxury 3BHK with spacious balcony and excellent transport connectivity.
-      </p>
-      <p class="estate-info">1550 sq.ft | Fully–Furnished | Sea Facing</p>
-      <p class="estate-price">₹ 35,000 / month</p>
-      <div class="estate-actions">
-        <button class="tag-book">BOOK NOW</button>
-        <button class="btn-view">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- CARD 6 -->
-  <div class="estate-box scroll-in">
-    <div class="estate-media">
-      <img src="gallery/3BHK-6.webp">
-    </div>
-    <div class="estate-details">
-      <h2>3BHK – Bamboo Luxe Residency</h2>
-      <p class="estate-desc">
-        Green living concept with jogging track, clubhouse, indoor games and gym.
-      </p>
-      <p class="estate-info">1400 sq.ft | Semi–Furnished | West Facing</p>
-      <p class="estate-price">₹ 24,800 / month</p>
-      <div class="estate-actions">
-        <button class="tag-book">BOOK NOW</button>
-        <button class="btn-view">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- CARD 7 -->
-  <div class="estate-box scroll-in">
-    <div class="estate-media">
-      <img src="gallery/3BHK-7.webp">
-    </div>
-    <div class="estate-details">
-      <h2>3BHK – Sunset Royal Enclave</h2>
-      <p class="estate-desc">
-        Panoramic terrace view 3BHK with basement parking and high-speed lift facility.
-      </p>
-      <p class="estate-info">1450 sq.ft | Furnished | Terrace Access</p>
-      <p class="estate-price">₹ 29,500 / month</p>
-      <div class="estate-actions">
-        <button class="tag-book">BOOK NOW</button>
-        <button class="btn-view">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- CARD 8 -->
-  <div class="estate-box scroll-in">
-    <div class="estate-media">
-      <img src="gallery/3BHK-8.webp">
-    </div>
-    <div class="estate-details">
-      <h2>3BHK – Serenity Elite Heights</h2>
-      <p class="estate-desc">
-        Calm residential zone near hospital and mall; ideal choice for corporate families.
-      </p>
-      <p class="estate-info">1385 sq.ft | Semi–Furnished | Lift & Security</p>
-      <p class="estate-price">₹ 25,700 / month</p>
-      <div class="estate-actions">
-        <button class="tag-book">BOOK NOW</button>
-        <button class="btn-view">VIEW DETAILS</button>
-      </div>
-    </div>
-  </div>
+<?php 
+    endwhile; 
+else:
+    echo "<p>No properties found.</p>";
+endif; 
+?>
 
 </section>
 

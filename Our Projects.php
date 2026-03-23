@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Projects</title>
+   <title>Rukmani Realty-Our Projects</title>
+   <link rel="icon" type="image/png" sizes="48x48" href="./Gallery/Title-img.png">
     <link rel="stylesheet" href="Assets/Our Project.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -68,7 +69,19 @@
 <!-- Hero Section Ends  -->
 
 <!-- Vision meet structure section starts  -->
- <section class="projects-section">
+ <?php
+include "db.php";
+
+$query = "SELECT * FROM Vision_Meets_Structuree ORDER BY id ASC";
+$result = pg_query($conn, $query);
+
+if (!$result) {
+    die("Query failed: " . pg_last_error($conn));
+}
+
+$count = pg_num_rows($result);
+?>
+<section class="projects-section">
 
   <h2 class="section-title u-underline">Where Vision Meets Structure</h2>
   <p class="section-subtitle">
@@ -78,25 +91,19 @@
 
   <div class="projects-wrapper">
 
-    <!-- LEFT CARD -->
-    <div class="project-card from-left">
-      <img src="gallery/Aurum-1.jpg" alt="Orbit Gardens">
-      <div class="project-overlay">
-        <h3>Aurum<br>Heights</h3>
-        
-      </div>
-    </div>
+    <?php while ($row = pg_fetch_assoc($result)) : ?>
 
-    <!-- RIGHT CARD -->
-    <div class="project-card from-right">
-      <img src="gallery/Aurum-3.jpg" alt="Belleza Gardens">
-      <div class="project-overlay">
-        <h3>Belleza<br>Gardens</h3>
-        
+      <div class="project-card from-<?php echo $row['card_position']; ?>">
+        <img src="<?php echo $row['image_path']; ?>" alt="<?php echo $row['title'] . ' ' . $row['subtitle']; ?>">
+        <div class="project-overlay">
+          <h3><?php echo $row['title']; ?><br><?php echo $row['subtitle']; ?></h3>
+        </div>
       </div>
-    </div>
+
+    <?php endwhile; ?>
 
   </div>
+
 </section>
 <!-- Vision meet structure section ends  -->
 
@@ -106,137 +113,38 @@
   <h2 class="yrproj-heading u-underline">Projects</h2>
 
   <div class="yrproj-years">
-    <button class="yrproj-year-btn active" data-year="2025">2025</button>
-    <button class="yrproj-year-btn" data-year="2024">2024</button>
-    <button class="yrproj-year-btn" data-year="2023">2023</button>
-    <button class="yrproj-year-btn" data-year="2022">2022</button>
-    <button class="yrproj-year-btn" data-year="2021">2021</button>
-    <button class="yrproj-year-btn" data-year="2020">2020</button>
-    <button class="yrproj-year-btn" data-year="2019">2019</button>
-    <button class="yrproj-year-btn" data-year="2018">2018</button>
-
+    <?php for ($y = 2025; $y >= 2018; $y--): ?>
+      <button class="yrproj-year-btn <?= ($y == 2025) ? 'active' : '' ?>" data-year="<?= $y ?>"><?= $y ?></button>
+    <?php endfor; ?>
   </div>
 
   <div class="yrproj-list">
-
-    <div class="yrproj-item" data-year="2025">
-      <div class="yrproj-content">
-      <h3 class="yrproj-title">Aurum Heights</h3>
-        <p>Aurum Heights is a beautifully crafted residential community that perfectly blends stylish architecture with a serene lifestyle. Featuring spacious 4+ and 5 BHK homes, it is enhanced by a podium garden, lush greenery, and modern amenities.</p>
-        <button class="yrproj-btn"><a href="../Guest Side/Aurum Heights.php">Explore</a></button>
-      </div>
-      <img src="gallery/Aurum-1.jpg" alt="">
-    </div>
-
-    <div class="yrproj-item" data-year="2025">
-      <div class="yrproj-content">
-      <h3 class="yrproj-title">Rukmani Aishwaryam</h3>
-        <p>Rukmani Aishwaryam truly captures the essence of elegant living, focusing on spacious layouts and carefully considered amenities.Rukmani Aishwaryam beautifully blends tradition with modernity, creating a harmonious atmosphere.</p>
-        <button class="yrproj-btn"><a href="../Guest Side/Rukmani Aishwaryam.php">Explore</a></button>
-      </div>
-      <img src="gallery/Ashwairyam-2.avif" alt="">
-    </div>
-
-    <div class="yrproj-item" data-year="2025">
-      <div class="yrproj-content">
-        <h3 class="yrproj-title">Twin Towers</h3>
-        <p>Nestled in a bustling urban area, Twin Towers combines sleek modern architecture with thoughtful city planning. It's the perfect retreat for today’s homeowners who appreciate convenience without sacrificing style.</p>
-        <button class="yrproj-btn">Explore</button>
-      </div>
-      <img src="Gallery/Twin Tower-1.avif" alt="">
-    </div>
-    <div class="yrproj-item" data-year="2025">
-      <div class="yrproj-content">
-        <h3 class="yrproj-title">Urbanna Gardens</h3>
-        <p>Urbana Gardens takes everyday living to a whole new level of elegance. This charming residential project is designed for those who truly value minimalism, an abundance of natural light, and beautifully balanced design aesthetics.</p>
-        <button class="yrproj-btn">Explore</button>
-      </div>
-      <img src="Gallery/Urban garden.webp" alt="">
-    </div>
-   <div class="yrproj-item" data-year="2025">
-      <div class="yrproj-content">
-        <h3 class="yrproj-title">Lake View Enclave</h3>
-        <p>Corporate Lake View Enclave redefining premium workspace design.</p>
-        <button class="yrproj-btn">Explore</button>
-      </div>
-      <img src="Gallery/Lakeview enclave-2.jpg" alt="">
-    </div>
-    <div class="yrproj-item" data-year="2025">
-      <div class="yrproj-content">
-        <h3 class="yrproj-title">Galaxy Gardens</h3>
-        <p>Welcome to Galaxy Gardens, a peaceful residential community where smart design meets eco-friendly living. Here, you'll find spacious homes surrounded by beautifully landscaped views, perfect for families looking for comfort, tranquility, and lasting value.</p>
-        <button class="yrproj-btn">Explore</button>
-      </div>
-      <img src="Gallery/Galaxy.avif" alt="">
-    </div>
-
-
-    <div class="yrproj-item" data-year="2024">
-      <div class="yrproj-content">
-        <h3 class="yrproj-title">Nexa Heights</h3>
-        <p>Modern residential lifestyle with skyline views.</p>
-        <button class="yrproj-btn">Explore</button>
-      </div>
-      <img src="gallery/Nexa Heights-1.avif" alt="">
-    </div>
-    <div class="yrproj-item" data-year="2024">
-      <div class="yrproj-content">
-        <h3 class="yrproj-title">Victoria Gardens</h3>
-        <p>Victoria Gardens is all about timeless architecture and roomy designs. It’s the perfect place for anyone looking to blend sophistication with practicality in their home.</p>
-        <button class="yrproj-btn">Explore</button>
-      </div>
-      <img src="gallery/Victoria garden-1.avif" alt="">
-    </div>
-    <div class="yrproj-item" data-year="2024">
-      <div class="yrproj-content">
-        <h3 class="yrproj-title">Green Field Gardens</h3>
-        <p>At Greenfield Gardens, nature-inspired design blends seamlessly with modern comfort. This project encourages a healthier way of living, featuring plenty of greenery, inviting walking paths, and sustainable elements.</p>
-        <button class="yrproj-btn">Explore</button>
-      </div>
-      <img src="gallery/Greenfield gardens-1.avif" alt="">
-    </div>
-
-
-    <div class="yrproj-item" data-year="2023">
-      <div class="yrproj-content">
-        <h3 class="yrproj-title">Green Field Gardens</h3>
-        <p>At Greenfield Gardens, nature-inspired design blends seamlessly with modern comfort. This project encourages a healthier way of living, featuring plenty of greenery, inviting walking paths, and sustainable elements.</p>
-        <button class="yrproj-btn">Explore</button>
-      </div>
-      <img src="gallery/Greenfield gardens-1.avif" alt="">
-    </div>
-
-
-    <div class="yrproj-item" data-year="2021">
-      <div class="yrproj-content">
-        <h3 class="yrproj-title">Green Field Gardens</h3>
-        <p>At Greenfield Gardens, nature-inspired design blends seamlessly with modern comfort. This project encourages a healthier way of living, featuring plenty of greenery, inviting walking paths, and sustainable elements.</p>
-        <button class="yrproj-btn">Explore</button>
-      </div>
-      <img src="gallery/Greenfield gardens-1.avif" alt="">
-    </div>
-
-
-    <div class="yrproj-item" data-year="2020">
-      <div class="yrproj-content">
-        <h3 class="yrproj-title">Green Field Gardens</h3>
-        <p>At Greenfield Gardens, nature-inspired design blends seamlessly with modern comfort. This project encourages a healthier way of living, featuring plenty of greenery, inviting walking paths, and sustainable elements.</p>
-        <button class="yrproj-btn">Explore</button>
-      </div>
-      <img src="gallery/Greenfield gardens-1.avif" alt="">
-    </div>
-
-
-    <div class="yrproj-item" data-year="2019">
-      <div class="yrproj-content">
-        <h3 class="yrproj-title">Green Field Gardens</h3>
-        <p>At Greenfield Gardens, nature-inspired design blends seamlessly with modern comfort. This project encourages a healthier way of living, featuring plenty of greenery, inviting walking paths, and sustainable elements.</p>
-        <button class="yrproj-btn">Explore</button>
-      </div>
-      <img src="gallery/Greenfield gardens-1.avif" alt="">
-    </div>
+    <!-- Initially load 2025 projects -->
+    <?php
+    $_GET['year'] = 2025;
+    include 'projects_ajax.php';
+    ?>
   </div>
 </section>
+
+<script>
+document.querySelectorAll('.yrproj-year-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const year = this.dataset.year;
+
+    // Update active class
+    document.querySelectorAll('.yrproj-year-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+
+    // Fetch projects via AJAX without page reload
+    fetch('projects_ajax.php?year=' + year)
+      .then(res => res.text())
+      .then(html => {
+        document.querySelector('.yrproj-list').innerHTML = html;
+      });
+  });
+});
+</script>
 <!-- Our Projects section ends  -->
 
 <!-- Ready to Bring section starts  -->

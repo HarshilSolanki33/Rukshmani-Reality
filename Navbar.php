@@ -1,4 +1,5 @@
 <?php
+session_start(); 
 // ...existing code...
 ?>
 <nav class="site-nav">
@@ -8,72 +9,149 @@
     </a>
 
     <div class="nav-actions">
+
+      <!-- CONNECT US BUTTON -->
       <div class="connect">
         <button class="connect-btn">
                Connect Us <span class="caret">▾</span>
         </button>
 
-  <div class="connect-menu">
-    <a href="./Book Inquiry.php">Book Inquiry</a>
-    <a href="#">Mail Us</a>
-  </div>
+       <div class="connect-menu">
+  <a href="#" onclick="openInquiry()">Book Inquiry</a>
+  <a href="mail.php">Mail Us</a>
 </div>
+      </div>
 
-<!-- Profile Button Starts  -->
-<a href="../Guest Side/SignUp.php" class="profile-btn">
-    <img src="Gallery/user.png" alt="Profile">
-</a>
-<!-- Profile Button Ends  -->
+      <!-- 🔵 USER LOGIN STATUS CHECK -->
+<?php if (!isset($_SESSION['user_logged_in'])): ?>
+
+    <!-- USER NOT LOGGED IN → SHOW ONE GOLD BUTTON WITH DROPDOWN -->
+    <div class="login-box">
+        <button class="login-btn">
+            Sign Up / Login ▾
+        </button>
+
+        <div class="login-dropdown">
+            <a href="../Guest Side/SignUp.php">Sign Up</a>
+            <a href="../Guest Side/Login.php">Login</a>
+        </div>
+    </div>
+
+<?php else: ?>
+
+    <!-- USER LOGGED IN → SHOW PROFILE ICON -->
+    <a href="../Guest Side/profile.php" class="profile-btn">
+        <img src="Gallery/user.png" alt="Profile">
+    </a>
+
+<?php endif; ?>
+<!-- 🔵 END LOGIN CHECK -->
 
       <button id="hamburger" class="circle-btn">☰</button>
 
-<div id="overlay" class="menu-overlay"></div>
+      <div id="overlay" class="menu-overlay"></div>
 
-<aside id="sideMenu" class="side-menu">
-  <button id="closeMenu" class="close-btn">✕</button>
+      <aside id="sideMenu" class="side-menu">
+        <button id="closeMenu" class="close-btn">✕</button>
 
-  <div class="menu-top connect-area">
-  <div class="connect">
-    <span>Connect ▾</span>
-  </div>
-</div>
+        <div class="menu-top connect-area">
+          <div class="connect">
+            <span>Connect ▾</span>
+          </div>
+        </div>
 
-<!-- Hameburger starts  -->
- <?php include "db.php"; ?>
+        <!-- HAMBURGER MENU ITEMS -->
+        <?php include "db.php"; ?>
+        <?php
+        $query = "SELECT * FROM hameburger ORDER BY id ASC";
+        $result = pg_query($conn, $query);
+        ?>
 
-<?php
-$query = "SELECT * FROM hameburger ORDER BY id ASC";
-$result = pg_query($conn, $query);
-?>
+        <ul class="menu-links">
+            <?php while($row = pg_fetch_assoc($result)): ?>
 
-<ul class="menu-links">
-    <?php while($row = pg_fetch_assoc($result)): ?>
+                <?php if ($row['is_button'] == 't'): ?>
+                    <li><button class="popup-trigger menu-popup-btn"><?= $row['label'] ?></button></li>
+                <?php else: ?>
+                    <li><a href="<?= $row['link'] ?>"><?= $row['label'] ?></a></li>
+                <?php endif; ?>
 
-        <?php if ($row['is_button'] == 't'): ?>
-            <li><button class="popup-trigger menu-popup-btn"><?= $row['label'] ?></button></li>
-        <?php else: ?>
-            <li><a href="<?= $row['link'] ?>"><?= $row['label'] ?></a></li>
-        <?php endif; ?>
+            <?php endwhile; ?>
+        </ul>
 
-    <?php endwhile; ?>
-</ul>
-
-
-
-  <div class="menu-footer">
-    <a href="#">FACEBOOK</a>
-    <a href="#">INSTAGRAM</a>
-    <a href="#">TWITTER</a>
-    <a href="#">YOUTUBE</a>
-  </div>
-</aside>
-<!-- Hamburger Ends  -->
+        <div class="menu-footer">
+          <a href="#">FACEBOOK</a>
+          <a href="#">INSTAGRAM</a>
+          <a href="#">TWITTER</a>
+          <a href="#">YOUTUBE</a>
+        </div>
+      </aside>
 
     </div>
   </div>
 </nav>
 
+
+<!-- YOUR EXISTING CSS + POPUP CODE BELOW REMAINS SAME -->
+
 <style>
+  /* LOGIN BOX */
+.login-box {
+    position: relative;
+}
+
+/* GOLD BUTTON */
+.login-btn {
+    background: rgb(185,135,75);      /* Gold */
+    color: white;
+    border: 0;
+    padding: 10px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: .3s;
+}
+
+.login-btn:hover {
+    background: rgba(185,135,75,0.85);
+    transform: translateY(-2px);
+}
+
+/* DROPDOWN */
+.login-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: #fff;
+    width: 150px;
+    border-radius: 10px;
+    margin-top: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: .3s ease;
+}
+
+.login-dropdown a {
+    display: block;
+    padding: 10px 15px;
+    color: #444;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.login-dropdown a:hover {
+    background: #f3f3f3;
+}
+
+/* SHOW ON HOVER */
+.login-box:hover .login-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
   /* Profile Button */
 .profile-btn {
     width: 48px;
@@ -219,6 +297,80 @@ html, body{
   transform:rotate(180deg);
 }
 
+/* ============================= */
+/* NAV BUTTON RESPONSIVE FIX */
+/* ============================= */
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:nowrap;   /* 🔥 wrap remove */
+}
+
+/* buttons shrink properly */
+.connect-btn,
+.login-btn{
+  white-space:nowrap;
+  font-size:clamp(12px,1.4vw,15px);
+  padding:clamp(6px,1vw,10px) clamp(10px,1.2vw,18px);
+}
+
+/* tablet */
+@media (max-width: 992px){
+
+  .connect-btn,
+  .login-btn{
+    padding:8px 14px;
+    font-size:14px;
+  }
+
+}
+
+/* mobile */
+/* ============================= */
+/* MOBILE LOGO + BUTTON FIX */
+/* ============================= */
+
+@media (max-width: 768px){
+
+  .connect-btn,
+  .login-btn{
+    padding:4px 8px;      /* 🔹 extra small buttons */
+    font-size:11px;       /* 🔹 smaller font */
+    min-width:0;          /* 🔹 buttons shrink to fit text */
+  }
+
+  .nav-actions{
+    gap:6px;              /* 🔹 less spacing so everything fits */
+    flex-wrap:nowrap;     /* 🔹 prevent wrapping */
+  }
+
+  .logo img{
+    height:60px;          /* 🔹 smaller logo */
+    width:auto;
+  }
+
+  #hamburger{
+    width:38px;
+    height:38px;
+    font-size:16px;
+    flex-shrink:0;        /* 🔹 never moves down */
+  }
+
+}
+
+/* small mobile */
+@media (max-width: 480px){
+
+  .connect-btn,
+  .login-btn{
+    padding:6px 10px;
+    font-size:12px;
+  }
+
+}
+
 /* Existing button styles (from your code) */
 .circle-btn{
     width:48px;
@@ -274,15 +426,42 @@ html, body{
   top:0;
   right:-100%;
   width:420px;
-  height:100%;
+  height:100vh;
   background:linear-gradient(180deg,#1a1a1a,#0f0f0f);
   padding:40px;
   box-sizing:border-box;
   transition:.6s ease;
   z-index:999;
   color:#fff;
+
+  /* 🔥 SCROLL FIX */
+  overflow-y:auto;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
+/* Hide scrollbar but allow scroll */
+
+.side-menu::-webkit-scrollbar{
+  width:6px;
 }
 
+.side-menu::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.side-menu::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,0.2);
+  border-radius:10px;
+}
+/* Hide scrollbar but keep scroll working */
+
+.side-menu{
+  scrollbar-width: none; /* Firefox */
+}
+
+.side-menu::-webkit-scrollbar{
+  display: none; /* Chrome, Safari */
+}
 .side-menu.show{
   right:0;
 }
@@ -294,11 +473,17 @@ html, body{
   right:25px;
   width:42px;
   height:42px;
-  color: #000;
   border-radius:50%;
   border:none;
   font-size:20px;
   cursor:pointer;
+
+  background:#fff;   /* 🔥 white circle */
+  color:#000;        /* cross color */
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 /* Links */
@@ -435,14 +620,13 @@ html, body{
     margin-bottom:20px;
   }
 
-  .close-btn{
-    width:36px;
-    height:36px;
-    font-size:18px;
-  }
+ 
 }
 
 </style>
+
+
+
 
 <script>
 document.getElementById('connectBtn').addEventListener('click', function(){
@@ -613,3 +797,51 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+<!-- inquiry forrm pop ni ritna open karva mate  -->
+ <div id="inquiryModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:9999;">
+
+  <div style="position:relative; width:95%; max-width:450px;">
+
+    <iframe src="inquiry.php" 
+    style="width:100%; height:600px; border:none; border-radius:12px; background:white;">
+    </iframe>
+
+  </div>
+
+</div>
+<script>
+
+function openInquiry(){
+  document.getElementById("inquiryModal").style.display="flex";
+}
+
+function closeInquiry(){
+  document.getElementById("inquiryModal").style.display="none";
+}
+
+</script>
+
+
+
+<!-- mail forrm pop ni ritna open karva mate  -->
+<div id="mailModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:9999;">
+
+<div style="position:relative; width:95%; max-width:450px;">
+
+<iframe src="mail.php"
+style="width:100%; height:600px; border:none; border-radius:12px; background:white;">
+</iframe>
+
+</div>
+
+</div>
+<script>
+function openMail(){
+  document.getElementById("mailModal").style.display="flex";
+}
+
+function closeMail(){
+  document.getElementById("mailModal").style.display="none";
+}
+
+</script>

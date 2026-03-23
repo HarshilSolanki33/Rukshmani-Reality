@@ -71,3 +71,23 @@ function updateChart(principal, interest) {
 }
 
 calculateEMI();
+
+let chart = new Chart(document.getElementById("emiChart"), {
+  type: "doughnut",
+  data: {
+    labels: ["Principal", "Interest"],
+    datasets: [{
+      data: [0, 0],
+      backgroundColor: ["#c9a646", "#2c2c2c"] // GOLD + DARK
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {
+        labels: {
+          color: "#333"
+        }
+      }
+    }
+  }
+});

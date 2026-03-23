@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buyer Guide</title>
+    <title>Rukmani Realty-Buyer Guide</title>
+   <link rel="icon" type="image/png" sizes="48x48" href="./Gallery/Title-img.png">
     <link rel="stylesheet" href="Assets/Buyer Guide.css">
 </head>
 <body>
@@ -29,53 +30,71 @@
     <!-- Hero Section Ends -->
 
  <!-- Emi calculators Section Starts  -->
-<section class="emi-section">
+<section class="emi-section luxury-emi">
   <div class="emi-wrapper">
 
     <div class="emi-header">
       <h2>EMI Calculator</h2>
-      <p>Evaluate your EMI installments with our efficient EMI Calculator.</p>
+      <p>Plan your dream home with precision and elegance.</p>
     </div>
 
-    <!-- Loan Amount -->
-    <div class="emi-row">
-      <label>Home Loan Amount</label>
-      <input type="number" id="loanAmount" value="5000000">
-      <input type="range" id="loanRange" min="100000" max="8000000" step="50000" value="5000000">
-    </div>
+    <div class="emi-flex">
 
-    <!-- Interest -->
-    <div class="emi-row">
-      <label>Interest Rate (%)</label>
-      <input type="number" id="interestRate" value="10.5" step="0.1">
-      <input type="range" id="interestRange" min="5" max="20" step="0.1" value="10.5">
-    </div>
+      <!-- LEFT -->
+      <div class="emi-left">
 
-    <!-- Tenure -->
-    <div class="emi-row">
-      <label>Loan Tenure (Years)</label>
-      <input type="number" id="loanTenure" value="20">
-      <input type="range" id="tenureRange" min="1" max="30" value="20">
-    </div>
+        <div class="emi-row">
+          <label>Home Loan Amount</label>
+          <input type="number" id="loanAmount">
+          <input type="range" id="loanRange" min="100000" max="8000000" step="50000">
+        </div>
 
-    <!-- Results -->
-    <div class="emi-result">
-      <div class="emi-values">
-        <p>Loan EMI <strong id="emiAmount">₹ 0</strong></p>
-        <p>Total Interest Payable <strong id="totalInterest">₹ 0</strong></p>
-        <p>Total Payment <strong id="totalPayment">₹ 0</strong></p>
+        <div class="emi-row">
+          <label>Interest Rate (%)</label>
+          <input type="number" id="interestRate" step="0.1">
+          <input type="range" id="interestRange" min="5" max="20" step="0.1">
+        </div>
+
+        <div class="emi-row">
+          <label>Loan Tenure (Years)</label>
+          <input type="number" id="loanTenure">
+          <input type="range" id="tenureRange" min="1" max="30">
+        </div>
+
       </div>
 
-      <div class="emi-chart">
-  <canvas id="emiChart" width="300" height="300"></canvas>
-</div>
+      <!-- RIGHT -->
+      <div class="emi-right">
+
+        <div class="chart-box">
+          <canvas id="emiChart"></canvas>
+        </div>
+
+        <div class="emi-values">
+          <div class="value-card">
+            <span>Monthly EMI</span>
+            <h3 id="emiAmount">₹ 0</h3>
+          </div>
+
+          <div class="value-card">
+            <span>Total Interest</span>
+            <h3 id="totalInterest">₹ 0</h3>
+          </div>
+
+          <div class="value-card">
+            <span>Total Payment</span>
+            <h3 id="totalPayment">₹ 0</h3>
+          </div>
+        </div>
+
+      </div>
 
     </div>
 
   </div>
 </section>
 <!-- Emi calculators Section Ends  -->
-
+<?php include 'Footer.php'; ?>
 <script src="Assets/Hameburger.js"></script>
 <script src="Assets/Smother.js"></script> 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

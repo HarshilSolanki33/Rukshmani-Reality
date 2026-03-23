@@ -1,118 +1,86 @@
+// ===== BROCHURE POPUP =====
+function openPopup(projectName) {
+  const popup = document.getElementById('brochurePopup');
+  if (popup) {
+    popup.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    console.log('Opening brochure for:', projectName);
+  }
+}
+
+function closePopup() {
+  const popup = document.getElementById('brochurePopup');
+  if (popup) {
+    popup.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+}
+
+// Close popup on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closePopup();
+  }
+});
+
+// ===== FORM SUBMIT HANDLER =====
+function handleSubmit(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('userName').value;
+  const mobile = document.getElementById('userMobile').value;
+  const email = document.getElementById('userEmail').value;
+
+  if (!name || !mobile || !email) {
+    alert('Please fill all required fields');
+    return;
+  }
+
+  if (!/^[0-9]{10}$/.test(mobile)) {
+    alert('Please enter a valid 10-digit mobile number');
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Please enter a valid email address');
+    return;
+  }
+
+  alert('Thank you! We will send the brochure to your WhatsApp shortly.');
+
+  document.getElementById('brochureForm').reset();
+  closePopup();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  const rows = document.querySelectorAll(".brochure-row:not(.brochure-table-head)");
+  const btn = document.getElementById("showMoreBtn");
+  const visibleCount = 5;
+  let expanded = false;
 
-  const counters = document.querySelectorAll(".lux-stat h2");
-  const section = document.querySelector(".lux-stats");
-  let hasAnimated = false;
-
-  const animateCounter = (el) => {
-    const target = parseInt(el.dataset.count, 10);
-    let current = 0;
-    const increment = Math.max(1, Math.floor(target / 80));
-
-    const update = () => {
-      current += increment;
-      if (current < target) {
-        el.textContent = current;
-        requestAnimationFrame(update);
+  function updateView() {
+    rows.forEach((row, index) => {
+      if (!expanded && index >= visibleCount) {
+        row.classList.add("hidden");
       } else {
-        el.textContent = target;
+        row.classList.remove("hidden");
+        row.classList.add("show");
       }
-    };
+    });
 
-    update();
-  };
+    btn.textContent = expanded ? "Show Less" : "Show More";
+  }
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting && !hasAnimated) {
-        hasAnimated = true;
-        counters.forEach(counter => animateCounter(counter));
-        observer.disconnect();
-      }
-    },
-    {
-      threshold: 0.4
-    }
-  );
+  updateView();
 
-  observer.observe(section);
+  btn.addEventListener("click", () => {
+    expanded = !expanded;
+    updateView();
 
-});
-
-
-
-
-
-
-
-
-// horizontsl scroll starts 
-const track = document.querySelector('.lux-track');
-let current = 0;
-
-window.addEventListener('wheel', e=>{
-  current += e.deltaY * 0.7;
-  current = Math.max(0, Math.min(current, track.scrollWidth - window.innerWidth));
-  track.style.transform = `translateX(-${current}px)`;
-});
-
-
-
-// video section starts 
-const videoSection = document.querySelector(".lux-video");
-const video = document.querySelector(".lux-bg-video");
-const content = document.querySelector(".lux-video-content");
-
-const videoObserver = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      video.play();
-      content.style.opacity = 1;
-      content.style.transform = "translate(-50%, 0)";
-    }else{
-      video.pause();
+    if (!expanded) {
+      document.querySelector(".brochure-section")
+        .scrollIntoView({ behavior: "smooth" });
     }
   });
-},{threshold:.6});
-
-videoObserver.observe(videoSection);
-
-
-// timeline 
-const timelineItems = document.querySelectorAll(".timeline-item");
-
-const timelineObserver = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-    }
-  });
-},{threshold:.4});
-
-timelineItems.forEach(item=>timelineObserver.observe(item));
-
-
-
-
-
-// parallex starts 
-const parallaxImg = document.querySelector(".lux-parallax-img img");
-
-document.addEventListener("mousemove", e=>{
-  const x = (window.innerWidth/2 - e.clientX) * 0.02;
-  const y = (window.innerHeight/2 - e.clientY) * 0.02;
-  parallaxImg.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
 });
-
-
-
-// brands section 
-const philosophy = document.querySelector(".reveal-text");
-
-new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      philosophy.classList.add("show");
-    }
-  });
-},{threshold:.5}).observe(philosophy);
+// No closing markdown code fence needed
