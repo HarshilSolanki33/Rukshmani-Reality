@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurum Heights</title>
+    <title>Rukmani Imperial Towers</title>
      <link rel="icon" type="image/png" sizes="48x48" href="./Gallery/Title-img.png">
-    <link rel="stylesheet" href="Assets/Aurum.css">
+    <link rel="stylesheet" href="Assets/Rukmani Imperial Towers.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 </head>
@@ -24,11 +24,11 @@
   <div class="hero-wrapper">
     <div class="hero-left">
       <div class="hero-inner">
-        <h1 class="hero-title u-underline">AURUM HEIGHTS</h1>
+        <h1 class="hero-title u-underline">Rukmani Imperial Towers</h1>
 
         <p class="lead">
           AT 
-          <span class="rukshmani">Aurum Heights</span> a place where every sunrise brings comfort, luxury and peace. Thoughtfully planned spaces, open views and urban connectivity come together to create a lifestyle you and your family truly deserve.
+          <span class="rukshmani">Rukmani Imperial Towers</span> Homes that resonate with the heart of urban living and flourish into cordial communities.
         </p>
       </div>
     </div>
@@ -36,16 +36,16 @@
 </section>
     <!-- Hero Section Ends -->
 
-
 <!-- Bground image section starts   -->
- <?php
+<?php
 include "db.php";
 
-$query = 'SELECT * FROM "aurum_bgremove" ORDER BY id ASC';
+$query = 'SELECT * FROM "Guest_User_DB".Rukmani_Imperial_Towers_bgremove ORDER BY id ASC';
 $section = pg_query($conn, $query);
 
 $row = pg_fetch_assoc($section);
 ?>
+
 <section class="bg-white py-32">
   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center -mt-40">
 
@@ -72,17 +72,17 @@ $row = pg_fetch_assoc($section);
 DOWNLOAD BROCHURE
 <span class="transform transition-transform duration-300 group-hover:translate-x-2">→</span>
 </button>
+
 <script>
 document.getElementById("downloadBtn").addEventListener("click", function() {
     const link = document.createElement("a");
-    link.href = "./Gallery/Brochures/Aurum Heights.pdf"; // અહીં તારી PDF નો path મુક
-    link.download = "Aurum Heights.pdf"; // અહીં તારી PDF નું નામ મુક
+    link.href = "./Gallery/Brochures/<?= $row['brochure']; ?>";
+    link.download = "<?= $row['brochure']; ?>";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 });
 </script>
-
 
     </div>
 
@@ -101,15 +101,16 @@ document.getElementById("downloadBtn").addEventListener("click", function() {
 
   </div>
 </section>
-<!-- Background image section ends    -->
+<!-- Bground image section ends   -->
 
 <!-- Perspective section starts  -->
- <?php
+<?php
 include "db.php";
 
-$query = "SELECT * FROM aurum_perspective ORDER BY id ASC";
+$query = 'SELECT * FROM "Guest_User_DB".Rukmani_Imperial_towers_perspective ORDER BY id ASC';
 $perspectives = pg_query($conn, $query);
 ?>
+
 <section class="perspectives">
 
   <div class="section-header">
@@ -132,15 +133,20 @@ $perspectives = pg_query($conn, $query);
   </div>
 
 </section>
-    <!-- Perspective section ends  -->
+<!-- Perspective section ends  -->
 
-   <!-- product topology section starts -->
+<!-- Product Typology section starts -->
 <?php
 include "db.php";
 
-$query = "SELECT * FROM aurum_product_typology ORDER BY id ASC";
+$query = 'SELECT * FROM "Guest_User_DB".Rukmani_Imperial_Towers_Topology ORDER BY id ASC';
 $typology = pg_query($conn, $query);
+
+if (!$typology) {
+    die(pg_last_error($conn));
+}
 ?>
+
 <section class="product-typology">
 
   <h2 class="u-underline">
@@ -152,53 +158,13 @@ $typology = pg_query($conn, $query);
   <?php while ($row = pg_fetch_assoc($typology)) { ?>
 
     <div class="typology-item">
+      
       <div class="icon-wrap">
-        <img src="gallery/<?= $row['icon_image']; ?>" alt="">
+        <img src="gallery/<?= $row['icon_image']; ?>" alt="<?= $row['title']; ?>">
       </div>
 
       <h4><?= $row['title']; ?></h4>
       <p><?= $row['description']; ?></p>
-    </div>
-
-  <?php } ?>
-
-  </div>
-
-</section>
-    <!-- product topology section ends -->
-
-<!-- Signature Residences section starts   -->
-  <?php
-include "db.php";
-
-$query = "SELECT * FROM aurum_signature ORDER BY id ASC";
-$units = pg_query($conn, $query);
-?>
-<section class="unit-cards">
-
-  <h2 class="section-title u-underline">Signature Residences</h2>
-
-  <div class="unit-grid">
-
-  <?php while ($row = pg_fetch_assoc($units)) { ?>
-
-    <div class="unit-card">
-      
-      <div class="unit-image">
-        <img src="gallery/<?= $row['image']; ?>" alt="<?= $row['title']; ?>">
-        <span class="tag"><?= $row['tag']; ?></span>
-      </div>
-
-      <h3><?= $row['title']; ?></h3>
-      <div class="price"><?= $row['price']; ?></div>
-
-      <ul class="features">
-        <li><?= $row['feature1']; ?></li>
-        <li><?= $row['feature2']; ?></li>
-        <li><?= $row['feature3']; ?></li>
-      </ul>
-
-      <button class="btn-gold">Book Inquiry</button>
 
     </div>
 
@@ -207,100 +173,7 @@ $units = pg_query($conn, $query);
   </div>
 
 </section>
-    <!-- Signature Residences section ends   -->
-
-
-<!-- floor plan section starts  -->
-<?php
-include "db.php";
-
-$query = "SELECT * FROM aurum_floorplan ORDER BY id ASC";
-$result = pg_query($conn,$query);
-
-$plans = [];
-while($row = pg_fetch_assoc($result)){
-$plans[] = $row;
-}
-?>
-<section class="bg-white py-16 md:py-24">
-
-<div class="text-center">
-<h2 class="text-3xl md:text-5xl font-['Playfair_Display'] mb-12 md:mb-16 u-underline inline-block">
-Floor Plan
-</h2>
-</div>
-
-<div class="max-w-[1100px] mx-auto px-6">
-
-<!-- Tabs -->
-<div class="flex gap-8 md:gap-12 border-b pb-4 mb-12 md:mb-20 text-base md:text-lg tracking-widest justify-center">
-
-<?php foreach($plans as $index=>$plan){ ?>
-
-<button id="tab<?= $index+1 ?>"
-class="tab-btn <?= $index==0 ? 'border-b-2 border-black' : 'border-b-2 border-transparent text-gray-400' ?> pb-2">
-
-<?= $plan['tab_name']; ?>
-
-</button>
-
-<?php } ?>
-
-</div>
-
-<?php foreach($plans as $index=>$plan){ ?>
-
-<div id="content<?= $index+1 ?>"
-class="tab-content <?= $index!=0 ? 'hidden' : '' ?> grid md:grid-cols-2 items-center gap-10 md:gap-20 relative">
-
-<!-- Left Text -->
-<div>
-
-<h3 class="text-2xl md:text-3xl text-[#c6a87d] font-['Playfair_Display'] mb-8 md:mb-12">
-<?= $plan['title']; ?>
-</h3>
-
-<div class="space-y-6 md:space-y-10 tracking-widest text-sm">
-
-<div>
-<p class="text-gray-500 mb-1">UNIT :</p>
-<p><?= $plan['unit']; ?></p>
-</div>
-
-<div>
-<p class="text-gray-500 mb-1">SUITE :</p>
-<p><?= $plan['suite']; ?></p>
-</div>
-
-<div>
-<p class="text-gray-500 mb-1">BALCONY :</p>
-<p><?= $plan['balcony']; ?></p>
-</div>
-
-<div>
-<p class="text-gray-500 mb-1">TOTAL :</p>
-<p><?= $plan['total']; ?></p>
-</div>
-
-</div>
-
-</div>
-
-<!-- Right Image -->
-<div class="flex justify-center">
-
-<img src="./Gallery/<?= $plan['image']; ?>"
-class="w-[280px] md:w-[420px] drop-shadow-xl">
-
-</div>
-
-</div>
-
-<?php } ?>
-
-</div>
-</section>
-<!-- floor plan section ends   -->
+<!-- Product Typology section ends -->
 
 <!-- Amenities section starts  -->
 <?php
@@ -464,7 +337,7 @@ $amenities = pg_query($conn,$query);
 
 <?php include 'Scroll.php'; ?>
 <?php include 'Footer.php'; ?>
-<script src="Assets/Aurum.js"></script>
+<script src="Assets/Rukmani Imperial Towers.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
  <script src="https://cdn.tailwindcss.com"></script>
 <script src="Assets/Hameburger.js"></script>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rukmani Aishwaryam</title>
+     <link rel="icon" type="image/png" sizes="48x48" href="./Gallery/Title-img.png">
     <link rel="stylesheet" href="Assets/Rukmani Aishwaryam.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -23,11 +24,11 @@
   <div class="hero-wrapper">
     <div class="hero-left">
       <div class="hero-inner">
-        <h1 class="hero-title">RUKMANI AISHWARYAM</h1>
+        <h1 class="hero-title u-underline">RUKMANI AISHWARYAM</h1>
 
         <p class="lead">
-          AT 
-          <span class="rukshmani">Rukmani Aishwaryam</span> a place where every sunrise brings comfort, luxury and peace. Thoughtfully planned spaces, open views and urban connectivity come together to create a lifestyle you and your family truly deserve.
+           Your home at 
+          <span class="rukshmani">Rukmani Aishwaryam</span> is more than just a place to live; it's a way of life that combines contemporary comfort, unrivalled convenience.
         </p>
       </div>
     </div>
@@ -35,283 +36,311 @@
 </section>
     <!-- Hero Section Ends -->
 
-<!-- Perspective section starts  -->
- <section class="perspectives">
-  <div class="section-header">
-    <h2 class="u-underline" id="title">Perspectives <span>(04)</span></h2>
+<!-- Background image section starts   -->
+ <?php
+include "db.php";
 
+$query = 'SELECT * FROM "ashwariyam_bgremove" ORDER BY id ASC LIMIT 1';
+$result = pg_query($conn, $query);
+
+$row = pg_fetch_assoc($result);
+?>
+
+<section class="bg-white py-32">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center -mt-40">
+
+    <!-- LEFT CONTENT -->
+    <div>
+
+      <h2 class="text-3xl font-['Playfair_Display'] mb-12 tracking-wide u-underline">
+        <?= $row['title']; ?>
+      </h2>
+
+      <p class="text-gray-600 mb-6 leading-relaxed">
+        <?= $row['content1']; ?>
+      </p>
+
+      <p class="text-gray-600 mb-6 leading-relaxed">
+        <?= $row['content2']; ?>
+      </p>
+
+      <p class="text-gray-600 mb-8 leading-relaxed">
+        <?= $row['content3']; ?>
+      </p>
+
+      <!-- DYNAMIC DOWNLOAD BUTTON -->
+      <a href="<?= $row['brochure_path']; ?>" download class="yrproj-btn group flex items-center gap-3 border border-[#b89664] text-[#b89664] px-7 py-3 rounded-full tracking-widest text-sm transition-all duration-300 hover:bg-[#b89664]">
+        DOWNLOAD BROCHURE
+        <span class="transform transition-transform duration-300 group-hover:translate-x-2">→</span>
+      </a>
+
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="relative">
+
+      <div class="absolute inset-0 bg-white/70 blur-3xl rounded-full"></div>
+
+      <img 
+        src="./Gallery/<?= $row['image']; ?>"
+        alt="<?= $row['title']; ?>"
+        class="relative z-10 w-full max-w-lg mx-auto"
+      >
+
+    </div>
+
+  </div>
+</section>
+<!-- Background image section ends    -->
+
+<!-- Perspective section starts  -->
+ <?php
+include "db.php";
+
+$query = "SELECT * FROM ashwariyam_perspective ORDER BY id ASC";
+$perspectives = pg_query($conn, $query);
+
+$total = pg_num_rows($perspectives);
+?>
+
+<section class="perspectives">
+
+  <div class="section-header">
+    <h2 class="u-underline">
+      Perspectives <span>(<?= str_pad($total, 2, '0', STR_PAD_LEFT); ?>)</span>
+    </h2>
   </div>
 
   <div class="perspectives-grid">
 
-    <div class="perspective-card">
-      <img src="gallery/Aurum-1.jpg" alt="Night View">
-      <span class="label">NIGHT VIEW</span>
-    </div>
+    <?php while ($row = pg_fetch_assoc($perspectives)) { ?>
 
-    <div class="perspective-card">
-      <img src="gallery/Aurum-2.jpg" alt="Club View">
-      <span class="label">CLUB VIEW</span>
-    </div>
+      <div class="perspective-card">
+        <img src="gallery/<?= htmlspecialchars($row['image']); ?>" 
+             alt="<?= htmlspecialchars($row['label']); ?>">
 
-    <div class="perspective-card">
-      <img src="gallery/Aurum-3.jpg" alt="Plaza View">
-      <span class="label">PLAZA VIEW</span>
-    </div>
+        <span class="label">
+          <?= strtoupper(htmlspecialchars($row['label'])); ?>
+        </span>
+      </div>
 
-    <div class="perspective-card">
-      <img src="gallery/Aurum-4.jpg" alt="Side View">
-      <span class="label">SIDE VIEW</span>
-    </div>
+    <?php } ?>
 
   </div>
+
 </section>
     <!-- Perspective section ends  -->
 
    <!-- product topology section starts -->
+<?php
+include "db.php";
+
+$query = "SELECT * FROM aurum_product_typology ORDER BY id ASC";
+$typology = pg_query($conn, $query);
+?>
 <section class="product-typology">
-  <h2 class="u-underline">Product Typology <span>(04)</span></h2>
+
+  <h2 class="u-underline">
+    Product Typology <span>(<?= pg_num_rows($typology); ?>)</span>
+  </h2>
 
   <div class="typology-grid">
 
-    <div class="typology-item">
-      <div class="icon-wrap">
-        <img src="gallery/Aurum logo-1.jpg" alt="">
-      </div>
-      <h4>Building Structure</h4>
-      <p>1B + G / H.P. + 14 Storey</p>
-    </div>
+  <?php while ($row = pg_fetch_assoc($typology)) { ?>
 
     <div class="typology-item">
       <div class="icon-wrap">
-        <img src="gallery/Aurum logo-2.jpg" alt="">
+        <img src="gallery/<?= $row['icon_image']; ?>" alt="">
       </div>
-      <h4>Number of Blocks</h4>
-      <p>02 Nos.</p>
+
+      <h4><?= $row['title']; ?></h4>
+      <p><?= $row['description']; ?></p>
     </div>
 
-    <div class="typology-item">
-      <div class="icon-wrap">
-        <img src="gallery/Aurum logo-3.jpg" alt="">
-      </div>
-      <h4>Retail Units</h4>
-      <p>10 Nos.</p>
-    </div>
-
-    <div class="typology-item">
-      <div class="icon-wrap">
-        <img src="gallery/Aurum logo-4.jpg" alt="">
-      </div>
-      <h4>Retail RERA Area</h4>
-      <p>282 Sq. Ft. Onwards</p>
-    </div>
+  <?php } ?>
 
   </div>
+
 </section>
     <!-- product topology section ends -->
 
 <!-- Signature Residences section starts   -->
-   <section class="unit-cards">
-  <h2 class="section-title u-underline">Signature Residences</h2>
+  <?php
+include "db.php";
+
+$query = "SELECT * FROM ashwariyam_signature ORDER BY id ASC";
+$result = pg_query($conn, $query);
+?>
+
+<section class="unit-cards">
+
+  <h2 class="section-title u-underline">Rukmani Ashwariyam</h2>
 
   <div class="unit-grid">
 
-    <!-- Card 1 -->
+  <?php while ($row = pg_fetch_assoc($result)) { ?>
+
     <div class="unit-card">
       
       <div class="unit-image">
-        <img src="gallery/Collage-1.jpg" alt="2 BHK Aurum Heights">
-        <span class="tag">2 BHK Premium</span>
+        <img src="gallery/<?= $row['image']; ?>" alt="<?= $row['title']; ?>">
+        <span class="tag"><?= $row['tag']; ?></span>
       </div>
 
-      <h3>2 BHK Premium</h3>
-      <div class="price">₹ 56 Lac*</div>
+      <h3><?= $row['title']; ?></h3>
+      <div class="price"><?= $row['price']; ?></div>
 
       <ul class="features">
-        <li>Super Built-up – 1210 Sq.ft</li>
-        <li>2 Bedrooms | 2 Bathrooms</li>
-        <li>Balcony + Utility Space</li>
+        <li><?= $row['feature1']; ?></li>
+        <li><?= $row['feature2']; ?></li>
+        <li><?= $row['feature3']; ?></li>
       </ul>
 
-      
       <button class="btn-gold">Book Inquiry</button>
+
     </div>
 
-    <!-- Card 2 -->
-    <div class="unit-card">
-
-      <div class="unit-image">
-        <img src="gallery/Collage-2.jpg" alt="3 BHK Luxury">
-        <span class="tag">3 BHK Luxury</span>
-      </div>
-
-      <h3>3 BHK Luxury</h3>
-      <div class="price">₹ 78 Lac*</div>
-
-      <ul class="features">
-        <li>Super Built-up – 1620 Sq.ft</li>
-        <li>3 Bedrooms | 3 Bathrooms</li>
-        <li>Wide Deck Balcony</li>
-      </ul>
-
-      
-
-      <button class="btn-gold">Book Inquiry</button>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="unit-card">
-
-      <div class="unit-image">
-        <img src="gallery/Collage-3.jpg" alt="3.5 BHK Sky Suite">
-        <span class="tag">3.5 BHK Sky Suite</span>
-      </div>
-
-      <h3>3.5 BHK Sky Suite</h3>
-      <div class="price">₹ 96 Lac*</div>
-
-      <ul class="features">
-        <li>Super Built-up – 1980 Sq.ft</li>
-        <li>Servant Room + Store</li>
-        <li>Panoramic City View</li>
-      </ul>
-
-
-      <button class="btn-gold">Book Inquiry</button>
-    </div>
+  <?php } ?>
 
   </div>
+
 </section>
     <!-- Signature Residences section ends   -->
 
+<!-- floor plan section starts  -->
+<?php
+include "db.php";
 
-<!-- Project Highlights section starts  -->
-<section class="project-highlights">
-  <div class="container">
-    
-    <h2 class="section-title2 u-underline">
-      Project Highlights 
-    </h2>
+$query = 'SELECT * FROM "Guest_User_DB".ashwariyam_floorplan ORDER BY id ASC';
+$result = pg_query($conn,$query);
 
-    <div class="highlights-grid">
+$plans = [];
+while($row = pg_fetch_assoc($result)){
+    $plans[] = $row;
+}
+?>
 
-      <div class="highlight-card">
-        <h4>Prime Location</h4>
-        <p>Located at the heart of the city with excellent connectivity.</p>
-      </div>
+<section class="bg-white py-16 md:py-24">
 
-      <div class="highlight-card">
-        <h4>14-Storey Towers</h4>
-        <p>Premium elevation with stunning skyline views.</p>
-      </div>
+<div class="text-center">
+<h2 class="text-3xl md:text-5xl font-['Playfair_Display'] mb-12 md:mb-16 u-underline inline-block">
+Floor Plan
+</h2>
+</div>
 
-      <div class="highlight-card">
-        <h4>Spacious Apartments</h4>
-        <p>Well-planned layouts ensuring maximum usable space.</p>
-      </div>
+<div class="max-w-[1100px] mx-auto px-6">
 
-      <div class="highlight-card">
-        <h4>Luxury Amenities</h4>
-        <p>Clubhouse, gym, indoor games & landscaped gardens.</p>
-      </div>
+<!-- Tabs -->
+<div class="flex gap-8 md:gap-12 border-b pb-4 mb-12 md:mb-20 text-base md:text-lg tracking-widest justify-center">
 
-      <div class="highlight-card">
-        <h4>Secure Living</h4>
-        <p>24×7 CCTV surveillance & security systems.</p>
-      </div>
+<?php foreach($plans as $index=>$plan){ ?>
 
-      <div class="highlight-card">
-        <h4>Ample Parking</h4>
-        <p>Basement & ground level parking facilities.</p>
-      </div>
+<button id="tab<?= $index+1 ?>"
+class="tab-btn <?= $index==0 ? 'border-b-2 border-black' : 'border-b-2 border-transparent text-gray-400' ?> pb-2">
 
-    </div>
-  </div>
-</section>
-    <!-- Project Highlights section ends  -->
+<?= $plan['tab_name']; ?>
 
+</button>
 
-<!-- Amenities section starts  -->
-<section class="amenities">
-  <div class="container">
-
-    <h2 class="section-title3 u-underline">
-      Amenities 
-    </h2>
-
-   <div class="amenities-grid">
-
-  <div class="amenity-card">
-    <span class="amenity-icon">
-      <!-- Club House -->
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/>
-      </svg>
-    </span>
-    <h4>Club House</h4>
-    <p>Premium community space for gatherings & leisure.</p>
-  </div>
-
-  <div class="amenity-card">
-    <span class="amenity-icon">
-      <!-- Gym -->
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M2 10v4M6 8v8M18 8v8M22 10v4M6 12h12"/>
-      </svg>
-    </span>
-    <h4>Gymnasium</h4>
-    <p>Fully-equipped fitness center for healthy lifestyle.</p>
-  </div>
-
-  <div class="amenity-card">
-    <span class="amenity-icon">
-      <!-- Garden -->
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M12 2v20M4 10c4 0 6 2 8 6 2-4 4-6 8-6"/>
-      </svg>
-    </span>
-    <h4>Landscape Garden</h4>
-    <p>Green open spaces for peace and relaxation.</p>
-  </div>
-
-  <div class="amenity-card">
-    <span class="amenity-icon">
-      <!-- Indoor Games -->
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <rect x="3" y="6" width="18" height="12" rx="2"/>
-        <path d="M8 12h.01M12 10h.01M16 12h.01"/>
-      </svg>
-    </span>
-    <h4>Indoor Games</h4>
-    <p>Table games and recreation area for all ages.</p>
-  </div>
-
-  <div class="amenity-card">
-    <span class="amenity-icon">
-      <!-- Kids Area -->
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <circle cx="12" cy="7" r="3"/>
-        <path d="M5 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/>
-      </svg>
-    </span>
-    <h4>Kids Play Area</h4>
-    <p>Safe & joyful outdoor play space for children.</p>
-  </div>
-
-  <div class="amenity-card">
-    <span class="amenity-icon">
-      <!-- Security -->
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/>
-      </svg>
-    </span>
-    <h4>Security & CCTV</h4>
-    <p>24×7 surveillance for complete peace of mind.</p>
-  </div>
+<?php } ?>
 
 </div>
 
-  </div>
+<?php foreach($plans as $index=>$plan){ ?>
+
+<div id="content<?= $index+1 ?>"
+class="tab-content <?= $index!=0 ? 'hidden' : '' ?> grid md:grid-cols-2 items-center gap-10 md:gap-20 relative">
+
+<!-- Left Text -->
+<div>
+
+<h3 class="text-2xl md:text-3xl text-[#c6a87d] font-['Playfair_Display'] mb-8 md:mb-12">
+<?= $plan['title']; ?>
+</h3>
+
+<div class="space-y-6 md:space-y-10 tracking-widest text-sm">
+
+<div>
+<p class="text-gray-500 mb-1">UNIT :</p>
+<p><?= $plan['unit']; ?></p>
+</div>
+
+<div>
+<p class="text-gray-500 mb-1">SUITE :</p>
+<p><?= $plan['suite']; ?></p>
+</div>
+
+<div>
+<p class="text-gray-500 mb-1">BALCONY :</p>
+<p><?= $plan['balcony']; ?></p>
+</div>
+
+<div>
+<p class="text-gray-500 mb-1">TOTAL :</p>
+<p><?= $plan['total']; ?></p>
+</div>
+
+</div>
+
+</div>
+
+<!-- Right Image -->
+<div class="flex justify-center">
+
+<img src="./Gallery/<?= $plan['image']; ?>"
+class="w-[280px] md:w-[420px] drop-shadow-xl">
+
+</div>
+
+</div>
+
+<?php } ?>
+
+</div>
+</section>
+<!-- floor plan section ends -->
+
+
+
+
+<!-- Amenities section starts  -->
+<?php
+include "db.php";
+
+$query = "SELECT * FROM aurum_amenities ORDER BY id ASC";
+$amenities = pg_query($conn,$query);
+?>
+<?php
+include "db.php";
+
+$query = "SELECT * FROM aurum_amenities ORDER BY id ASC";
+$amenities = pg_query($conn,$query);
+?>
+
+<section class="amenities">
+<div class="container">
+
+<h2 class="section-title3 u-underline">Amenities</h2>
+
+<div class="amenities-grid">
+
+<?php while($row = pg_fetch_assoc($amenities)) { ?>
+
+<div class="amenity-card">
+
+<span class="amenity-icon">
+<?= $row['icon_svg']; ?>
+</span>
+
+<h4><?= $row['title']; ?></h4>
+<p><?= $row['description']; ?></p>
+
+</div>
+
+<?php } ?>
+
+</div>
+</div>
 </section>
     <!-- Amenities section ends  -->
 
@@ -436,6 +465,8 @@
 
 <?php include 'Scroll.php'; ?>
 <?php include 'Footer.php'; ?>
+<script src="Assets/Rukmani Aishwaryam.js"></script>
+ <script src="https://cdn.tailwindcss.com"></script>
 <script src="Assets/Hameburger.js"></script>
 <script src="Assets/Smother.js"></script> 
 <script src="Assets/Projects page.js"></script>

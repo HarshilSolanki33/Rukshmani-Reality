@@ -31,7 +31,6 @@
           AT 
           <span class="rukshmani">RUKMANI GROUP</span> we specialize in delivering premium real estate developments that blend quality construction, thoughtful design, and lasting value. Built on trust and commitment, we create spaces that redefine modern living.
         </p>
-        <a class="cta" href="#">Explore Projects</a>
       </div>
     </div>
   </div>
@@ -216,7 +215,7 @@ $result = pg_query($conn, $query);
 <!-- contact section ends  -->
 
 <?php include 'Footer.php'; ?>
-
+<?php include 'Scroll.php'; ?>
 <script src="Assets/quote.js"></script>
 <script src="Assets/Underline.js"></script>
 <script src="Assets/ourpurpose.js"></script>

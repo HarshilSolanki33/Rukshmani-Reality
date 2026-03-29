@@ -7,7 +7,9 @@
    <link rel="icon" type="image/png" sizes="48x48" href="./Gallery/Title-img.png">
     <link rel="stylesheet" href="Assets/Our Project.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
     <!-- php include 'loader.php'; ?> -->
@@ -108,43 +110,43 @@ $count = pg_num_rows($result);
 <!-- Vision meet structure section ends  -->
 
 <!-- Our Projects section starts  -->
- <section class="yrproj-container">
+  <section class="yrproj-container">
 
-  <h2 class="yrproj-heading u-underline">Projects</h2>
+    <h2 class="yrproj-heading u-underline">Projects</h2>
 
-  <div class="yrproj-years">
-    <?php for ($y = 2025; $y >= 2018; $y--): ?>
-      <button class="yrproj-year-btn <?= ($y == 2025) ? 'active' : '' ?>" data-year="<?= $y ?>"><?= $y ?></button>
-    <?php endfor; ?>
-  </div>
+    <div class="yrproj-years">
+      <?php for ($y = 2025; $y >= 2018; $y--): ?>
+        <button class="yrproj-year-btn <?= ($y == 2025) ? 'active' : '' ?>" data-year="<?= $y ?>"><?= $y ?></button>
+      <?php endfor; ?>
+    </div>
 
-  <div class="yrproj-list">
-    <!-- Initially load 2025 projects -->
-    <?php
-    $_GET['year'] = 2025;
-    include 'projects_ajax.php';
-    ?>
-  </div>
-</section>
+    <div class="yrproj-list">
+      <!-- Initially load 2025 projects -->
+      <?php
+      $_GET['year'] = 2025;
+      include 'projects_ajax.php';
+      ?>
+    </div>
+  </section>
 
-<script>
-document.querySelectorAll('.yrproj-year-btn').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const year = this.dataset.year;
+  <script>
+  document.querySelectorAll('.yrproj-year-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const year = this.dataset.year;
 
-    // Update active class
-    document.querySelectorAll('.yrproj-year-btn').forEach(b => b.classList.remove('active'));
-    this.classList.add('active');
+      // Update active class
+      document.querySelectorAll('.yrproj-year-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
 
-    // Fetch projects via AJAX without page reload
-    fetch('projects_ajax.php?year=' + year)
-      .then(res => res.text())
-      .then(html => {
-        document.querySelector('.yrproj-list').innerHTML = html;
-      });
+      // Fetch projects via AJAX without page reload
+      fetch('projects_ajax.php?year=' + year)
+        .then(res => res.text())
+        .then(html => {
+          document.querySelector('.yrproj-list').innerHTML = html;
+        });
+    });
   });
-});
-</script>
+  </script>
 <!-- Our Projects section ends  -->
 
 <!-- Ready to Bring section starts  -->

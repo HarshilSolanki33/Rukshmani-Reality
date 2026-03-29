@@ -1,131 +1,35 @@
-
-let currentScroll = window.pageYOffset;
-let targetScroll = currentScroll;
-let isScrolling = false;
-
-window.addEventListener("wheel", function (e) {
-    e.preventDefault();
-    targetScroll += e.deltaY;
-    targetScroll = Math.max(
-        0,
-        Math.min(targetScroll, document.body.scrollHeight - window.innerHeight)
-    );
-
-    if (!isScrolling) smoothScroll();
-}, { passive: false });
-
-function smoothScroll() {
-    isScrolling = true;
-    currentScroll += (targetScroll - currentScroll) * 0.08;
-
-    if (Math.abs(targetScroll - currentScroll) < 0.5) {
-        currentScroll = targetScroll;
-        isScrolling = false;
-    } else {
-        requestAnimationFrame(smoothScroll);
-    }
-
-    window.scrollTo(0, currentScroll);
-}
-
-
-// Hero section line  
-window.addEventListener("load", function(){
-      const title = document.querySelector(".hero-title");
-      if(title){
-        title.classList.add("line-animate");
-      }
+ // LENIS INIT
+  const lenis = new Lenis({
+    duration: 1.2,
+    smooth: true,
+    smoothTouch: true,
+    easing: (t) => 1 - Math.pow(1 - t, 3),
   });
 
-// Heading line animation 
-document.addEventListener("DOMContentLoaded", function () {
-  const heading = document.querySelector(".section-header h2");
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          heading.classList.add("animate");
-          observer.unobserve(heading); // ek vaar j animate thase
-        }
-      });
-    },
-    {
-      threshold: 0.5 // 50% screen ma aave tyare
-    }
-  );
+  // GSAP + LENIS CONNECT
+  gsap.registerPlugin(ScrollTrigger);
 
-  observer.observe(heading);
-});
+  lenis.on('scroll', ScrollTrigger.update);
 
-// Project Highlight Cards Animation
-document.addEventListener("DOMContentLoaded", function () {
-  const cards = document.querySelectorAll(".highlight-card");
-
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          // small stagger for premium feel
-          entry.target.style.transitionDelay = `${index * 0.1}s`;
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.2
-    }
-  );
-
-  cards.forEach(card => observer.observe(card));
-});
-
-
-
-
-
-  const popup = document.getElementById("planPopup");
-  const popupImg = document.getElementById("popupImg");
-  const closePopup = document.getElementById("closePopup");
-
-  document.querySelectorAll(".plan-img").forEach(img => {
-    img.addEventListener("click", () => {
-      popup.style.display = "flex";
-      popupImg.src = img.src;
-    });
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
   });
 
-  closePopup.addEventListener("click", () => {
-    popup.style.display = "none";
-  });
+  gsap.ticker.lagSmoothing(0);
 
-  popup.addEventListener("click", (e) => {
-    if(e.target === popup){
-      popup.style.display = "none";
+
+
+
+  gsap.to(".parallax", {
+    y: -150,
+    scrollTrigger: {
+      trigger: ".parallax",
+      scrub: true
     }
   });
-
-
-
- 
-
-// index page temp section script 
-  const frames = document.querySelectorAll('.photo-frame');
-
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('inview');
-        io.unobserve(e.target);
-      }
-    });
-  },{threshold:0.3});
-
-  frames.forEach(f=>io.observe(f));
-
-
-
-
-
-  

@@ -11,7 +11,17 @@ header("Pragma: no-cache");
     <title>Rukmani Realty</title>
    <link rel="icon" type="image/png" sizes="48x48" href="./Gallery/Title-img.png">
     <link rel="stylesheet" href="Assets/Stylesheet.css">
+    <script src="Assets/Anti Flicker.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
+<style>
+  html {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
 <body>
   <!-- php include 'loader.php'; ?>  -->
    <!-- Navbar -->
@@ -126,7 +136,9 @@ $count = pg_num_rows($result);
                     <div class="project-info">
                         <h3><?php echo $p['project_name']; ?></h3>
                         <p><?php echo $p['project_type']; ?><br><?php echo $p['location']; ?></p>
-                        <div class="arrow">→</div>
+                        <<a href="<?php echo $p['project_link']; ?>">
+    <div class="arrow">→</div>
+</a>
                     </div>
 
                 </div>
@@ -166,13 +178,15 @@ $count = pg_num_rows($result);
                 <span>LOCATION</span>
             </div>
 
-            <?php while ($row = pg_fetch_assoc($result)) { ?>
-                <div class="brochure-row reveal" onclick="openPopup('<?php echo $row['project_name']; ?>')">
-                    <span class="project-name"><?= $row['project_name']; ?></span>
-                    <span class="project-type"><?= $row['project_type']; ?></span>
-                    <span class="project-location"><?= $row['project_location']; ?></span>
-                </div>
-            <?php } ?>
+           <?php while ($row = pg_fetch_assoc($result)) { ?>
+    <a href="<?php echo $row['project_link']; ?>" style="text-decoration:none; color:inherit;">
+        <div class="brochure-row reveal">
+            <span class="project-name"><?= $row['project_name']; ?></span>
+            <span class="project-type"><?= $row['project_type']; ?></span>
+            <span class="project-location"><?= $row['project_location']; ?></span>
+        </div>
+    </a>
+<?php } ?>
 
             <div class="show-more-wrapper">
                 <button id="showMoreBtn">Show More</button>
@@ -210,7 +224,7 @@ $img2 = pg_fetch_assoc($images);
                 At <span class="rukshmani">Rukshmani Realty</span>, we create architectural masterpieces that 
                 blend modern elegance with timeless quality, designed for generations.
             </p>
-            <a href="#" class="showcase-button">View Projects</a>
+            <a href="../Guest Side/Our Projects.php" class="showcase-button">View Projects</a>
         </div>
 
         <!-- RIGHT IMAGES -->

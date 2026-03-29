@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurum Heights</title>
+    <title>Grand Horizon</title>
      <link rel="icon" type="image/png" sizes="48x48" href="./Gallery/Title-img.png">
-    <link rel="stylesheet" href="Assets/Aurum.css">
+    <link rel="stylesheet" href="Assets/Grand Horizon.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 </head>
@@ -24,11 +24,11 @@
   <div class="hero-wrapper">
     <div class="hero-left">
       <div class="hero-inner">
-        <h1 class="hero-title u-underline">AURUM HEIGHTS</h1>
+        <h1 class="hero-title u-underline">GRAND HORIZON</h1>
 
         <p class="lead">
           AT 
-          <span class="rukshmani">Aurum Heights</span> a place where every sunrise brings comfort, luxury and peace. Thoughtfully planned spaces, open views and urban connectivity come together to create a lifestyle you and your family truly deserve.
+          <span class="rukshmani">Grand Horizon</span> a place where every sunrise brings comfort, luxury and peace. Thoughtfully planned spaces, open views and urban connectivity come together to create a lifestyle you and your family truly deserve.
         </p>
       </div>
     </div>
@@ -36,16 +36,16 @@
 </section>
     <!-- Hero Section Ends -->
 
-
-<!-- Bground image section starts   -->
- <?php
+    <!-- Bground image section starts   -->
+<?php
 include "db.php";
 
-$query = 'SELECT * FROM "aurum_bgremove" ORDER BY id ASC';
+$query = 'SELECT * FROM "Guest_User_DB".Grand_Horizon_bgremove ORDER BY id ASC';
 $section = pg_query($conn, $query);
 
 $row = pg_fetch_assoc($section);
 ?>
+
 <section class="bg-white py-32">
   <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center -mt-40">
 
@@ -72,17 +72,17 @@ $row = pg_fetch_assoc($section);
 DOWNLOAD BROCHURE
 <span class="transform transition-transform duration-300 group-hover:translate-x-2">→</span>
 </button>
+
 <script>
 document.getElementById("downloadBtn").addEventListener("click", function() {
     const link = document.createElement("a");
-    link.href = "./Gallery/Brochures/Aurum Heights.pdf"; // અહીં તારી PDF નો path મુક
-    link.download = "Aurum Heights.pdf"; // અહીં તારી PDF નું નામ મુક
+    link.href = "./Gallery/Brochures/<?= $row['brochure']; ?>";
+    link.download = "<?= $row['brochure']; ?>";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 });
 </script>
-
 
     </div>
 
@@ -101,15 +101,17 @@ document.getElementById("downloadBtn").addEventListener("click", function() {
 
   </div>
 </section>
-<!-- Background image section ends    -->
+<!-- Background image section ends -->
+
 
 <!-- Perspective section starts  -->
- <?php
+<?php
 include "db.php";
 
-$query = "SELECT * FROM aurum_perspective ORDER BY id ASC";
+$query = 'SELECT * FROM "Guest_User_DB".Grand_Horizon_Perspective ORDER BY id ASC';
 $perspectives = pg_query($conn, $query);
 ?>
+
 <section class="perspectives">
 
   <div class="section-header">
@@ -132,15 +134,16 @@ $perspectives = pg_query($conn, $query);
   </div>
 
 </section>
-    <!-- Perspective section ends  -->
+<!-- Perspective section ends  -->
 
-   <!-- product topology section starts -->
+<!-- product topology section starts -->
 <?php
 include "db.php";
 
-$query = "SELECT * FROM aurum_product_typology ORDER BY id ASC";
+$query = 'SELECT * FROM "Guest_User_DB".Grand_Horizon_topology ORDER BY id ASC';
 $typology = pg_query($conn, $query);
 ?>
+
 <section class="product-typology">
 
   <h2 class="u-underline">
@@ -165,15 +168,16 @@ $typology = pg_query($conn, $query);
   </div>
 
 </section>
-    <!-- product topology section ends -->
+<!-- product topology section ends -->
 
 <!-- Signature Residences section starts   -->
-  <?php
+<?php
 include "db.php";
 
-$query = "SELECT * FROM aurum_signature ORDER BY id ASC";
+$query = 'SELECT * FROM "Guest_User_DB".Grand_Horizon_signature ORDER BY id ASC';
 $units = pg_query($conn, $query);
 ?>
+
 <section class="unit-cards">
 
   <h2 class="section-title u-underline">Signature Residences</h2>
@@ -207,21 +211,21 @@ $units = pg_query($conn, $query);
   </div>
 
 </section>
-    <!-- Signature Residences section ends   -->
-
+<!-- Signature Residences section ends   -->
 
 <!-- floor plan section starts  -->
 <?php
 include "db.php";
 
-$query = "SELECT * FROM aurum_floorplan ORDER BY id ASC";
+$query = 'SELECT * FROM "Guest_User_DB".Grand_Horizon_floorplan ORDER BY id ASC';
 $result = pg_query($conn,$query);
 
 $plans = [];
 while($row = pg_fetch_assoc($result)){
-$plans[] = $row;
+    $plans[] = $row;
 }
 ?>
+
 <section class="bg-white py-16 md:py-24">
 
 <div class="text-center">
@@ -300,8 +304,8 @@ class="w-[280px] md:w-[420px] drop-shadow-xl">
 
 </div>
 </section>
-<!-- floor plan section ends   -->
-
+<!-- floor plan section ends -->
+   
 <!-- Amenities section starts  -->
 <?php
 include "db.php";
@@ -464,7 +468,7 @@ $amenities = pg_query($conn,$query);
 
 <?php include 'Scroll.php'; ?>
 <?php include 'Footer.php'; ?>
-<script src="Assets/Aurum.js"></script>
+<script src="Assets/Grand Horizon.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
  <script src="https://cdn.tailwindcss.com"></script>
 <script src="Assets/Hameburger.js"></script>

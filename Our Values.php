@@ -28,7 +28,6 @@
           AT 
           <span class="rukshmani">RUKMANI GROUP</span> our foundation lies in quality, honesty, and purposeful design. Each development is thoughtfully crafted to deliver elegance, comfort, and enduring value — because we believe a home should be a legacy, not just a space.
         </p>
-        <a class="cta" href="#">Explore Projects</a>
       </div>
     </div>
   </div>
@@ -157,7 +156,7 @@
 <!-- contact section ends  -->
 
 <?php include 'Footer.php'; ?>
-
+<?php include 'Scroll.php'; ?>
 <script src="Assets/Hameburger.js"></script>
 <script src="Assets/Underline.js"></script>
 <script src="Assets/Smother.js"></script> 

@@ -1,5 +1,8 @@
 /* INDEX PAGE CSS  */
-
+html, body {
+  height: auto;
+  scroll-behavior: auto; /* disable default */
+}
     /* ===== HERO SECTION ===== */
 .hero{
   min-height: calc(100vh - 90px); /* 🔥 navbar height minus */
