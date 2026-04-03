@@ -17,6 +17,9 @@ if (!isset($_SESSION['user_logged_in'])) {
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 </head>
+<style>
+  
+</style>
 <body>
      <!-- php include 'loader.php'; ?> -->
    <!-- Navbar -->
@@ -98,6 +101,151 @@ it’s about living the lifestyle you deserve.
 
 <!-- PROPERTY TYPE SECTION ENDS -->
 
+<!-- Sale your property section starts   -->
+<section class="bg-white py-12 sm:py-14 md:py-16 px-4 sm:px-6">
+
+  <!-- Title -->
+  <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10 sm:mb-12"
+      style="font-family: 'Playfair Display', serif;">
+    Showcase Your Property to Buyers
+  </h2>
+
+  <!-- Hidden Inputs -->
+  <input type="file" id="galleryInput" accept="image/*" hidden>
+  <input type="file" id="cameraInput" accept="image/*" capture="environment" hidden>
+
+  <!-- Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
+
+    <!-- Gallery Upload -->
+    <div onclick="openGallery()"
+         class="bg-white border border-yellow-500 rounded-xl sm:rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-lg transition cursor-pointer active:scale-95">
+
+      <div class="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+
+        <!-- Icon -->
+        <div class="bg-white p-2 sm:p-3 rounded-lg">
+          <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="#c9a44d" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <path d="M21 15l-5-5L5 21"></path>
+          </svg>
+        </div>
+
+        <h3 class="text-lg sm:text-xl font-semibold text-gray-800">
+          Upload from Gallery
+        </h3>
+      </div>
+
+      <p class="text-gray-600 text-sm sm:text-base mb-3 sm:mb-4">
+        Select images from your device
+      </p>
+
+      <p class="text-yellow-600 font-medium text-sm sm:text-base">
+        Choose Photos →
+      </p>
+
+    </div>
+
+    <!-- Camera Upload -->
+    <div onclick="openCamera()"
+         class="bg-white border border-yellow-500 rounded-xl sm:rounded-2xl p-5 sm:p-6 shadow-sm hover:shadow-lg transition cursor-pointer active:scale-95">
+
+      <div class="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+
+        <!-- Icon -->
+        <div class="bg-white p-2 sm:p-3 rounded-lg">
+          <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="#c9a44d" stroke-width="2">
+            <path d="M23 19V7a2 2 0 0 0-2-2h-3l-2-2H8L6 5H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </div>
+
+        <h3 class="text-lg sm:text-xl font-semibold text-gray-800">
+          Use Camera
+        </h3>
+      </div>
+
+      <p class="text-gray-600 text-sm sm:text-base mb-3 sm:mb-4">
+        Take a photo instantly
+      </p>
+
+      <p class="text-yellow-600 font-medium text-sm sm:text-base">
+        Open Camera →
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- Sale your property section ends   -->
+
+<!-- PROPERTY FORM START -->
+<section class="bg-gray-50 py-12 px-4">
+
+  <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl p-6 md:p-8">
+
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-6"
+        style="font-family: 'Playfair Display', serif;">
+      List Your Property
+    </h2>
+
+    <form action="submit.php" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+      <!-- Name -->
+      <input type="text" name="name" placeholder="Full Name"
+        class="border p-3 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none" required>
+
+      <!-- Phone -->
+      <input type="text" name="phone" placeholder="Phone Number"
+        class="border p-3 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none" required>
+
+      <!-- City -->
+      <input type="text" name="city" placeholder="City"
+        class="border p-3 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none">
+
+      <!-- Budget -->
+      <input type="text" name="budget" placeholder="Budget"
+        class="border p-3 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none">
+
+      <!-- Property Type -->
+      <select name="property_type" id="ptype" onchange="loadOptions()"
+        class="border p-3 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none col-span-1 md:col-span-2" required>
+
+        <option value="">Select Property Type</option>
+        <option value="residential">Residential Property</option>
+        <option value="commercial">Commercial Property</option>
+
+      </select>
+
+      <!-- Property Option -->
+      <select name="property_option" id="poption"
+        class="border p-3 rounded-lg focus:ring-2 focus:ring-yellow-500 outline-none col-span-1 md:col-span-2" required>
+
+        <option value="">Select Option</option>
+
+      </select>
+
+      <!-- Message -->
+      <textarea name="message" placeholder="Additional Details"
+        class="border p-3 rounded-lg col-span-1 md:col-span-2 focus:ring-2 focus:ring-yellow-500 outline-none"></textarea>
+
+      <!-- Submit -->
+      <button type="submit"
+        class="bg-yellow-500 text-white py-3 rounded-lg col-span-1 md:col-span-2 hover:bg-yellow-600 transition">
+
+        Submit Property
+
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+<!-- PROPERTY FORM END -->
+
 <!-- Featured Properties Section Starts -->
 <?php
 include "db.php";
@@ -151,9 +299,52 @@ $premium = pg_query($conn,$query);
 </section>
 <!-- Counter Section Ends -->
 
+<script>
+function openGallery() {
+  document.getElementById("galleryInput").click();
+}
+
+function openCamera() {
+  document.getElementById("cameraInput").click();
+}
+
+// Optional: preview or check
+document.getElementById("galleryInput").addEventListener("change", function(e){
+  console.log("Gallery Image Selected:", e.target.files[0]);
+});
+
+document.getElementById("cameraInput").addEventListener("change", function(e){
+  console.log("Camera Image Captured:", e.target.files[0]);
+});
+</script>
 
 
 
+<script>
+function loadOptions() {
+  let type = document.getElementById("ptype").value;
+  let option = document.getElementById("poption");
+
+  option.innerHTML = '<option value="">Select Option</option>';
+
+  if (type === "residential") {
+    option.innerHTML += `
+      <option value="1bhk">1 BHK</option>
+      <option value="2bhk">2 BHK</option>
+      <option value="3bhk">3 BHK</option>
+      <option value="penthouse">Penthouse</option>
+    `;
+  } else if (type === "commercial") {
+    option.innerHTML += `
+      <option value="showroom">Showroom</option>
+      <option value="corporate">Corporate Office</option>
+      <option value="retail">Retail Shop</option>
+    `;
+  }
+}
+</script>
+
+<script src="https://cdn.tailwindcss.com"></script>
 <?php include 'Scroll.php'; ?>
 <?php include 'Footer.php'; ?>
 <script src="Assets/Hameburger.js"></script>

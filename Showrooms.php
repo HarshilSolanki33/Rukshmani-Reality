@@ -111,6 +111,7 @@ endif;
 
 
 <?php include 'Footer.php'; ?>
+<script src="https://cdn.tailwindcss.com"></script>
 <script src="Assets/Hameburger.js"></script>
 <script src="Assets/Showroom.js"></script>
 <script src="Assets/Smother.js"></script> 

@@ -42,7 +42,7 @@ header("Pragma: no-cache");
           AT 
           <span class="rukshmani">RUKMANI</span> BUILDERS GROUP, WE TURN YOUR DREAM ADDRESS INTO A LIFETIME ASSET..
         </p>
-        <a class="cta" href="../Guest Side/Craftmenship.php">Explore Projects</a>
+        <a class="cta" href="../Guest Side/Our Projects.php">Explore Projects</a>
       </div>
     </div>
   </div>

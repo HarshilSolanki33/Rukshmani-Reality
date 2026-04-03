@@ -21,29 +21,70 @@ session_start();
   <a href="mail.php">Mail Us</a>
 </div>
       </div>
+<?php if (!isset($_SESSION['user_id'])): ?>
+<div class="relative inline-block text-left group">
+    
+    <button id="authDropdownBtn" class="bg-[#b9874b] text-white px-4 py-2 md:px-6 md:py-2.5 rounded-lg font-medium flex items-center gap-2 hover:bg-[#a5773c] transition-all duration-300 shadow-md outline-none active:scale-95">
+        <span class="text-[13px] md:text-base whitespace-nowrap">Sign Up / Login</span>
+        <svg xmlns="http://www.w3.org/2000/svg" id="dropdownArrow" class="h-4 w-4 transition-transform duration-300 md:group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+        </svg>
+    </button>
 
-      <!-- 🔵 USER LOGIN STATUS CHECK -->
-<?php if (!isset($_SESSION['user_logged_in'])): ?>
-
-    <!-- USER NOT LOGGED IN → SHOW ONE GOLD BUTTON WITH DROPDOWN -->
-    <div class="login-box">
-        <button class="login-btn">
-            Sign Up / Login ▾
-        </button>
-
-        <div class="login-dropdown">
-            <a href="../Guest Side/SignUp.php">Sign Up</a>
-            <a href="../Guest Side/Login.php">Login</a>
+    <div id="authDropdownMenu" class="
+        fixed inset-x-4 top-20 mx-auto w-auto max-w-[280px]  /* Mobile Styles */
+        md:absolute md:inset-auto md:right-0 md:mt-2 md:w-44    /* Desktop Styles */
+        bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-[999] 
+        invisible opacity-0 translate-y-4 md:translate-y-2 
+        md:group-hover:visible md:group-hover:opacity-100 md:group-hover:translate-y-0 
+        transition-all duration-300">
+        
+        <div class="p-2 md:p-0">
+            <a href="../Guest Side/signup.php" class="flex items-center px-5 py-4 md:px-4 md:py-3 text-gray-700 hover:bg-[#fdf9f3] hover:text-[#b9874b] transition rounded-xl md:rounded-none border-b border-gray-50 md:border-b">
+               
+                <span class="text-sm font-semibold md:font-medium">Sign Up</span>
+            </a>
+            
+            <a href="../Guest Side/Login.php" class="flex items-center px-5 py-4 md:px-4 md:py-3 text-gray-700 hover:bg-[#fdf9f3] hover:text-[#b9874b] transition rounded-xl md:rounded-none">
+                
+                <span class="text-sm font-semibold md:font-medium">Login</span>
+            </a>
         </div>
     </div>
+</div>
 
-<?php else: ?>
+<script>
+    const btn = document.getElementById('authDropdownBtn');
+    const menu = document.getElementById('authDropdownMenu');
+    const arrow = document.getElementById('dropdownArrow');
 
-    <!-- USER LOGGED IN → SHOW PROFILE ICON -->
-    <a href="../Guest Side/profile.php" class="profile-btn">
-        <img src="Gallery/user.png" alt="Profile">
-    </a>
+    btn.addEventListener('click', function(e) {
+        if (window.innerWidth < 768) {
+            e.stopPropagation();
+            const isHidden = menu.classList.contains('invisible');
+            
+            if (isHidden) {
+                // Open menu
+                menu.classList.remove('invisible', 'opacity-0', 'translate-y-4');
+                menu.classList.add('visible', 'opacity-100', 'translate-y-0');
+                arrow.style.transform = 'rotate(180deg)';
+            } else {
+                // Close menu
+                menu.classList.add('invisible', 'opacity-0', 'translate-y-4');
+                menu.classList.remove('visible', 'opacity-100', 'translate-y-0');
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+    });
 
+    // Close when clicking outside
+    document.addEventListener('click', function() {
+        if (window.innerWidth < 768) {
+            menu.classList.add('invisible', 'opacity-0', 'translate-y-4');
+            arrow.style.transform = 'rotate(0deg)';
+        }
+    });
+</script>
 <?php endif; ?>
 <!-- 🔵 END LOGIN CHECK -->
 
@@ -94,99 +135,7 @@ session_start();
 
 <!-- YOUR EXISTING CSS + POPUP CODE BELOW REMAINS SAME -->
 
-<style>
-  /* LOGIN BOX */
-.login-box {
-    position: relative;
-}
-
-/* GOLD BUTTON */
-.login-btn {
-    background: rgb(185,135,75);      /* Gold */
-    color: white;
-    border: 0;
-    padding: 10px 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 15px;
-    transition: .3s;
-}
-
-.login-btn:hover {
-    background: rgba(185,135,75,0.85);
-    transform: translateY(-2px);
-}
-
-/* DROPDOWN */
-.login-dropdown {
-    position: absolute;
-    right: 0;
-    top: 100%;
-    background: #fff;
-    width: 150px;
-    border-radius: 10px;
-    margin-top: 8px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8px);
-    transition: .3s ease;
-}
-
-.login-dropdown a {
-    display: block;
-    padding: 10px 15px;
-    color: #444;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.login-dropdown a:hover {
-    background: #f3f3f3;
-}
-
-/* SHOW ON HOVER */
-.login-box:hover .login-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-  /* Profile Button */
-.profile-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(0,0,0,0.35);
-    background: #fff;
-    cursor: pointer;
-    transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease;
-}
-
-.profile-btn img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Hover Effect */
-.profile-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    border-color: #000;
-}
-
-/* Mobile Size Better */
-@media (max-width: 768px){
-    .profile-btn {
-        width: 42px;
-        height: 42px;
-    }
-}
+<style> 
 
 
   *{
@@ -336,7 +285,7 @@ html, body{
 
   .connect-btn,
   .login-btn{
-    padding:4px 8px;      /* 🔹 extra small buttons */
+    padding:6px 8px;      /* 🔹 extra small buttons */
     font-size:11px;       /* 🔹 smaller font */
     min-width:0;          /* 🔹 buttons shrink to fit text */
   }

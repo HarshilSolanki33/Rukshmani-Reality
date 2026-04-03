@@ -216,6 +216,7 @@ $result = pg_query($conn, $query);
 
 <?php include 'Footer.php'; ?>
 <?php include 'Scroll.php'; ?>
+<script src="https://cdn.tailwindcss.com"></script>
 <script src="Assets/quote.js"></script>
 <script src="Assets/Underline.js"></script>
 <script src="Assets/ourpurpose.js"></script>

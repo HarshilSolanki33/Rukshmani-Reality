@@ -124,7 +124,7 @@ it’s about living the lifestyle you deserve.
 <!-- Card Section Ends  -->
 
 
-
+<script src="https://cdn.tailwindcss.com"></script>
 
 <?php include 'Footer.php'; ?>
 <script src="Assets/Hameburger.js"></script>

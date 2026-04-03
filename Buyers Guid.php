@@ -96,6 +96,7 @@
 <!-- Emi calculators Section Ends  -->
 <?php include 'Footer.php'; ?>
 <script src="Assets/Hameburger.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 <script src="Assets/Smother.js"></script> 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>

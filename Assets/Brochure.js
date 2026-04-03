@@ -73,3 +73,54 @@ function calculateEMI() {
 }
 
 calculateEMI();
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Badhi property links select karo
+    const allRows = document.querySelectorAll(".brochure-table > a"); 
+    const showMoreBtn = document.getElementById("showMoreBtn");
+    
+    const itemsToShow = 4; // Pela khali 4 property dekhadiye
+    let visibleCount = itemsToShow;
+
+    // 1. Starting ma badhi rows hide karo, khali pela 4 ne chhodi ne
+    allRows.forEach((row, index) => {
+        if (index >= itemsToShow) {
+            row.style.display = "none";
+            row.style.opacity = "0";
+            row.style.transform = "translateY(20px)";
+            row.style.transition = "all 0.5s ease";
+        }
+    });
+
+    // 2. Jo database mathi 4 thi ochi property aave to button hide kari dyo
+    if (allRows.length <= itemsToShow) {
+        showMoreBtn.style.display = "none";
+    }
+
+    // 3. Click Event
+    showMoreBtn.addEventListener("click", function () {
+        let count = 0;
+        
+        allRows.forEach((row, index) => {
+            // Je hide che tene next slot ma batavo
+            if (row.style.display === "none" && count < itemsToShow) {
+                row.style.display = "block";
+                
+                // Niche thi upar aavti hoy evi effect mate small timeout
+                setTimeout(() => {
+                    row.style.opacity = "1";
+                    row.style.transform = "translateY(0)";
+                }, 10);
+                
+                count++;
+                visibleCount++;
+            }
+        });
+
+        // 4. Badhi properties dekhai jay to button hide karo
+        if (visibleCount >= allRows.length) {
+            showMoreBtn.style.fadeOut = "slow"; // Optional animation
+            showMoreBtn.style.display = "none";
+        }
+    });
+});

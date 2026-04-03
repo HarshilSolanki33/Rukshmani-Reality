@@ -158,6 +158,7 @@
 <?php include 'Footer.php'; ?>
 <?php include 'Scroll.php'; ?>
 <script src="Assets/Hameburger.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 <script src="Assets/Underline.js"></script>
 <script src="Assets/Smother.js"></script> 
 </body>

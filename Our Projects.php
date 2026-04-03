@@ -172,7 +172,7 @@ $count = pg_num_rows($result);
 
 <?php include 'Scroll.php'; ?>
 <?php include 'Footer.php'; ?>
-
+<script src="https://cdn.tailwindcss.com"></script>
 <script src="Assets/Our Project.js"></script>
 <script src="Assets/Underline.js"></script>
 <script src="Assets/Hameburger.js"></script>
